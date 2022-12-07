@@ -1,13 +1,8 @@
-# Inventory Management System
+# Template by [KryptonB](https://github.com/KryptonB/inventory-management-system)
+
+# Working on it
 
 [![GitHub](https://img.shields.io/github/license/kryptonb/inventory-management-system.svg?style=popout)](https://choosealicense.com/licenses/mit/)
-
-A simple PHP web system for managing an inventory.  
-  
-Screenshots:   
- 
-![Sale details](https://github.com/KryptonB/inventory-management-system/blob/master/screenshots/sale.PNG)  
-![Search details](https://github.com/KryptonB/inventory-management-system/blob/master/screenshots/search.PNG)  
 
 ## Installation
 * Clone the repository and move the root folder to the deployment folder of your browser. (for Apache, this is htdocs)
