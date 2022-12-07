@@ -973,11 +973,11 @@ function addVendor() {
 function addItem() {
 	var itemDetailsItemNumber = $('#itemDetailsItemNumber').val();
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
-	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
+	var itemDetailsLocation = $('#itemDetailsLocation').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
 	var itemDetailsStatus = $('#itemDetailsStatus').val();
-	var itemDetailsDescription = $('#itemDetailsDescription').val();
+	var itemDetailsBarcode = $('#itemDetailsBarcode').val();
 	
 	$.ajax({
 		url: 'model/item/insertItem.php',
@@ -985,11 +985,11 @@ function addItem() {
 		data: {
 			itemDetailsItemNumber:itemDetailsItemNumber,
 			itemDetailsItemName:itemDetailsItemName,
-			itemDetailsDiscount:itemDetailsDiscount,
+			itemDetailsLocation:itemDetailsLocation,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
 			itemDetailsStatus:itemDetailsStatus,
-			itemDetailsDescription:itemDetailsDescription,
+			itemDetailsBarcode:itemDetailsBarcode,
 		},
 		success: function(data){
 			$('#itemDetailsMessage').fadeIn();

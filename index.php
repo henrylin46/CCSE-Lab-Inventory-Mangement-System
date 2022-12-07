@@ -64,6 +64,11 @@
 								  <label for="itemDetailsProductID">Product ID</label>
 								  <input class="form-control invTooltip" type="number" readonly  id="itemDetailsProductID" name="itemDetailsProductID" title="This will be auto-generated when you add a new item">
 								</div>
+                                  <!-- barcode -->
+                                  <div class="form-group col-md-3" style="display:inline-block">
+                                      <label for="itemDetailsBarcode">Barcode</label>
+                                      <input type="text" class="form-control" name="itemDetailsBarcode" id="itemDetailsBarcode" autocomplete="off">
+                                  </div>
 							  </div>
 							  <div class="form-row">
 								  <div class="form-group col-md-6">
@@ -79,15 +84,9 @@
 								  </div>
 							  </div>
 							  <div class="form-row">
-								<div class="form-group col-md-6" style="display:inline-block">
-								  <!-- <label for="itemDetailsDescription">Description</label> -->
-								  <textarea rows="4" class="form-control" placeholder="Description" name="itemDetailsDescription" id="itemDetailsDescription"></textarea>
-								</div>
-							  </div>
-							  <div class="form-row">
 								<div class="form-group col-md-3">
-								  <label for="itemDetailsDiscount">Discount %</label>
-								  <input type="text" class="form-control" value="0" name="itemDetailsDiscount" id="itemDetailsDiscount">
+								  <label for="itemDetailsLocation">Location</label>
+								  <input type="text" class="form-control" value="0" name="itemDetailsLocation" id="itemDetailsLocation">
 								</div>
 								<div class="form-group col-md-3">
 								  <label for="itemDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
