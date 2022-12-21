@@ -1455,7 +1455,7 @@ function getSaleDetailsToPopulate(){
 }
 
 
-// Function to call the upateItemDetails.php script to UPDATE item data in db
+// Function to call the updateItemDetails.php script to UPDATE item data in db
 function updateItem() {
 	var itemDetailsItemNumber = $('#itemDetailsItemNumber').val();
 	var itemDetailsItemName = $('#itemDetailsItemName').val();

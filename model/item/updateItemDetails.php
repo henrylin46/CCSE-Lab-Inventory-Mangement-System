@@ -44,7 +44,7 @@
 				exit();
 			}
 			
-			// Validate location only if it's provided
+			// Validate location info only if it's provided
 			if(!empty($location)){
 				if(filter_var($location, FILTER_SANITIZE_STRING) === false){
 					// location is not a valid floating point number
