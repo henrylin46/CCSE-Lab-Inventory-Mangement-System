@@ -1101,12 +1101,13 @@ function getItemDetailsToPopulate(){
 		success: function(data){
 			//$('#itemDetailsItemNumber').val(data.itemNumber);
 			$('#itemDetailsProductID').val(data.productID);
+			$('#itemDetailsBarcode').val(data.barcode);
 			$('#itemDetailsItemName').val(data.itemName);
-			$('#itemDetailsDiscount').val(data.discount);
-			$('#itemDetailsTotalStock').val(data.stock);
-			$('#itemDetailsUnitPrice').val(data.unitPrice);
-			$('#itemDetailsDescription').val(data.description);
 			$('#itemDetailsStatus').val(data.status).trigger("chosen:updated");
+			$('#itemDetailsLocation').val(data.location);
+			// Quantity is "additional quantity"
+			$('#itemDetailsUnitPrice').val(data.unitPrice);
+			$('#itemDetailsTotalStock').val(data.stock);
 
 			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 			

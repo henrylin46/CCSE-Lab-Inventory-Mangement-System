@@ -10,12 +10,12 @@
 		
 		$itemNumber = htmlentities($_POST['itemDetailsItemNumber']);
 		$itemName = htmlentities($_POST['itemDetailsItemName']);
-		$location = htmlentities($_POST['itemDetailsLocation']);
+		$itemLocation = htmlentities($_POST['itemDetailsLocation']);
 		$quantity = htmlentities($_POST['itemDetailsQuantity']);
 		$unitPrice = htmlentities($_POST['itemDetailsUnitPrice']);
 		$status = htmlentities($_POST['itemDetailsStatus']);
         $barcode = htmlentities($_POST['itemDetailsBarcode']);
-		
+
 		// Check if mandatory fields are not empty
 		if(!empty($itemNumber) && !empty($itemName) && isset($quantity) && isset($unitPrice)){
 			
@@ -41,8 +41,8 @@
 			}
 			
 			// Validate discount only if it's provided
-			if(!empty($location)){
-				if(filter_var($location, FILTER_SANITIZE_STRING) === false){
+			if(!empty($itemLocation)){
+				if(filter_var($itemLocation, FILTER_SANITIZE_STRING) === false){
 					// Discount is not a valid floating point number
 					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid location amount</div>';
 					exit();
@@ -72,7 +72,7 @@
 				// Start the insert process
 				$insertItemSql = 'INSERT INTO item(itemNumber, itemName, location, stock, unitPrice, status, barcode) VALUES(:itemNumber, :itemName, :location, :stock, :unitPrice, :status, :barcode)';
 				$insertItemStatement = $conn->prepare($insertItemSql);
-				$insertItemStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'location' => $location, 'stock' => $quantity, 'unitPrice' => $unitPrice, 'status' => $status, 'barcode' => $barcode]);
+				$insertItemStatement->execute(['itemNumber' => $itemNumber, 'itemName' => $itemName, 'location' => $itemLocation, 'stock' => $quantity, 'unitPrice' => $unitPrice, 'status' => $status, 'barcode' => $barcode]);
 				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Item added to database.</div>';
 				exit();
 			}
