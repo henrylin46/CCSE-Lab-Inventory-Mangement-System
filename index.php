@@ -9,8 +9,9 @@
 	require_once('inc/config/constants.php');
 	require_once('inc/config/db.php');
 	require_once('inc/header.html');
-    
-//    require_once('./student.php');
+
+    // testing, used for redirecting
+    // require_once('./student.php');
     require_once('./admin.php');
 ?>
 </html>
