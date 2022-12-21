@@ -1,3 +1,4 @@
+<!-- Body for admin page -->
 <body>
 <?php
 require 'inc/navigation.php';
