@@ -1459,11 +1459,11 @@ function getSaleDetailsToPopulate(){
 function updateItem() {
 	var itemDetailsItemNumber = $('#itemDetailsItemNumber').val();
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
-	var itemDetailsDiscount = $('#itemDetailsDiscount').val();
+	var itemDetailsLocation = $('#itemDetailsLocation').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
 	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
 	var itemDetailsStatus = $('#itemDetailsStatus').val();
-	var itemDetailsDescription = $('#itemDetailsDescription').val();
+	var itemDetailsBarcode = $('#itemDetailsBarcode').val();
 	
 	$.ajax({
 		url: 'model/item/updateItemDetails.php',
@@ -1471,11 +1471,11 @@ function updateItem() {
 		data: {
 			itemNumber:itemDetailsItemNumber,
 			itemDetailsItemName:itemDetailsItemName,
-			itemDetailsDiscount:itemDetailsDiscount,
+			itemDetailsLocation:itemDetailsLocation,
 			itemDetailsQuantity:itemDetailsQuantity,
 			itemDetailsUnitPrice:itemDetailsUnitPrice,
 			itemDetailsStatus:itemDetailsStatus,
-			itemDetailsDescription:itemDetailsDescription,
+			itemDetailsBarcode:itemDetailsBarcode,
 		},
 		success: function(data){
 			var result = $.parseJSON(data);

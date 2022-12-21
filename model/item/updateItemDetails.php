@@ -4,14 +4,14 @@
 	
 	// Check if the POST query is received
 	if(isset($_POST['itemNumber'])) {
-		
+
 		$itemNumber = htmlentities($_POST['itemNumber']);
 		$itemName = htmlentities($_POST['itemDetailsItemName']);
-		$discount = htmlentities($_POST['itemDetailsDiscount']);
+		$location = htmlentities($_POST['itemDetailsLocation']);
 		$itemDetailsQuantity = htmlentities($_POST['itemDetailsQuantity']);
 		$itemDetailsUnitPrice = htmlentities($_POST['itemDetailsUnitPrice']);
 		$status = htmlentities($_POST['itemDetailsStatus']);
-		$description = htmlentities($_POST['itemDetailsDescription']);
+		$barcode = htmlentities($_POST['itemDetailsBarcode']);
 		
 		$initialStock = 0;
 		$newStock = 0;
@@ -44,11 +44,11 @@
 				exit();
 			}
 			
-			// Validate discount only if it's provided
-			if(!empty($discount)){
-				if(filter_var($discount, FILTER_VALIDATE_FLOAT) === false){
-					// Discount is not a valid floating point number
-					$errorAlert = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid discount amount</div>';
+			// Validate location only if it's provided
+			if(!empty($location)){
+				if(filter_var($location, FILTER_SANITIZE_STRING) === false){
+					// location is not a valid floating point number
+					$errorAlert = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid location amount</div>';
 					$data = ['alertMessage' => $errorAlert];
 					echo json_encode($data);
 					exit();
@@ -72,9 +72,9 @@
 			}
 		
 			// Construct the UPDATE query
-			$updateItemDetailsSql = 'UPDATE item SET itemName = :itemName, discount = :discount, stock = :stock, unitPrice = :unitPrice, status = :status, description = :description WHERE itemNumber = :itemNumber';
+			$updateItemDetailsSql = 'UPDATE item SET itemName = :itemName, location = :location, stock = :stock, unitPrice = :unitPrice, status = :status, barcode = :barcode WHERE itemNumber = :itemNumber';
 			$updateItemDetailsStatement = $conn->prepare($updateItemDetailsSql);
-			$updateItemDetailsStatement->execute(['itemName' => $itemName, 'discount' => $discount, 'stock' => $newStock, 'unitPrice' => $itemDetailsUnitPrice, 'status' => $status, 'description' => $description, 'itemNumber' => $itemNumber]);
+			$updateItemDetailsStatement->execute(['itemName' => $itemName, 'location' => $location, 'stock' => $newStock, 'unitPrice' => $itemDetailsUnitPrice, 'status' => $status, 'barcode' => $barcode, 'itemNumber' => $itemNumber]);
 			
 			// UPDATE item name in sale table
 			$updateItemInSaleTableSql = 'UPDATE sale SET itemName = :itemName WHERE itemNumber = :itemNumber';
