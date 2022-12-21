@@ -10,8 +10,11 @@
 	require_once('inc/config/db.php');
 	require_once('inc/header.html');
 
-    // testing, used for redirecting
-    // require_once('./student.php');
-    require_once('./admin.php');
+    // redirect the page view according to user group
+    if($_SESSION['loggedIn'] == 'admin'){
+        require_once('./admin.php');
+    } elseif($_SESSION['loggedIn'] == 'student') {
+        require_once('./student.php');
+    }
 ?>
 </html>
