@@ -1043,25 +1043,26 @@ function addPurchase() {
 function addSale() {
 	var saleDetailsItemNumber = $('#saleDetailsItemNumber').val();
 	var saleDetailsItemName = $('#saleDetailsItemName').val();
-	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
 	var saleDetailsQuantity = $('#saleDetailsQuantity').val();
-	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
 	var saleDetailsCustomerName = $('#saleDetailsCustomerName').val();
 	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
-	
+	var saleDetailsPurpose = $('#saleDetailsPurpose').val();
+	var saleDetailsRequestStatus = $('#saleDetailsRequestStatus').val();
+	console.log(saleDetailsRequestStatus);
+
 	$.ajax({
 		url: 'model/sale/insertSale.php',
 		method: 'POST',
 		data: {
 			saleDetailsItemNumber:saleDetailsItemNumber,
 			saleDetailsItemName:saleDetailsItemName,
-			saleDetailsDiscount:saleDetailsDiscount,
 			saleDetailsQuantity:saleDetailsQuantity,
-			saleDetailsUnitPrice:saleDetailsUnitPrice,
 			saleDetailsCustomerID:saleDetailsCustomerID,
 			saleDetailsCustomerName:saleDetailsCustomerName,
 			saleDetailsSaleDate:saleDetailsSaleDate,
+			saleDetailsPurpose:saleDetailsPurpose,
+			saleDetailsRequestStatus:saleDetailsRequestStatus,
 		},
 		success: function(data){
 			$('#saleDetailsMessage').fadeIn();

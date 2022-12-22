@@ -117,39 +117,23 @@ INSERT INTO `purchase` (`purchaseID`, `itemNumber`, `purchaseDate`, `itemName`, 
 --
 
 CREATE TABLE `sale` (
-  `saleID` int(11) NOT NULL,
-  `itemNumber` varchar(255) NOT NULL,
-  `customerID` int(11) NOT NULL,
-  `customerName` varchar(255) NOT NULL,
-  `itemName` varchar(255) NOT NULL,
-  `saleDate` date NOT NULL,
-  `discount` float NOT NULL DEFAULT 0,
-  `quantity` int(11) NOT NULL DEFAULT 0,
-  `unitPrice` float(10,0) NOT NULL DEFAULT 0
+    `saleID` int(11) NOT NULL,
+    `itemNumber` varchar(255) NOT NULL,
+    `customerID` int(11) NOT NULL,
+    `customerName` varchar(255) NOT NULL,
+    `itemName` varchar(255) NOT NULL,
+    `saleDate` date NOT NULL,
+    `quantity` int(11) NOT NULL DEFAULT 0,
+    `purpose` varchar(255) NOT NULL,
+    `requestStatus` varchar(255) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sale`
 --
 
-INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `discount`, `quantity`, `unitPrice`) VALUES
-(1, '3', 4, 'Bill Gates', 'Office Bag', '2018-05-24', 5, 2, 1300),
-(2, '1', 39, 'Amal Silverton', 'First Bag', '2018-05-24', 0, 111, 1500),
-(3, '4', 18, 'Asitha Silva', 'Leather Bag', '2018-05-24', 2, 1, 3409),
-(4, '5', 25, 'Theresa May', 'Travel Bag', '2018-05-24', 2, 1, 1200),
-(5, '6', 24, 'Sunil Perera', 'Gym Bag', '2018-05-24', 0, 1, 3000),
-(6, '7', 14, 'Steve Jobs', 'Handbag', '2018-05-24', 1.5, 1, 1650),
-(7, '3', 4, 'Bill Gates', 'Office Bag', '2018-05-24', 0, 3, 1300),
-(8, '8', 4, 'Bill Gates', 'Laptop Bag', '2018-05-14', 2.1, 1, 2300),
-(9, '6', 26, 'Sachin Tendulkar', 'Gym Bag', '2018-05-14', 0, 1, 3000),
-(10, '5', 25, 'Theresa May', 'Travel Bag', '2018-05-14', 2, 9, 1200),
-(11, '10', 26, 'Sachin Tendulkar', 'Sports Bag', '2018-04-05', 1, 7, 1000),
-(12, '1', 14, 'Steve Jobs', 'First Bag', '2018-05-14', 0, 2, 1500),
-(13, '3', 38, 'Nuwan Perara', 'Office Bag', '2018-05-24', 0, 0, 1300),
-(14, '10', 39, 'Amal Silverton', 'Sports Bag', '2018-05-17', 1, 1, 1000),
-(15, '14', 38, 'Nuwan Perara', 'Hiking Bag', '2018-05-24', 1.5, 1, 1200),
-(16, '1', 14, 'Steve Jobs', 'First Bag', '2018-05-24', 10, 1, 1500),
-(17, '4', 14, 'Steve Jobs', 'Leather Bag', '2018-05-18', 2, 1, 3409);
+INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `quantity`, `purpose`, `requestStatus`) VALUES
+(1, '3', 45, 'Bill Gates', 'Office Bag', '2018-05-24', 2, 'course required', 'Pending');
 
 -- --------------------------------------------------------
 
