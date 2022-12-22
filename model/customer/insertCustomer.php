@@ -8,7 +8,7 @@
 		$email = htmlentities($_POST['customerDetailsCustomerEmail']);
 		$mobile = htmlentities($_POST['customerDetailsCustomerMobile']);
 		$password = htmlentities($_POST['customerDetailsCustomerPassword']);
-		$matricNumber = htmlentities($_POST['customerDetailsCustomerMatric']);
+		$matricNumber = htmlentities($_POST['customerDetailsCustomerMatricNumber']);
 		$address = htmlentities($_POST['customerDetailsCustomerAddress']);
 		$status = htmlentities($_POST['customerDetailsStatus']);
 		$identification = htmlentities($_POST['customerDetailsCustomerIdentification']);

@@ -10,7 +10,7 @@
 		$customerDetailsCustomerMobile = htmlentities($_POST['customerDetailsCustomerMobile']);
 		$customerDetailsCustomerPassword = htmlentities($_POST['customerDetailsCustomerPassword']);
 		$customerDetailsCustomerEmail = htmlentities($_POST['customerDetailsCustomerEmail']);
-		$customerDetailsCustomerMatric = htmlentities($_POST['customerDetailsCustomerMatric']);
+		$customerDetailsCustomerMatric = htmlentities($_POST['customerDetailsCustomerMatricNumber']);
 		$customerDetailsCustomerAddress = htmlentities($_POST['customerDetailsCustomerAddress']);
 		$customerDetailsCustomerCity = htmlentities($_POST['customerDetailsCustomerCity']);
 		$customerDetailsCustomerDistrict = htmlentities($_POST['customerDetailsCustomerDistrict']);
