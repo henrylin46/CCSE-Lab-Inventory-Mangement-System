@@ -65,9 +65,9 @@
 				
 				// CustomerID is available in DB. Therefore, we can go ahead and UPDATE its details
 				// Construct the UPDATE query
-				$updateCustomerDetailsSql = 'UPDATE customer SET fullName = :fullName, email = :email, mobile = :mobile, password = :password, matricNumber = :matricNumber, address = :address, city = :city, district = :district, status = :status, identification = :identification WHERE customerID = :customerID';
+				$updateCustomerDetailsSql = 'UPDATE customer SET fullName = :fullName, email = :email, mobile = :mobile, password = :password, matricNumber = :matricNumber, address = :address, status = :status, identification = :identification WHERE customerID = :customerID';
 				$updateCustomerDetailsStatement = $conn->prepare($updateCustomerDetailsSql);
-				$updateCustomerDetailsStatement->execute(['fullName' => $customerDetailsCustomerFullName, 'email' => $customerDetailsCustomerEmail, 'mobile' => $customerDetailsCustomerMobile, 'password' => md5($customerDetailsCustomerPassword), 'matricNumber' => $customerDetailsCustomerMatric, 'address' => $customerDetailsCustomerAddress, 'city' => $customerDetailsCustomerCity, 'district' => $customerDetailsCustomerDistrict, 'status' => $customerDetailsStatus, 'identification' => $customerDetailsCustomerIdentification, 'customerID' => $customerDetailsCustomerID]);
+				$updateCustomerDetailsStatement->execute(['fullName' => $customerDetailsCustomerFullName, 'email' => $customerDetailsCustomerEmail, 'mobile' => $customerDetailsCustomerMobile, 'password' => md5($customerDetailsCustomerPassword), 'matricNumber' => $customerDetailsCustomerMatric, 'address' => $customerDetailsCustomerAddress, 'status' => $customerDetailsStatus, 'identification' => $customerDetailsCustomerIdentification, 'customerID' => $customerDetailsCustomerID]);
 				
 				// UPDATE customer name in sale table too
 				$updateCustomerInSaleTableSql = 'UPDATE sale SET customerName = :customerName WHERE customerID = :customerID';

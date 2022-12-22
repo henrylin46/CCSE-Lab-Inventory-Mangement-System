@@ -898,8 +898,6 @@ function addCustomer() {
 	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
 	var customerDetailsCustomerMatric = $('#customerDetailsCustomerMatric').val();
 	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
-	var customerDetailsCustomerCity = $('#customerDetailsCustomerCity').val();
-	var customerDetailsCustomerDistrict = $('#customerDetailsCustomerDistrict option:selected').text();
 	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
 	var customerDetailsCustomerIdentification = $('#customerDetailsCustomerIdentification').val();
 	
@@ -913,8 +911,6 @@ function addCustomer() {
 			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
 			customerDetailsCustomerMatric:customerDetailsCustomerMatric,
 			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
-			customerDetailsCustomerCity:customerDetailsCustomerCity,
-			customerDetailsCustomerDistrict:customerDetailsCustomerDistrict,
 			customerDetailsStatus:customerDetailsStatus,
 			customerDetailsCustomerIdentification:customerDetailsCustomerIdentification,
 		},
@@ -1334,8 +1330,6 @@ function getCustomerDetailsToPopulate(){
 			$('#customerDetailsCustomerEmail').val(data.email);
 			$('#customerDetailsCustomerMatric').val(data.matricNumber);
 			$('#customerDetailsCustomerAddress').val(data.address);
-			$('#customerDetailsCustomerCity').val(data.city);
-			$('#customerDetailsCustomerDistrict').val(data.district).trigger("chosen:updated");
 			$('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
 			$('#customerDetailsCustomerIdentification').val(data.identification);
 		}
@@ -1506,8 +1500,6 @@ function updateCustomer() {
 	var customerDetailsCustomerMatric = $('#customerDetailsCustomerMatric').val();
 	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
 	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
-	var customerDetailsCustomerCity = $('#customerDetailsCustomerCity').val();
-	var customerDetailsCustomerDistrict = $('#customerDetailsCustomerDistrict').val();
 	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
 	var customerDetailsCustomerIdentification = $('#customerDetailsCustomerIdentification').val();
 	
@@ -1522,8 +1514,6 @@ function updateCustomer() {
 			customerDetailsCustomerMatric:customerDetailsCustomerMatric,
 			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
 			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
-			customerDetailsCustomerCity:customerDetailsCustomerCity,
-			customerDetailsCustomerDistrict:customerDetailsCustomerDistrict,
 			customerDetailsStatus:customerDetailsStatus,
 			customerDetailsCustomerIdentification:customerDetailsCustomerIdentification,
 		},

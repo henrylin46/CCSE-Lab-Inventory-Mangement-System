@@ -56,6 +56,7 @@
 
                 $_SESSION['loggedIn'] = 'student';
                 $_SESSION['fullName'] = $row['fullName'];
+                $_SESSION['matricNumber'] = $row['matricNumber'];
                 echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Student success! Redirecting you to home page...</div>';
                 exit();
             } else {

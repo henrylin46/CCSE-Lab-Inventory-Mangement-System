@@ -10,8 +10,6 @@
 		$password = htmlentities($_POST['customerDetailsCustomerPassword']);
 		$matricNumber = htmlentities($_POST['customerDetailsCustomerMatric']);
 		$address = htmlentities($_POST['customerDetailsCustomerAddress']);
-		$city = htmlentities($_POST['customerDetailsCustomerCity']);
-		$district = htmlentities($_POST['customerDetailsCustomerDistrict']);
 		$status = htmlentities($_POST['customerDetailsStatus']);
 		$identification = htmlentities($_POST['customerDetailsCustomerIdentification']);
 		
@@ -59,9 +57,9 @@
 			}
 			
 			// Start the insert process
-			$sql = 'INSERT INTO customer(fullName, email, mobile, password, matricNumber, address, city, district, status, identification) VALUES(:fullName, :email, :mobile, :password, :matricNumber, :address, :city, :district, :status, :identification)';
+			$sql = 'INSERT INTO customer(fullName, email, mobile, password, matricNumber, address, status, identification) VALUES(:fullName, :email, :mobile, :password, :matricNumber, :address, :status, :identification)';
 			$stmt = $conn->prepare($sql);
-			$stmt->execute(['fullName' => $fullName, 'email' => $email, 'mobile' => $mobile, 'password' => md5($password), 'matricNumber' => $matricNumber, 'address' => $address, 'city' => $city, 'district' => $district, 'status' => $status, 'identification' => $identification]);
+			$stmt->execute(['fullName' => $fullName, 'email' => $email, 'mobile' => $mobile, 'password' => md5($password), 'matricNumber' => $matricNumber, 'address' => $address, 'status' => $status, 'identification' => $identification]);
 			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer added to database</div>';
 		} 
 		else {

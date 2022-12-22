@@ -170,37 +170,31 @@ require 'inc/navigation.php';
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerMobile">Phone (mobile)<span class="requiredIcon">*</span></label>
+                                        <label for="customerDetailsCustomerMatric">Matric Number<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerMatric" name="customerDetailsCustomerMatric">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>
+                                        <input type="password" class="form-control invTooltip" id="customerDetailsCustomerPassword" name="customerDetailsCustomerPassword" title="Do not enter leading 0">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="customerDetailsCustomerEmail">Email<span class="requiredIcon">*</span></label>
+                                        <input type="email" class="form-control" id="customerDetailsCustomerEmail" name="customerDetailsCustomerEmail">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="customerDetailsCustomerMobile">Phone Number<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control invTooltip" id="customerDetailsCustomerMobile" name="customerDetailsCustomerMobile" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerPhone2">Phone 2</label>
-                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerPhone2" name="customerDetailsCustomerPhone2" title="Do not enter leading 0">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="customerDetailsCustomerEmail">Email</label>
-                                        <input type="email" class="form-control" id="customerDetailsCustomerEmail" name="customerDetailsCustomerEmail">
+                                        <label for="customerDetailsCustomerIdentification">Identification Number<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerIdentification" name="customerDetailsCustomerIdentification">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="customerDetailsCustomerAddress">Address<span class="requiredIcon">*</span></label>
                                     <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
-                                </div>
-                                <div class="form-group">
-                                    <label for="customerDetailsCustomerAddress2">Address 2</label>
-                                    <input type="text" class="form-control" id="customerDetailsCustomerAddress2" name="customerDetailsCustomerAddress2">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="customerDetailsCustomerCity">City</label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerCity" name="customerDetailsCustomerCity">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="customerDetailsCustomerDistrict">District</label>
-                                        <select id="customerDetailsCustomerDistrict" name="customerDetailsCustomerDistrict" class="form-control chosenSelect">
-                                            <?php include('inc/districtList.html'); ?>
-                                        </select>
-                                    </div>
                                 </div>
                                 <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>
                                 <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
