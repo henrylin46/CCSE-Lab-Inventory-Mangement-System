@@ -83,11 +83,11 @@ require 'inc/navigation.php';
                                         <input type="text" class="form-control" id="saleDetailsCustomerID" name="saleDetailsCustomerID" autocomplete="off">
                                         <div id="saleDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                         <label for="saleDetailsCustomerName">Customer Name</label>
                                         <input type="text" class="form-control" id="saleDetailsCustomerName" name="saleDetailsCustomerName" readonly>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-3">
                                         <label for="saleDetailsSaleID">Sale ID</label>
                                         <input type="text" class="form-control invTooltip" id="saleDetailsSaleID" name="saleDetailsSaleID" title="This will be auto-generated when you add a new record" autocomplete="off">
                                         <div id="saleDetailsSaleIDSuggestionsDiv" class="customListDivWidth"></div>
@@ -103,6 +103,10 @@ require 'inc/navigation.php';
                                         <!-- </select> -->
                                         <input type="text" class="form-control invTooltip" id="saleDetailsItemName" name="saleDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
                                     </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="saleDetailsTotalStock">Total Stock</label>
+                                        <input type="text" class="form-control" name="saleDetailsTotalStock" id="saleDetailsTotalStock" readonly>
+                                    </div>
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="2018-05-24" name="saleDetailsSaleDate" readonly>
@@ -110,24 +114,18 @@ require 'inc/navigation.php';
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="saleDetailsTotalStock">Total Stock</label>
-                                        <input type="text" class="form-control" name="saleDetailsTotalStock" id="saleDetailsTotalStock" readonly>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="saleDetailsDiscount">Discount %</label>
-                                        <input type="text" class="form-control" id="saleDetailsDiscount" name="saleDetailsDiscount" value="0">
-                                    </div>
-                                    <div class="form-group col-md-2">
                                         <label for="saleDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
                                         <input type="number" class="form-control" id="saleDetailsQuantity" name="saleDetailsQuantity" value="0">
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="saleDetailsUnitPrice">Unit Price<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsUnitPrice" name="saleDetailsUnitPrice" value="0">
+                                    <div class="form-group col-md-7">
+                                        <label for="saleDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="saleDetailsPurpose" name="saleDetailsPurpose">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsTotal">Total</label>
-                                        <input type="text" class="form-control" id="saleDetailsTotal" name="saleDetailsTotal">
+                                        <label for="saleDetailsRequestStatus">Purpose<span class="requiredIcon">*</span></label>
+                                        <select id="saleDetailsRequestStatus" name="saleDetailsRequestStatus" class="form-control chosenSelect">
+                                            <?php include('inc/requestStatusList.html')?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -152,9 +150,18 @@ require 'inc/navigation.php';
                             <div id="customerDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="customerDetailsCustomerID">Customer ID</label>
+                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
+                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="customerDetailsCustomerMatric">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerMatric" name="customerDetailsCustomerMatric">
+                                    </div>
                                     <div class="form-group col-md-6">
-                                        <label for="customerDetailsCustomerFullName">Full Name<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerFullName" name="customerDetailsCustomerFullName">
+                                        <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>
+                                        <input type="password" class="form-control invTooltip" id="customerDetailsCustomerPassword" name="customerDetailsCustomerPassword" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="customerDetailsStatus">Status</label>
@@ -162,39 +169,30 @@ require 'inc/navigation.php';
                                             <?php include('inc/statusList.html'); ?>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerID">Customer ID</label>
-                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
-                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
-                                    </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerMatric">Matric Number<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerMatric" name="customerDetailsCustomerMatric">
+                                    <div class="form-group col-md-4">
+                                        <label for="customerDetailsCustomerFullName">Full Name<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerFullName" name="customerDetailsCustomerFullName">
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>
-                                        <input type="password" class="form-control invTooltip" id="customerDetailsCustomerPassword" name="customerDetailsCustomerPassword" title="Do not enter leading 0">
-                                    </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-8">
                                         <label for="customerDetailsCustomerEmail">Email<span class="requiredIcon">*</span></label>
                                         <input type="email" class="form-control" id="customerDetailsCustomerEmail" name="customerDetailsCustomerEmail">
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerMobile">Phone Number<span class="requiredIcon">*</span></label>
+                                    <div class="form-group col-md-2">
+                                        <label for="customerDetailsCustomerMobile">Phone<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control invTooltip" id="customerDetailsCustomerMobile" name="customerDetailsCustomerMobile" title="Do not enter leading 0">
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="customerDetailsCustomerIdentification">Identification Number<span class="requiredIcon">*</span></label>
+                                    <div class="form-group col-md-2">
+                                        <label for="customerDetailsCustomerIdentification">ID<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="customerDetailsCustomerIdentification" name="customerDetailsCustomerIdentification">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="customerDetailsCustomerAddress">Address<span class="requiredIcon">*</span></label>
-                                    <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
+                                    <div class="form-group col-md-8">
+                                        <label for="customerDetailsCustomerAddress">Address<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
+                                    </div>
                                 </div>
                                 <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>
                                 <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
