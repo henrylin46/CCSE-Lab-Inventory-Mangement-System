@@ -35,8 +35,6 @@ CREATE TABLE `customer` (
   `password` varchar(100) DEFAULT NULL,
   `matricNumber` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `city` varchar(30) DEFAULT NULL,
-  `district` varchar(30) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Active',
   `identification` varchar(100) NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp()
@@ -46,8 +44,8 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `city`, `district`, `status`, `identification`, `createdOn`) VALUES
-(45, 'LIN ZHUOFAN', '209471@student.upm.edu.my', 102900206, '81dc9bdb52d04dc20036dbd8313ed055', 209471, 'Astetica Residence', 'Serdang', 'Colombo', 'Active', 'EJ3992746', '2022-12-21 10:48:07');
+INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
+(45, 'Student', 'matric_number@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Serdang', 'EJ3992746', '2022-12-21 10:48:07');
 
 -- --------------------------------------------------------
 
@@ -172,7 +170,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `fullName`, `username`, `password`, `status`) VALUES
-(5, 'Guest', 'guest', '81dc9bdb52d04dc20036dbd8313ed055', 'Active');
+(5, 'Admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Active');
 
 -- --------------------------------------------------------
 
