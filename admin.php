@@ -190,7 +190,7 @@ require 'inc/navigation.php';
                                         <input type="text" class="form-control" id="saleDetailsPurpose" name="saleDetailsPurpose">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsRequestStatus">Purpose<span class="requiredIcon">*</span></label>
+                                        <label for="saleDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
                                         <select id="saleDetailsRequestStatus" name="saleDetailsRequestStatus" class="form-control chosenSelect">
                                             <?php include('inc/requestStatusList.html')?>
                                         </select>
