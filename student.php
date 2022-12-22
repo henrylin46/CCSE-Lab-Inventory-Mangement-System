@@ -79,9 +79,9 @@ require 'inc/navigation.php';
                                         <div id="saleDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsCustomerID">Customer ID<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsCustomerID" name="saleDetailsCustomerID" autocomplete="off">
-                                        <div id="saleDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
+                                        <label for="saleDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="saleDetailsCustomerMatricNumber" name="saleDetailsCustomerMatricNumber" autocomplete="off">
+                                        <!--<div id="saleDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsCustomerName">Customer Name</label>
@@ -152,12 +152,13 @@ require 'inc/navigation.php';
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label for="customerDetailsCustomerID">Customer ID</label>
-                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
+                                        <input readonly type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
                                         <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerMatric">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerMatric" name="customerDetailsCustomerMatric">
+                                        <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
+                                        <!--<div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>

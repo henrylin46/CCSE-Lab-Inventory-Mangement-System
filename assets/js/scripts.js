@@ -896,7 +896,7 @@ function addCustomer() {
 	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
 	var customerDetailsCustomerMobile = $('#customerDetailsCustomerMobile').val();
 	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
-	var customerDetailsCustomerMatric = $('#customerDetailsCustomerMatric').val();
+	var customerDetailsCustomerMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
 	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
 	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
 	var customerDetailsCustomerIdentification = $('#customerDetailsCustomerIdentification').val();
@@ -909,7 +909,7 @@ function addCustomer() {
 			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
 			customerDetailsCustomerMobile:customerDetailsCustomerMobile,
 			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
-			customerDetailsCustomerMatric:customerDetailsCustomerMatric,
+			customerDetailsCustomerMatricNumber:customerDetailsCustomerMatricNumber,
 			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
 			customerDetailsStatus:customerDetailsStatus,
 			customerDetailsCustomerIdentification:customerDetailsCustomerIdentification,
@@ -1329,7 +1329,7 @@ function getCustomerDetailsToPopulate(){
 			$('#customerDetailsCustomerMobile').val(data.mobile);
 			$('#customerDetailsCustomerPassword').val(data.password);
 			$('#customerDetailsCustomerEmail').val(data.email);
-			$('#customerDetailsCustomerMatric').val(data.matricNumber);
+			$('#customerDetailsCustomerMatricNumber').val(data.matricNumber);
 			$('#customerDetailsCustomerAddress').val(data.address);
 			$('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
 			$('#customerDetailsCustomerIdentification').val(data.identification);
@@ -1498,7 +1498,7 @@ function updateCustomer() {
 	var customerDetailsCustomerFullName = $('#customerDetailsCustomerFullName').val();
 	var customerDetailsCustomerMobile = $('#customerDetailsCustomerMobile').val();
 	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
-	var customerDetailsCustomerMatric = $('#customerDetailsCustomerMatric').val();
+	var customerDetailsCustomerMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
 	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
 	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
 	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
@@ -1512,7 +1512,7 @@ function updateCustomer() {
 			customerDetailsCustomerFullName:customerDetailsCustomerFullName,
 			customerDetailsCustomerMobile:customerDetailsCustomerMobile,
 			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
-			customerDetailsCustomerMatric:customerDetailsCustomerMatric,
+			customerDetailsCustomerMatricNumber:customerDetailsCustomerMatricNumber,
 			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
 			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
 			customerDetailsStatus:customerDetailsStatus,
