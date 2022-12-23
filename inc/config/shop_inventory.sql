@@ -45,7 +45,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
-(45, 'Student', 'matric_number@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Serdang', 'EJ3992746', '2022-12-21 10:48:07');
+(45, 'Student', 'matric_number@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Serdang', 'AB1234567', '2022-12-21 10:48:07');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE `sale` (
     `saleDate` date NOT NULL,
     `quantity` int(11) NOT NULL DEFAULT 0,
     `purpose` varchar(255) NOT NULL,
-    `requestStatus` varchar(255) NOT NULL DEFAULT 'Pending'
+    `requestStatus` varchar(255) NOT NULL DEFAULT 'Requested'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `quantity`, `purpose`, `requestStatus`) VALUES
-(1, '3', 45, 'Bill Gates', 'Office Bag', '2018-05-24', 2, 'course required', 'Pending');
+(1, '3', 45, 'Bill Gates', 'Office Bag', '2018-05-24', 2, 'course required', 'Requested');
 
 -- --------------------------------------------------------
 
