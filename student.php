@@ -1,5 +1,6 @@
 <!-- Body for student Page -->
 <body>
+<div id="session-matric-number" hidden><?php echo $_SESSION['matricNumber']; ?></div>
 <?php
 require 'inc/navigation.php';
 ?>
@@ -37,9 +38,9 @@ require 'inc/navigation.php';
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#saleSearchTab">Sale</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>
-                                </li>
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>-->
+<!--                                </li>-->
                             </ul>
 
                             <!-- Tab panes -->
@@ -50,16 +51,16 @@ require 'inc/navigation.php';
                                     <!-- <a href="#" class="itemDetailsHover" data-toggle="popover" id="10">wwwee</a> -->
                                     <div class="table-responsive" id="itemDetailsTableDiv"></div>
                                 </div>
-                                <div id="customerSearchTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to search all details of customers</p>
-                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>
-                                </div>
                                 <div id="saleSearchTab" class="container-fluid tab-pane fade">
                                     <br>
                                     <p>Use the grid below to search sale details</p>
                                     <div class="table-responsive" id="saleDetailsTableDiv"></div>
                                 </div>
+<!--                                <div id="customerSearchTab" class="container-fluid tab-pane fade">-->
+<!--                                    <br>-->
+<!--                                    <p>Use the grid below to search all details of customers</p>-->
+<!--                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -75,12 +76,12 @@ require 'inc/navigation.php';
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsItemNumber" name="saleDetailsItemNumber" autocomplete="off">
+                                        <input type="text" class="form-control" id="saleDetailsItemNumber" name="saleDetailsItemNumber" autocomplete="off" readonly>
                                         <div id="saleDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsCustomerMatricNumber" name="saleDetailsCustomerMatricNumber" autocomplete="off">
+                                        <input readonly type="text" class="form-control" id="saleDetailsCustomerMatricNumber" name="saleDetailsCustomerMatricNumber" autocomplete="off">
                                         <!--<div id="saleDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-3">
@@ -89,7 +90,7 @@ require 'inc/navigation.php';
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsSaleID">Sale ID</label>
-                                        <input type="text" class="form-control invTooltip" id="saleDetailsSaleID" name="saleDetailsSaleID" title="This will be auto-generated when you add a new record" autocomplete="off">
+                                        <input type="text" class="form-control invTooltip" id="saleDetailsSaleID" name="saleDetailsSaleID" title="This will be auto-generated when you add a new record" autocomplete="off" readonly>
                                         <div id="saleDetailsSaleIDSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                 </div>
@@ -109,7 +110,7 @@ require 'inc/navigation.php';
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="2018-05-24" name="saleDetailsSaleDate" readonly>
+                                        <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="" name="saleDetailsSaleDate" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -124,7 +125,7 @@ require 'inc/navigation.php';
                                     <div class="form-group col-md-3">
                                         <label for="saleDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
                                         <select id="saleDetailsRequestStatus" name="saleDetailsRequestStatus" class="form-control chosenSelect">
-                                            <?php include('inc/requestStatusList.html')?>
+                                            <option value="Requested">Requested</option>
                                         </select>
                                     </div>
                                 </div>
@@ -134,8 +135,8 @@ require 'inc/navigation.php';
                                     </div>
                                 </div>
                                 <button type="button" id="addSaleButton" class="btn btn-success">Add Sale</button>
-                                <button type="button" id="updateSaleDetailsButton" class="btn btn-primary">Update</button>
-                                <button type="reset" id="saleClear" class="btn">Clear</button>
+<!--                                <button type="button" id="updateSaleDetailsButton" class="btn btn-primary">Update</button>-->
+<!--                                <button type="reset" id="saleClear" class="btn">Clear</button>-->
                             </form>
                         </div>
                     </div>
@@ -157,7 +158,7 @@ require 'inc/navigation.php';
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
+                                        <input readonly type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
                                         <!--<div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-6">
@@ -167,7 +168,7 @@ require 'inc/navigation.php';
                                     <div class="form-group col-md-2">
                                         <label for="customerDetailsStatus">Status</label>
                                         <select id="customerDetailsStatus" name="customerDetailsStatus" class="form-control chosenSelect">
-                                            <?php include('inc/statusList.html'); ?>
+                                            <option value="Active">Active</option>
                                         </select>
                                     </div>
                                 </div>
@@ -195,10 +196,10 @@ require 'inc/navigation.php';
                                         <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
                                     </div>
                                 </div>
-                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>
+<!--                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>-->
                                 <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
-                                <button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>
-                                <button type="reset" class="btn">Clear</button>
+<!--                                <button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>-->
+<!--                                <button type="reset" class="btn">Clear</button>-->
                             </form>
                         </div>
                     </div>
@@ -208,7 +209,12 @@ require 'inc/navigation.php';
         </div>
     </div>
 </div>
+
 <?php
 require 'inc/footer.php';
 ?>
+
+<!-- External JS function for students-->
+<script src="assets/js/student.js"></script>
+
 </body>
