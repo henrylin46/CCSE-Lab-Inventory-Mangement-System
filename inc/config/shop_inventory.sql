@@ -45,7 +45,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
-(45, 'Student', 'matric_number@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Active', 'AB1234567', '2022-12-21 10:48:07');
+(1, 'Student1', 'student1@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Active', 'AB1234567', '2022-12-21 10:48:07'),
+(2, 'Student2', 'student2@student.upm.edu.my', 987654321, '81dc9bdb52d04dc20036dbd8313ed055', 300000, 'UPM', 'Active', 'CD1234567', '2022-1-4 10:48:07');
 
 -- --------------------------------------------------------
 
@@ -70,9 +71,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `location`, `stock`, `unitPrice`, `imageURL`, `status`, `barcode`) VALUES
-(56, '1', 'Bread Board', 'LAB1', 1, 50, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234'),
-(57, '2', 'Buzzer', 'LAB2', 1, 1, '1671452232_121671452058_.pic.jpg', 'Active', ''),
-(58, '3', '330mOhm Resistor', 'LAB3', 9, 3, '1671452353_131671452060_.pic.jpg', 'Active', '');
+(1, '1', 'Bread Board', 'LAB1', 1, 50, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234'),
+(2, '2', 'Buzzer', 'LAB2', 1, 1, '1671452232_121671452058_.pic.jpg', 'Active', ''),
+(3, '3', '330mOhm Resistor', 'LAB3', 9, 3, '1671452353_131671452060_.pic.jpg', 'Active', '');
 
 -- --------------------------------------------------------
 
@@ -133,8 +134,8 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `quantity`, `purpose`, `requestStatus`) VALUES
-(1, '3', 45, 'Bill Gates', 'Office Bag', '2018-05-24', 2, 'course required', 'Requested');
-
+(1, '2', 200000, 'Student1', 'Buzzer', '2023-1-4', 1, 'fyp', 'Requested'),
+(2, '2', 300000, 'Student2', 'Buzzer', '2023-1-4', 1, 'fyp', 'Requested');
 -- --------------------------------------------------------
 
 --
@@ -154,7 +155,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `fullName`, `username`, `password`, `status`) VALUES
-(5, 'Admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Active');
+(1, 'Admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Active');
 
 -- --------------------------------------------------------
 
