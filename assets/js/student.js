@@ -1,32 +1,37 @@
 $(document).ready(function(){
 
     // populate the customer info table for student
-    getCustomerDetailsToPopulate();
+    getCustomerDetailsToPopulateForStudent();
 
     // function for cancel request
     $(document).on('click', '.deleteSaleButton', function(){
         // Confirm before deleting
-        console.log(this);
         var row = this.parentNode.parentNode;
-        console.log(row);
-        bootbox.confirm('Are you sure you want to delete?', function(result){
+        bootbox.confirm('Are you sure you want to cancel?', function(result){
             if(result){
                 deleteSale(row);
             }
-        });
-    });
+        })
+    })
+
+    $(document).on('click', '.requestBorrowButton', function(){
+        // Confirm before deleting
+        console.log(this);
+        var row = this.parentNode.parentNode;
+        $("#v-pills-sale-tab").trigger("click");
+        getItemDetailsToPopulateForSaleTabForStudent(row, currentUserMatricNumber, currentUserFullName);
+    })
 })
 
 // to be displayed on customer details tab
-function getCustomerDetailsToPopulate(){
-    // Get the studentMatricNumber from the session value
-    var customerDetailsCustomerMatricNumber = $('#session-matric-number').html();
+function getCustomerDetailsToPopulateForStudent(){
+
     // Call the populateItemDetails.php script to get item details
     // relevant to the itemNumber which the user entered
     $.ajax({
         url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
         method: 'POST',
-        data: {matricNumber:customerDetailsCustomerMatricNumber},
+        data: {matricNumber:$('#session-matric-number').html()},
         dataType: 'json',
         success: function(data){
             $('#customerDetailsCustomerID').val(data.customerID);
@@ -71,4 +76,39 @@ function deleteSale(row){
         });
     }
 
+}
+
+// Function to populate borrow form for student
+function getItemDetailsToPopulateForSaleTabForStudent(row){
+    // Get the itemNumber entered in the text box
+    var itemNumber = row.firstChild.textContent;
+    var defaultImageData = '<img class="img-fluid" src="data/item_images/imageNotAvailable.jpg">';
+
+    // Call the populateItemDetails.php script to get item details
+    // relevant to the itemNumber which the user entered
+    $.ajax({
+        url: 'model/item/populateItemDetails.php',
+        method: 'POST',
+        data: {itemNumber:itemNumber},
+        dataType: 'json',
+        success: function(data){
+            $('#saleDetailsItemNumber').val(data.itemNumber);
+            $('#saleDetailsCustomerMatricNumber').val($('#session-matric-number').html());
+            $('#saleDetailsCustomerName').val($('#session-full-name').html());
+            $('#saleDetailsItemName').val(data.itemName);
+            $('#saleDetailsTotalStock').val(data.stock);
+
+            newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
+
+            // Set the item image
+            if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
+                $('#saleDetailsImageContainer').html(defaultImageData);
+            } else {
+                $('#saleDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
+            }
+        },
+        complete: function() {
+            calculateTotalInSaleTab();
+        }
+    });
 }
