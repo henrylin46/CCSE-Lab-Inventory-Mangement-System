@@ -4,18 +4,12 @@
 	
 	if(isset($_POST['saleDetailsSaleID'])){
 		
-		// Get 
+		// Get value by post from js script
 		$saleID = htmlentities($_POST['saleDetailsSaleID']);
-		$quantity = htmlentities($_POST['saleDetailsQuantity']);
+		$quantity = filter_var(htmlentities($_POST['saleDetailsQuantity']), FILTER_VALIDATE_INT);
 		$itemNumber = htmlentities($_POST['saleDetailsItemNumber']);
-		
 
 		if(!empty($saleID)){
-			
-			// Check if the sale in the database
-			$saleSql = 'SELECT saleID FROM sale WHERE saleID=:saleID';
-			$saleStatement = $conn->prepare($saleSql);
-			$saleStatement->execute(['saleID' => $saleID]);
 
 			$stockSql = 'SELECT stock FROM item WHERE itemNumber = :itemNumber';
 			$stockStatement = $conn->prepare($stockSql);
@@ -27,7 +21,7 @@
 
 				// Back the quantity to the database
 				$newQuantity = $currentQuantityInItemsTable + $quantity;
-				
+
 				// Check if the sale in the database
 				$saleSql = 'SELECT saleID FROM sale WHERE saleID=:saleID';
 				$saleStatement = $conn->prepare($saleSql);
@@ -35,9 +29,9 @@
 				if($saleStatement->rowCount() > 0){
 
 					// DELETE data in sale table
-					$deleteSaleSql = 'DELETE FROM sale WHERE saleID=:saleID';
-					$deleteSaleStatement = $conn->prepare($deleteSaleSql);
-					$deleteSaleStatement->execute(['saleID' => $saleID]);
+					$cancelSaleRequestSql = 'UPDATE sale SET requestStatus = \'Canceled\' WHERE saleID=:saleID';
+					$cancelSaleRequestStatement = $conn->prepare($cancelSaleRequestSql);
+					$cancelSaleRequestStatement->execute(['saleID' => $saleID]);
 
 					// UPDATE the stock in item table
 					$stockUpdateSql = 'UPDATE item SET stock = :stock WHERE itemNumber = :itemNumber';

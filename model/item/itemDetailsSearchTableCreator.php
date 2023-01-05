@@ -38,7 +38,7 @@
 						'<td>' . $row['unitPrice'] . '</td>' .
 						'<td>' . $row['stock'] . '</td>' .
                         '<td>' . $row['status'] . '</td>';
-        if ($_SESSION['loggedIn'] == 'student'){
+        if ($_SESSION['loggedIn'] == 'student' && $row['status'] == "Active" && $row['stock'] >= 1){
             $output .= '<td>' . '<button type="button" class="requestBorrowButton btn btn-success">' . 'Request' . '</button>' .  '</td>';
         }
         $output .= '</tr>';

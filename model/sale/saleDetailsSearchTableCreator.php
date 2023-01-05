@@ -21,10 +21,15 @@
 						<tr>
 							<th>Sale ID</th>
 							<th>Item Number</th>
-							<th>Item Name</th>
-							<th>Matric No.</th>
-							<th>Student Name</th>
-							<th>Sale Date</th>
+							<th>Item Name</th>';
+
+	// show matric no and student name only in admin page
+	if ($_SESSION['loggedIn'] == "admin") {
+		$output .=		   '<th>Matric No.</th>
+							<th>Student Name</th>';
+	}
+
+	$output .= 			   '<th>Sale Date</th>
 							<th>Quantity</th>
 							<th>Purpose</th>
 							<th>Request Status</th>
@@ -40,17 +45,29 @@
 		 $output .= '<tr>' .
 						'<td>' . $row['saleID'] . '</td>' .
 						'<td>' . $row['itemNumber'] . '</td>' .
-						'<td>' . $row['itemName'] . '</td>' .
-						'<td>' . $row['customerID'] . '</td>' .
-						'<td>' . $row['customerName'] . '</td>' .
-						'<td>' . $row['saleDate'] . '</td>' .
+						'<td>' . $row['itemName'] . '</td>';
+
+		// show matric no and student name only in admin page
+		if ($_SESSION['loggedIn'] == "admin") {
+			$output .= 	'<td>' . $row['customerID'] . '</td>' .
+						'<td>' . $row['customerName'] . '</td>';
+		}
+
+		$output .= 		'<td>' . $row['saleDate'] . '</td>' .
 						'<td>' . $row['quantity'] . '</td>' .
 						'<td>' . $row['purpose'] . '</td>' .
 						'<td>' . $row['requestStatus'] . '</td>';
-		 if ($_SESSION['loggedIn'] == "student" && $row['requestStatus'] == 'Requested'){
-			 $output .= '<td>' . '<button type="button" class="deleteSaleButton btn btn-danger">' . 'Cancel' . '</button>' .  '</td>';
-		 } // add elseif for admin part
-		 $output .= '</tr>';
+
+		// show matric no and student name only in admin page
+		if ($_SESSION['loggedIn'] == "student" && $row['requestStatus'] == 'Requested'){
+			$output .= '<td>' . '<button type="button" class="cancelSaleRequestButton btn btn-danger">' . 'Cancel' . '</button>' .  '</td>';
+		}
+		elseif ($_SESSION['loggedIn'] == "student") {
+			$output .= '<td>' . '<button type="button" class="btn">' . 'None' . '</button>' .  '</td>';
+		}
+		// add elseif for admin part
+
+	 	$output .= '</tr>';
 	}
 
 	$saleDetailsSearchStatement->closeCursor();
@@ -60,10 +77,15 @@
 							<tr>
 								<th>Sale ID</th>
 								<th>Item Number</th>
-								<th>Item Name</th>
-								<th>Matric No.</th>
-								<th>Student Name</th>
-								<th>Sale Date</th>
+								<th>Item Name</th>';
+
+	// show matric no and student name only in admin page
+	if ($_SESSION['loggedIn'] == "admin") {
+		$output .=		   	   '<th>Matric No.</th>
+								<th>Student Name</th>';
+	}
+
+	$output .=				   '<th>Sale Date</th>
 								<th>Quantity</th>
 								<th>Purpose</th>
 								<th>Request Status</th>

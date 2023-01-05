@@ -4,7 +4,7 @@ $(document).ready(function(){
     getCustomerDetailsToPopulateForStudent();
 
     // function for cancel request
-    $(document).on('click', '.deleteSaleButton', function(){
+    $(document).on('click', '.cancelSaleRequestButton', function(){
         // Confirm before deleting
         var row = this.parentNode.parentNode;
         bootbox.confirm('Are you sure you want to cancel?', function(result){
@@ -19,7 +19,7 @@ $(document).ready(function(){
         console.log(this);
         var row = this.parentNode.parentNode;
         $("#v-pills-sale-tab").trigger("click");
-        getItemDetailsToPopulateForSaleTabForStudent(row, currentUserMatricNumber, currentUserFullName);
+        getItemDetailsToPopulateForSaleTabForStudent(row);
     })
 })
 
@@ -55,10 +55,10 @@ function deleteSale(row){
     var saleDetailsItemNumber = row.querySelector(':nth-child(2)').textContent;
     // Get the SaleID from retrieved table
 
-    // Call the deleteSale.php script
+    // Call the cancelSaleRequest.php script
     if (saleDetailsSaleID != ''){
         $.ajax({
-            url: 'model/sale/deleteSale.php',
+            url: 'model/sale/cancelSaleRequest.php',
             method: 'Post',
             data:{
                 saleDetailsSaleID:saleDetailsSaleID,
