@@ -38,8 +38,10 @@
 						'<td>' . $row['unitPrice'] . '</td>' .
 						'<td>' . $row['stock'] . '</td>' .
                         '<td>' . $row['status'] . '</td>';
-        if ($_SESSION['loggedIn'] == 'student' && $row['status'] == "Active" && $row['stock'] >= 1){
+        if ($_SESSION['loggedIn'] == 'student' && $row['status'] == "Active" && $row['stock'] > 0){
             $output .= '<td>' . '<button type="button" class="requestBorrowButton btn btn-success">' . 'Request' . '</button>' .  '</td>';
+        } elseif ($_SESSION['loggedIn'] == 'student' && $row['status'] == "Disabled"){
+            $output .= '<td>' . '<button type="button" class="btn">' . 'None' . '</button>' .  '</td>';
         }
         $output .= '</tr>';
 	}

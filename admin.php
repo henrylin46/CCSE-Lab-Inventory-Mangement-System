@@ -289,12 +289,6 @@ require 'inc/navigation.php';
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#saleSearchTab">Sale</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#purchaseSearchTab">Purchase</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#vendorSearchTab">Vendor</a>
-                                </li>
                             </ul>
 
                             <!-- Tab panes -->
@@ -315,16 +309,6 @@ require 'inc/navigation.php';
                                     <p>Use the grid below to search sale details</p>
                                     <div class="table-responsive" id="saleDetailsTableDiv"></div>
                                 </div>
-                                <div id="purchaseSearchTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to search purchase details</p>
-                                    <div class="table-responsive" id="purchaseDetailsTableDiv"></div>
-                                </div>
-                                <div id="vendorSearchTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to search vendor details</p>
-                                    <div class="table-responsive" id="vendorDetailsTableDiv"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -344,12 +328,6 @@ require 'inc/navigation.php';
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#saleReportsTab">Sale</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#purchaseReportsTab">Purchase</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#vendorReportsTab">Vendor</a>
                                 </li>
                             </ul>
 
@@ -384,31 +362,6 @@ require 'inc/navigation.php';
                                     </form>
                                     <br><br>
                                     <div class="table-responsive" id="saleReportsTableDiv"></div>
-                                </div>
-                                <div id="purchaseReportsTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <!-- <p>Use the grid below to get reports for purchases</p> -->
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-3">
-                                                <label for="purchaseReportStartDate">Start Date</label>
-                                                <input type="text" class="form-control datepicker" id="purchaseReportStartDate" value="2018-05-24" name="purchaseReportStartDate" readonly>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="purchaseReportEndDate">End Date</label>
-                                                <input type="text" class="form-control datepicker" id="purchaseReportEndDate" value="2018-05-24" name="purchaseReportEndDate" readonly>
-                                            </div>
-                                        </div>
-                                        <button type="button" id="showPurchaseReport" class="btn btn-dark">Show Report</button>
-                                        <button type="reset" id="purchaseFilterClear" class="btn">Clear</button>
-                                    </form>
-                                    <br><br>
-                                    <div class="table-responsive" id="purchaseReportsTableDiv"></div>
-                                </div>
-                                <div id="vendorReportsTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to get reports for vendors</p>
-                                    <div class="table-responsive" id="vendorReportsTableDiv"></div>
                                 </div>
                             </div>
                         </div>
