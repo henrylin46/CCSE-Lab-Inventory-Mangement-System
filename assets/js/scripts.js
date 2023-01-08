@@ -139,7 +139,7 @@ $(document).ready(function(){
 	});
 	
 	// Listen to update button in item details tab
-	$('#updateItemDetailsButton').on('click', function(){
+	$('#updateItem').on('click', function(){
 		updateItem();
 	});
 	
@@ -973,7 +973,7 @@ function addItem() {
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
 	var itemDetailsLocation = $('#itemDetailsLocation').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
-	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
+	var itemDetailsDescription = $('#itemDetailsDescription').val();
 	var itemDetailsStatus = $('#itemDetailsStatus').val();
 	var itemDetailsBarcode = $('#itemDetailsBarcode').val();
 	
@@ -985,7 +985,7 @@ function addItem() {
 			itemDetailsItemName:itemDetailsItemName,
 			itemDetailsLocation:itemDetailsLocation,
 			itemDetailsQuantity:itemDetailsQuantity,
-			itemDetailsUnitPrice:itemDetailsUnitPrice,
+			itemDetailsDescription:itemDetailsDescription,
 			itemDetailsStatus:itemDetailsStatus,
 			itemDetailsBarcode:itemDetailsBarcode,
 		},
@@ -1103,7 +1103,7 @@ function getItemDetailsToPopulate(){
 			$('#itemDetailsStatus').val(data.status).trigger("chosen:updated");
 			$('#itemDetailsLocation').val(data.location);
 			// Quantity is "additional quantity"
-			$('#itemDetailsUnitPrice').val(data.unitPrice);
+			$('#itemDetailsDescription').val(data.description);
 			$('#itemDetailsTotalStock').val(data.stock);
 
 			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
@@ -1456,10 +1456,10 @@ function updateItem() {
 	var itemDetailsItemName = $('#itemDetailsItemName').val();
 	var itemDetailsLocation = $('#itemDetailsLocation').val();
 	var itemDetailsQuantity = $('#itemDetailsQuantity').val();
-	var itemDetailsUnitPrice = $('#itemDetailsUnitPrice').val();
+	var itemDetailsDescription = $('#itemDetailsDescription').val();
 	var itemDetailsStatus = $('#itemDetailsStatus').val();
 	var itemDetailsBarcode = $('#itemDetailsBarcode').val();
-	
+
 	$.ajax({
 		url: 'model/item/updateItemDetails.php',
 		method: 'POST',
@@ -1468,7 +1468,7 @@ function updateItem() {
 			itemDetailsItemName:itemDetailsItemName,
 			itemDetailsLocation:itemDetailsLocation,
 			itemDetailsQuantity:itemDetailsQuantity,
-			itemDetailsUnitPrice:itemDetailsUnitPrice,
+			itemDetailsDescription:itemDetailsDescription,
 			itemDetailsStatus:itemDetailsStatus,
 			itemDetailsBarcode:itemDetailsBarcode,
 		},
@@ -1481,7 +1481,7 @@ function updateItem() {
 			}
 		},
 		complete: function(){
-			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');			
+			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 			searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
 			searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');

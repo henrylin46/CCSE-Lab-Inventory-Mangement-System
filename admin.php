@@ -10,7 +10,7 @@ require 'inc/navigation.php';
             <h1 class="my-4"></h1>
             <!--Navigation Tab-->
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">Item</a>
+                <a class="nav-link active" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">Add Item</a>
                 <a class="nav-link" id="v-pills-sale-tab" data-toggle="pill" href="#v-pills-sale" role="tab" aria-controls="v-pills-sale" aria-selected="false">Sale</a>
                 <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Customer</a>
                 <a class="nav-link" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="false">Search</a>
@@ -42,8 +42,15 @@ require 'inc/navigation.php';
                                     <div id="itemDetailsMessage"></div>
                                     <form>
                                         <div class="form-row">
+
+                                        </div>
+                                        <div class="form-row">
                                             <div class="form-group col-md-2">
-                                                <label for="itemDetailsProductID">Product ID</label>
+                                                <label for="itemDetailsLocation">Location</label>
+                                                <input type="text" class="form-control" name="itemDetailsLocation" id="itemDetailsLocation">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="itemDetailsProductID">Item ID</label>
                                                 <input class="form-control invTooltip" type="number" readonly  id="itemDetailsProductID" name="itemDetailsProductID" title="This will be auto-generated when you add a new item">
                                             </div>
                                             <div class="form-group col-md-2" style="display:inline-block">
@@ -51,39 +58,41 @@ require 'inc/navigation.php';
                                                 <input type="text" class="form-control" name="itemDetailsItemNumber" id="itemDetailsItemNumber" autocomplete="off">
                                                 <div id="itemDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="itemDetailsItemName">Item Name<span class="requiredIcon">*</span></label>
                                                 <input type="text" class="form-control" name="itemDetailsItemName" id="itemDetailsItemName" autocomplete="off">
                                                 <div id="itemDetailsItemNameSuggestionsDiv" class="customListDivWidth"></div>
                                             </div>
-                                            <!-- barcode -->
-                                            <div class="form-group col-md-4" style="display:inline-block">
-                                                <label for="itemDetailsBarcode">Barcode</label>
-                                                <input type="text" class="form-control" name="itemDetailsBarcode" id="itemDetailsBarcode" autocomplete="off">
-                                            </div>
                                         </div>
+
                                         <div class="form-row">
+
+                                            <div class="form-group col-md-4" style="display:inline-block">
+                                                <label for="itemDetailsBarcode">Barcode (if have)</label>
+                                                <input type="text" class="form-control" name="itemDetailsBarcode" id="itemDetailsBarcode">
+                                            </div>
+
                                             <div class="form-group col-md-2">
                                                 <label for="itemDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
                                                 <input type="number" class="form-control" value="0" name="itemDetailsQuantity" id="itemDetailsQuantity">
                                             </div>
+
                                             <div class="form-group col-md-2">
-                                                <label for="itemDetailsUnitPrice">Unit Price<span class="requiredIcon">*</span></label>
-                                                <input type="text" class="form-control" value="0" name="itemDetailsUnitPrice" id="itemDetailsUnitPrice">
+                                                <label for="itemDetailsTotalStock">Total Stock</label>
+                                                <input type="text" class="form-control" name="itemDetailsTotalStock" id="itemDetailsTotalStock" readonly>
                                             </div>
+
                                             <div class="form-group col-md-4">
-                                                <label for="itemDetailsLocation">Location</label>
-                                                <input type="text" class="form-control" value="0" name="itemDetailsLocation" id="itemDetailsLocation">
-                                            </div>
-                                            <div class="form-group col-md-2">
                                                 <label for="itemDetailsStatus">Status</label>
                                                 <select id="itemDetailsStatus" name="itemDetailsStatus" class="form-control chosenSelect">
                                                     <?php include('inc/statusList.html'); ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="itemDetailsTotalStock">Total Stock</label>
-                                                <input type="text" class="form-control" name="itemDetailsTotalStock" id="itemDetailsTotalStock" readonly>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12" style="display:inline-block">
+                                                <label for="itemDetailsDescription">Description<span class="requiredIcon">*</span></label>
+                                                <textarea rows="6" class="form-control" placeholder="Description" name="itemDetailsDescription" id="itemDetailsDescription"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -92,7 +101,7 @@ require 'inc/navigation.php';
                                             </div>
                                         </div>
                                         <button type="button" id="addItem" class="btn btn-success">Add Item</button>
-                                        <button type="button" id="updateItemDetailsButton" class="btn btn-primary">Update</button>
+                                        <button type="button" id="updateItem" class="btn btn-primary">Update</button>
                                         <button type="button" id="deleteItem" class="btn btn-danger">Delete</button>
                                         <button type="reset" class="btn" id="itemClear">Clear</button>
                                     </form>

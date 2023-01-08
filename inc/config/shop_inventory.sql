@@ -60,20 +60,20 @@ CREATE TABLE `item` (
   `itemName` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL DEFAULT '0',
   `stock` int(11) NOT NULL DEFAULT 0,
-  `unitPrice` float NOT NULL DEFAULT 0,
   `imageURL` varchar(255) NOT NULL DEFAULT 'imageNotAvailable.jpg',
   `status` varchar(255) NOT NULL DEFAULT 'Active',
-  `barcode` varchar(255) NOT NULL
+  `barcode` varchar(255) NOT NULL,
+  `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `location`, `stock`, `unitPrice`, `imageURL`, `status`, `barcode`) VALUES
-(1, '1', 'Bread Board', 'LAB1', 1, 50, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234'),
-(2, '2', 'Buzzer', 'LAB2', 1, 1, '1671452232_121671452058_.pic.jpg', 'Active', ''),
-(3, '3', '330mOhm Resistor', 'LAB3', 9, 3, '1671452353_131671452060_.pic.jpg', 'Active', '');
+INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `location`, `stock`, `imageURL`, `status`, `barcode`, `description`) VALUES
+(1, '1', 'Bread Board', 'LAB1', 1, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
+(2, '2', 'Buzzer', 'LAB2', 1, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
+(3, '3', '330mOhm Resistor', 'LAB3', 9, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
 
 -- --------------------------------------------------------
 
