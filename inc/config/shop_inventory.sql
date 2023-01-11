@@ -55,7 +55,7 @@ INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`,
 --
 
 CREATE TABLE `item` (
-  `productID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
   `itemNumber` varchar(255) NOT NULL,
   `itemName` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL DEFAULT '0',
@@ -70,7 +70,7 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`productID`, `itemNumber`, `itemName`, `location`, `stock`, `imageURL`, `status`, `barcode`, `description`) VALUES
+INSERT INTO `item` (`itemID`, `itemNumber`, `itemName`, `location`, `stock`, `imageURL`, `status`, `barcode`, `description`) VALUES
 (1, '1', 'Bread Board', 'LAB1', 1, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
 (2, '2', 'Buzzer', 'LAB2', 1, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
 (3, '3', '330mOhm Resistor', 'LAB3', 9, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
@@ -204,7 +204,7 @@ ALTER TABLE `customer`
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`productID`);
+  ADD PRIMARY KEY (`itemID`);
 
 --
 -- Indexes for table `purchase`
@@ -238,37 +238,37 @@ ALTER TABLE `vendor`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `saleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `saleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `vendor`
 --
 ALTER TABLE `vendor`
-  MODIFY `vendorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `vendorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

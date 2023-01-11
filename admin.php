@@ -45,14 +45,14 @@ require 'inc/navigation.php';
 
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-2">
-                                                <label for="itemDetailsLocation">Location</label>
+                                            <div class="form-group col-md-4">
+                                                <label for="itemDetailsLocation">Location<span class="requiredIcon">*</span></label>
                                                 <input type="text" class="form-control" name="itemDetailsLocation" id="itemDetailsLocation">
                                             </div>
-                                            <div class="form-group col-md-2">
-                                                <label for="itemDetailsProductID">Item ID</label>
-                                                <input class="form-control invTooltip" type="number" readonly  id="itemDetailsProductID" name="itemDetailsProductID" title="This will be auto-generated when you add a new item">
-                                            </div>
+<!--                                            <div class="form-group col-md-2">-->
+<!--                                                <label for="itemDetailsItemID">Item ID</label>-->
+<!--                                                <input class="form-control invTooltip" type="number" readonly  id="itemDetailsItemID" name="itemDetailsItemID" title="This will be auto-generated when you add a new item">-->
+<!--                                            </div>-->
                                             <div class="form-group col-md-2" style="display:inline-block">
                                                 <label for="itemDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
                                                 <input type="text" class="form-control" name="itemDetailsItemNumber" id="itemDetailsItemNumber" autocomplete="off">
@@ -91,7 +91,7 @@ require 'inc/navigation.php';
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-12" style="display:inline-block">
-                                                <label for="itemDetailsDescription">Description<span class="requiredIcon">*</span></label>
+                                                <label for="itemDetailsDescription">Description</label>
                                                 <textarea rows="6" class="form-control" placeholder="Description" name="itemDetailsDescription" id="itemDetailsDescription"></textarea>
                                             </div>
                                         </div>

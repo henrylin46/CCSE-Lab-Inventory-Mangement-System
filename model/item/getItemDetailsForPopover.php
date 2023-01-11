@@ -4,15 +4,15 @@ require_once('../../inc/config/db.php');
 
 if(isset($_POST['id'])){
 
-    $productID = htmlentities($_POST['id']);
+    $itemID = htmlentities($_POST['id']);
 
 
     $defaultImgFolder = 'data/item_images/';
 
     // Get all item details
-    $sql = 'SELECT * FROM item WHERE productID = :productID';
+    $sql = 'SELECT * FROM item WHERE itemID = :itemID';
     $stmt = $conn->prepare($sql);
-    $stmt->execute(['productID' => $productID]);
+    $stmt->execute(['itemID' => $itemID]);
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         $output = '<p><img src="';

@@ -32,7 +32,7 @@ while($row = $itemDetailsSearchStatement->fetch(PDO::FETCH_ASSOC)){
 
     $output .= '<tr>' .
         '<td>' . $row['itemNumber'] . '</td>' .
-        '<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['productID'] . '">' . $row['itemName'] . '</a></td>' .
+        '<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>' .
         '<td>' . $row['location'] . '</td>'.
         '<td>' . $row['barcode'] . '</td>' .
         '<td>' . $row['stock'] . '</td>' .

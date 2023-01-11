@@ -44,8 +44,8 @@ purchaseLastInsertedIDFile = 'model/purchase/populateLastPurchaseIDForPurchaseTa
 // File that returns the last inserted saleID
 saleLastInsertedIDFile = 'model/sale/populateLastSaleIDForSaleTab.php';
 
-// File that returns the last inserted productID for item details tab
-itemLastInsertedIDFile = 'model/item/populateLastProductID.php';
+// File that returns the last inserted itemID for item details tab
+itemLastInsertedIDFile = 'model/item/populateLastItemID.php';
 
 
 
@@ -994,7 +994,7 @@ function addItem() {
 			$('#itemDetailsMessage').html(data);
 		},
 		complete: function(){
-			populateLastInsertedID(itemLastInsertedIDFile, 'itemDetailsProductID');
+			populateLastInsertedID(itemLastInsertedIDFile, 'itemDetailsItemID');
 			getItemStockToPopulate('itemDetailsItemNumber', getItemStockFile, itemDetailsTotalStock);
 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
@@ -1097,7 +1097,7 @@ function getItemDetailsToPopulate(){
 		dataType: 'json',
 		success: function(data){
 			//$('#itemDetailsItemNumber').val(data.itemNumber);
-			$('#itemDetailsProductID').val(data.productID);
+			$('#itemDetailsItemID').val(data.itemID);
 			$('#itemDetailsBarcode').val(data.barcode);
 			$('#itemDetailsItemName').val(data.itemName);
 			$('#itemDetailsStatus').val(data.status).trigger("chosen:updated");
