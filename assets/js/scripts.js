@@ -134,7 +134,7 @@ $(document).ready(function(){
 	});
 	
 	// Listen to sale add button
-	$('#addSaleButton').on('click', function(){
+	$('#applyBorrowRequestButton').on('click', function(){
 		addSale();
 	});
 	
@@ -159,7 +159,7 @@ $(document).ready(function(){
 	});
 	
 	// Listen to update button in sale details tab
-	$('#updateSaleDetailsButton').on('click', function(){
+	$('#updateBorrowRequestDetailButton').on('click', function(){
 		updateSale();
 	});
 	
@@ -220,15 +220,15 @@ $(document).ready(function(){
 	
 
 	// Listen to item number text box in sale details tab
-	$('#saleDetailsItemNumber').keyup(function(){
-		showSuggestions('saleDetailsItemNumber', showItemNumberForSaleTabFile, 'saleDetailsItemNumberSuggestionsDiv');
+	$('#borrowDetailsItemNumber').keyup(function(){
+		showSuggestions('borrowDetailsItemNumber', showItemNumberForSaleTabFile, 'borrowDetailsItemNumberSuggestionsDiv');
 	});
 	
 	// Remove the item numbers suggestions dropdown in the sale details tab
 	// when user selects an item from it
-	$(document).on('click', '#saleDetailsItemNumberSuggestionsList li', function(){
-		$('#saleDetailsItemNumber').val($(this).text());
-		$('#saleDetailsItemNumberSuggestionsList').fadeOut();
+	$(document).on('click', '#borrowDetailsItemNumberSuggestionsList li', function(){
+		$('#borrowDetailsItemNumber').val($(this).text());
+		$('#borrowDetailsItemNumberSuggestionsList').fadeOut();
 		getItemDetailsToPopulateForSaleTab();
 	});
 	
@@ -252,8 +252,8 @@ $(document).ready(function(){
 	});
 	
 	// Clear the image from sale tab when Clear button is clicked
-	$('#saleClear').on('click', function(){
-		$('#saleDetailsImageContainer').empty();
+	$('#borrowClear').on('click', function(){
+		$('#borrowDetailsImageContainer').empty();
 	});
 	
 	// Refresh the purchase report datatable in the purchase report tab when Clear button is clicked
@@ -342,15 +342,15 @@ $(document).ready(function(){
 	
 	
 	// Listen to saleID text box in sale details tab
-	$('#saleDetailsSaleID').keyup(function(){
-		showSuggestions('saleDetailsSaleID', showSaleIDSuggestionsFile, 'saleDetailsSaleIDSuggestionsDiv');
+	$('#borrowDetailsBorrowRequestID').keyup(function(){
+		showSuggestions('borrowDetailsBorrowRequestID', showSaleIDSuggestionsFile, 'borrowDetailsBorrowRequestIDSuggestionsDiv');
 	});
 	
 	// Remove the SaleID suggestions dropdown in the sale details tab
 	// when user selects an item from it
-	$(document).on('click', '#saleDetailsSaleIDSuggestionsList li', function(){
-		$('#saleDetailsSaleID').val($(this).text());
-		$('#saleDetailsSaleIDSuggestionsList').fadeOut();
+	$(document).on('click', '#borrowDetailsBorrowRequestIDSuggestionsList li', function(){
+		$('#borrowDetailsBorrowRequestID').val($(this).text());
+		$('#borrowDetailsBorrowRequestIDSuggestionsList').fadeOut();
 		getSaleDetailsToPopulate();
 	});
 
@@ -379,7 +379,7 @@ $(document).ready(function(){
 	});
 
 	// Calculate Total in sale tab
-	$('#saleDetailsDiscount, #saleDetailsQuantity, #saleDetailsUnitPrice').change(function(){
+	$('#saleDetailsDiscount, #borrowDetailsQuantity, #saleDetailsUnitPrice').change(function(){
 		calculateTotalInSaleTab();
 	});
 	
@@ -883,7 +883,7 @@ function calculateTotalInPurchaseTab(){
 
 // Calculate Total sale value in sale details tab
 function calculateTotalInSaleTab(){
-	var quantityST = $('#saleDetailsQuantity').val();
+	var quantityST = $('#borrowDetailsQuantity').val();
 	var unitPriceST = $('#saleDetailsUnitPrice').val();
 	var discountST = $('#saleDetailsDiscount').val();
 	$('#saleDetailsTotal').val(Number(unitPriceST) * ((100 - Number(discountST)) / 100) * Number(quantityST));
@@ -1041,36 +1041,36 @@ function addPurchase() {
 
 // Function to call the insertSale.php script to insert sale data to db
 function addSale() {
-	var saleDetailsItemNumber = $('#saleDetailsItemNumber').val();
-	var saleDetailsItemName = $('#saleDetailsItemName').val();
-	var saleDetailsQuantity = $('#saleDetailsQuantity').val();
+	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
+	var borrowDetailsItemName = $('#borrowDetailsItemName').val();
+	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
-	var saleDetailsCustomerName = $('#saleDetailsCustomerName').val();
+	var borrowDetailsStudentName = $('#borrowDetailsStudentName').val();
 	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
-	var saleDetailsPurpose = $('#saleDetailsPurpose').val();
-	var saleDetailsRequestStatus = $('#saleDetailsRequestStatus').val();
-	console.log(saleDetailsRequestStatus);
+	var borrowDetailsPurpose = $('#borrowDetailsPurpose').val();
+	var borrowDetailsRequestStatus = $('#borrowDetailsRequestStatus').val();
+	console.log(borrowDetailsRequestStatus);
 
 	$.ajax({
 		url: 'model/sale/insertSale.php',
 		method: 'POST',
 		data: {
-			saleDetailsItemNumber:saleDetailsItemNumber,
-			saleDetailsItemName:saleDetailsItemName,
-			saleDetailsQuantity:saleDetailsQuantity,
+			borrowDetailsItemNumber:borrowDetailsItemNumber,
+			borrowDetailsItemName:borrowDetailsItemName,
+			borrowDetailsQuantity:borrowDetailsQuantity,
 			saleDetailsCustomerID:saleDetailsCustomerID,
-			saleDetailsCustomerName:saleDetailsCustomerName,
+			borrowDetailsStudentName:borrowDetailsStudentName,
 			saleDetailsSaleDate:saleDetailsSaleDate,
-			saleDetailsPurpose:saleDetailsPurpose,
-			saleDetailsRequestStatus:saleDetailsRequestStatus,
+			borrowDetailsPurpose:borrowDetailsPurpose,
+			borrowDetailsRequestStatus:borrowDetailsRequestStatus,
 		},
 		success: function(data){
-			$('#saleDetailsMessage').fadeIn();
-			$('#saleDetailsMessage').html(data);
+			$('#borrowDetailsMessage').fadeIn();
+			$('#borrowDetailsMessage').html(data);
 		},
 		complete: function(){
-			getItemStockToPopulate('saleDetailsItemNumber', getItemStockFile, 'saleDetailsTotalStock');
-			populateLastInsertedID(saleLastInsertedIDFile, 'saleDetailsSaleID');
+			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
+			populateLastInsertedID(saleLastInsertedIDFile, 'borrowDetailsBorrowRequestID');
 			searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
@@ -1123,7 +1123,7 @@ function getItemDetailsToPopulate(){
 // to be displayed on sale details tab
 function getItemDetailsToPopulateForSaleTab(){
 	// Get the itemNumber entered in the text box
-	var itemNumber = $('#saleDetailsItemNumber').val();
+	var itemNumber = $('#borrowDetailsItemNumber').val();
 	var defaultImgUrl = 'data/item_images/imageNotAvailable.jpg';
 	var defaultImageData = '<img class="img-fluid" src="data/item_images/imageNotAvailable.jpg">';
 	
@@ -1135,19 +1135,19 @@ function getItemDetailsToPopulateForSaleTab(){
 		data: {itemNumber:itemNumber},
 		dataType: 'json',
 		success: function(data){
-			//$('#saleDetailsItemNumber').val(data.itemNumber);
-			$('#saleDetailsItemName').val(data.itemName);
+
+			$('#borrowDetailsItemName').val(data.itemName);
 			$('#saleDetailsDiscount').val(data.discount);
-			$('#saleDetailsTotalStock').val(data.stock);
+			$('#borrowDetailsTotalStock').val(data.stock);
 			$('#saleDetailsUnitPrice').val(data.unitPrice);
 
 			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 			
 			// Set the item image
 			if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
-				$('#saleDetailsImageContainer').html(defaultImageData);
+				$('#borrowDetailsImageContainer').html(defaultImageData);
 			} else {
-				$('#saleDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
+				$('#borrowDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
 			}
 		},
 		complete: function() {
@@ -1353,7 +1353,7 @@ function getCustomerDetailsToPopulateSaleTab(){
 		dataType: 'json',
 		success: function(data){
 			//$('#saleDetailsCustomerID').val(data.customerID);
-			$('#saleDetailsCustomerName').val(data.fullName);
+			$('#borrowDetailsStudentName').val(data.fullName);
 		}
 	});
 }
@@ -1422,29 +1422,39 @@ function getPurchaseDetailsToPopulate(){
 // to be displayed on sale details tab
 function getSaleDetailsToPopulate(){
 	// Get the saleID entered in the text box
-	var saleDetailsSaleID = $('#saleDetailsSaleID').val();
+	var borrowDetailsBorrowRequestID = $('#borrowDetailsBorrowRequestID').val();
+
+	// var defaultImgUrl = 'data/item_images/imageNotAvailable.jpg';
+	// var defaultImageData = '<img class="img-fluid" src="data/item_images/imageNotAvailable.jpg">';
 	
 	// Call the populateSaleDetails.php script to get item details
 	// relevant to the itemNumber which the user entered
 	$.ajax({
 		url: 'model/sale/populateSaleDetails.php',
 		method: 'POST',
-		data: {saleDetailsSaleID:saleDetailsSaleID},
+		data: {borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID},
 		dataType: 'json',
 		success: function(data){
-			//$('#saleDetailsSaleID').val(data.saleID);
-			$('#saleDetailsItemNumber').val(data.itemNumber);
-			$('#saleDetailsCustomerID').val(data.customerID);
-			$('#saleDetailsCustomerName').val(data.customerName);
-			$('#saleDetailsItemName').val(data.itemName);
-			$('#saleDetailsSaleDate').val(data.saleDate);
-			$('#saleDetailsDiscount').val(data.discount);
-			$('#saleDetailsQuantity').val(data.quantity);
-			$('#saleDetailsUnitPrice').val(data.unitPrice);
+
+			$('#borrowDetailsItemNumber').val(data.itemNumber);
+			$('#borrowDetailsStudentMatricNumber').val(data.customerID);
+			$('#borrowDetailsStudentName').val(data.customerName);
+			$('#borrowDetailsItemName').val(data.itemName);
+			$('#borrowDetailsQuantity').val(data.quantity);
+			$('#borrowDetailsPurpose').val(data.purpose);
+
+			// newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
+			//
+			// // Set the item image
+			// if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
+			// 	$('#imageContainer').html(defaultImageData);
+			// } else {
+			// 	$('#imageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
+			// }
 		},
 		complete: function(){
 			calculateTotalInSaleTab();
-			getItemStockToPopulate('saleDetailsItemNumber', getItemStockFile, 'saleDetailsTotalStock');
+			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
 		}
 	});
 }
@@ -1613,13 +1623,13 @@ function updatePurchase() {
 
 // Function to call the updateSale.php script to update sale data to db
 function updateSale() {
-	var saleDetailsItemNumber = $('#saleDetailsItemNumber').val();
+	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
 	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
-	var saleDetailsItemName = $('#saleDetailsItemName').val();
-	var saleDetailsQuantity = $('#saleDetailsQuantity').val();
+	var borrowDetailsItemName = $('#borrowDetailsItemName').val();
+	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
 	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
-	var saleDetailsSaleID = $('#saleDetailsSaleID').val();
-	var saleDetailsCustomerName = $('#saleDetailsCustomerName').val();
+	var borrowDetailsBorrowRequestID = $('#borrowDetailsBorrowRequestID').val();
+	var borrowDetailsStudentName = $('#borrowDetailsStudentName').val();
 	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
 	
@@ -1627,22 +1637,22 @@ function updateSale() {
 		url: 'model/sale/updateSale.php',
 		method: 'POST',
 		data: {
-			saleDetailsItemNumber:saleDetailsItemNumber,
+			borrowDetailsItemNumber:borrowDetailsItemNumber,
 			saleDetailsSaleDate:saleDetailsSaleDate,
-			saleDetailsItemName:saleDetailsItemName,
-			saleDetailsQuantity:saleDetailsQuantity,
+			borrowDetailsItemName:borrowDetailsItemName,
+			borrowDetailsQuantity:borrowDetailsQuantity,
 			saleDetailsUnitPrice:saleDetailsUnitPrice,
-			saleDetailsSaleID:saleDetailsSaleID,
-			saleDetailsCustomerName:saleDetailsCustomerName,
+			borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID,
+			borrowDetailsStudentName:borrowDetailsStudentName,
 			saleDetailsDiscount:saleDetailsDiscount,
 			saleDetailsCustomerID:saleDetailsCustomerID,
 		},
 		success: function(data){
-			$('#saleDetailsMessage').fadeIn();
-			$('#saleDetailsMessage').html(data);
+			$('#borrowDetailsMessage').fadeIn();
+			$('#borrowDetailsMessage').html(data);
 		},
 		complete: function(){			
-			getItemStockToPopulate('saleDetailsItemNumber', getItemStockFile, 'saleDetailsTotalStock');
+			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
 			searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');

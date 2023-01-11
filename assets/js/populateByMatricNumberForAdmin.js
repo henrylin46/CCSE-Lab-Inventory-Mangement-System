@@ -18,13 +18,13 @@ $(document).ready(function(){
     });
 
     // Listen to CustomerID text box in sale details tab
-    $('#saleDetailsCustomerMatricNumber').keyup(function(){
-        showSuggestions('saleDetailsCustomerMatricNumber', showCustomerMatricNumberSuggestionsForSaleTabFile, 'saleDetailsCustomerMatricNumberSuggestionsDiv');
+    $('#borrowDetailsStudentMatricNumber').keyup(function(){
+        showSuggestions('borrowDetailsStudentMatricNumber', showCustomerMatricNumberSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
     });
     // Remove the CustomerID suggestions dropdown in the sale details tab
     // when user selects an item from it
     $(document).on('click', '#saleDetailsMatricNumberSuggestionsList li', function(){
-        $('#saleDetailsCustomerMatricNumber').val($(this).text());
+        $('#borrowDetailsStudentMatricNumber').val($(this).text());
         $('#saleDetailsMatricNumberSuggestionsList').fadeOut();
         getCustomerDetailsToPopulateSaleTab();
     });
@@ -80,18 +80,18 @@ function getCustomerDetailsToPopulate(){
 // to be displayed on sale details tab
 function getCustomerDetailsToPopulateSaleTab(){
     // Get the customerID entered in the text box
-    var saleDetailsCustomerMatricNumber = $('#saleDetailsCustomerMatricNumber').val();
+    var borrowDetailsStudentMatricNumber = $('#borrowDetailsStudentMatricNumber').val();
 
     // Call the populateCustomerDetails.php script to get customer details
     // relevant to the customerID which the user entered
     $.ajax({
         url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
         method: 'POST',
-        data: {matricNumber:saleDetailsCustomerMatricNumber},
+        data: {matricNumber:borrowDetailsStudentMatricNumber},
         dataType: 'json',
         success: function(data){
             //$('#saleDetailsCustomerID').val(data.customerID);
-            $('#saleDetailsCustomerName').val(data.fullName);
+            $('#borrowDetailsStudentName').val(data.fullName);
         }
     });
 }

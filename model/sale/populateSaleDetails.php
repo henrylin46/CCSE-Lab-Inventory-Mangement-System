@@ -3,9 +3,9 @@
 	require_once('../../inc/config/db.php');
 
 	// Execute the script if the POST request is submitted
-	if(isset($_POST['saleDetailsSaleID'])){
+	if(isset($_POST['borrowDetailsBorrowRequestID'])){
 		
-		$saleID = htmlentities($_POST['saleDetailsSaleID']);
+		$saleID = htmlentities($_POST['borrowDetailsBorrowRequestID']);
 		
 		$saleDetailsSql = 'SELECT * FROM sale WHERE saleID = :saleID';
 		$saleDetailsStatement = $conn->prepare($saleDetailsSql);

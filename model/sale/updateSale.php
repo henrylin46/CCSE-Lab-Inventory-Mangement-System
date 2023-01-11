@@ -3,15 +3,15 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 	
-	if(isset($_POST['saleDetailsSaleID'])){
+	if(isset($_POST['borrowDetailsBorrowRequestID'])){
 
-		$saleDetailsItemNumber = htmlentities($_POST['saleDetailsItemNumber']);
+		$borrowDetailsItemNumber = htmlentities($_POST['borrowDetailsItemNumber']);
 		$saleDetailsSaleDate = htmlentities($_POST['saleDetailsSaleDate']);
-		$saleDetailsItemName = htmlentities($_POST['saleDetailsItemName']);
-		$saleDetailsQuantity = htmlentities($_POST['saleDetailsQuantity']);
+		$borrowDetailsItemName = htmlentities($_POST['borrowDetailsItemName']);
+		$borrowDetailsQuantity = htmlentities($_POST['borrowDetailsQuantity']);
 		$saleDetailsUnitPrice = htmlentities($_POST['saleDetailsUnitPrice']);
-		$saleDetailsSaleID = htmlentities($_POST['saleDetailsSaleID']);
-		$saleDetailsCustomerName = htmlentities($_POST['saleDetailsCustomerName']);
+		$borrowDetailsBorrowRequestID = htmlentities($_POST['borrowDetailsBorrowRequestID']);
+		$borrowDetailsStudentName = htmlentities($_POST['borrowDetailsStudentName']);
 		$saleDetailsDiscount = htmlentities($_POST['saleDetailsDiscount']);
 		$saleDetailsCustomerID = htmlentities($_POST['saleDetailsCustomerID']);
 		
@@ -21,13 +21,13 @@
 		$newStock = 0;
 		
 		// Check if mandatory fields are not empty
-		if(isset($saleDetailsItemNumber) && isset($saleDetailsSaleDate) && isset($saleDetailsQuantity) && isset($saleDetailsUnitPrice) && isset($saleDetailsCustomerID)){
+		if(isset($borrowDetailsItemNumber) && isset($saleDetailsSaleDate) && isset($borrowDetailsQuantity) && isset($saleDetailsUnitPrice) && isset($saleDetailsCustomerID)){
 			
 			// Sanitize item number
-			$saleDetailsItemNumber = filter_var($saleDetailsItemNumber, FILTER_SANITIZE_STRING);
+			$borrowDetailsItemNumber = filter_var($borrowDetailsItemNumber, FILTER_SANITIZE_STRING);
 			
 			// Validate item quantity. It has to be an integer
-			if(filter_var($saleDetailsQuantity, FILTER_VALIDATE_INT) === 0 || filter_var($saleDetailsQuantity, FILTER_VALIDATE_INT)){
+			if(filter_var($borrowDetailsQuantity, FILTER_VALIDATE_INT) === 0 || filter_var($borrowDetailsQuantity, FILTER_VALIDATE_INT)){
 				// Quantity is valid
 			} else {
 				// Quantity is not a valid number
@@ -56,7 +56,7 @@
 			}
 			
 			// Check if saleID is empty
-			if($saleDetailsSaleID == ''){ 
+			if($borrowDetailsBorrowRequestID == ''){
 				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a Sale ID.</div>';
 				exit();
 			}
@@ -68,13 +68,13 @@
 			}
 			
 			// Check if itemNumber is empty
-			if($saleDetailsItemNumber == ''){ 
+			if($borrowDetailsItemNumber == ''){
 				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter Item Number.</div>';
 				exit();
 			}
 			
 			// Check if quantity is empty
-			if($saleDetailsQuantity == ''){ 
+			if($borrowDetailsQuantity == ''){
 				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter quantity.</div>';
 				exit();
 			}
@@ -88,7 +88,7 @@
 			// Get the quantity and itemNumber in original sale order
 			$orginalSaleQuantitySql = 'SELECT * FROM sale WHERE saleID = :saleID';
 			$originalSaleQuantityStatement = $conn->prepare($orginalSaleQuantitySql);
-			$originalSaleQuantityStatement->execute(['saleID' => $saleDetailsSaleID]);
+			$originalSaleQuantityStatement->execute(['saleID' => $borrowDetailsBorrowRequestID]);
 			
 			// Get the customerID for the given customerName
 			/* $customerIDsql = 'SELECT * FROM customer WHERE fullName = :fullName';
@@ -108,7 +108,7 @@
 			} else {
 				$row = $customerIDStatement->fetch(PDO::FETCH_ASSOC);
 				$customerID = $row['customerID'];
-				$saleDetailsCustomerName = $row['fullName'];
+				$borrowDetailsStudentName = $row['fullName'];
 			}
 			
 			if($originalSaleQuantityStatement->rowCount() > 0){
@@ -122,14 +122,14 @@
 				// we need to remove the quantity of the original order for that item and 
 				// update the new item details in the item table.
 				// Check if the original itemNumber is the same as the new itemNumber
-				if($originalOrderItemNumber !== $saleDetailsItemNumber) {
+				if($originalOrderItemNumber !== $borrowDetailsItemNumber) {
 					// Item numbers are different. That means the user wants to update a new item number too
 					// in that case, need to update both items' stocks.
 						
 					// Get the stock of the new item from item table
 					$newItemCurrentStockSql = 'SELECT * FROM item WHERE itemNumber = :itemNumber';
 					$newItemCurrentStockStatement = $conn->prepare($newItemCurrentStockSql);
-					$newItemCurrentStockStatement->execute(['itemNumber' => $saleDetailsItemNumber]);
+					$newItemCurrentStockStatement->execute(['itemNumber' => $borrowDetailsItemNumber]);
 					
 					if($newItemCurrentStockStatement->rowCount() < 1){
 						// Item number is not in DB. Hence abort.
@@ -140,13 +140,13 @@
 					// Calculate the new stock value for new item using the existing stock in item table
 					$newItemRow = $newItemCurrentStockStatement->fetch(PDO::FETCH_ASSOC);
 					$originalQuantityForNewItem = $newItemRow['stock'];
-					$enteredQuantityForNewItem = $saleDetailsQuantity;
+					$enteredQuantityForNewItem = $borrowDetailsQuantity;
 					$newItemNewStock = $originalQuantityForNewItem - $enteredQuantityForNewItem;
 					
 					// UPDATE the stock for new item in item table
 					$newItemStockUpdateSql = 'UPDATE item SET stock = :stock WHERE itemNumber = :itemNumber';
 					$newItemStockUpdateStatement = $conn->prepare($newItemStockUpdateSql);
-					$newItemStockUpdateStatement->execute(['stock' => $newItemNewStock, 'itemNumber' => $saleDetailsItemNumber]);
+					$newItemStockUpdateStatement->execute(['stock' => $newItemNewStock, 'itemNumber' => $borrowDetailsItemNumber]);
 					
 					// Get the current stock of the previous item
 					$previousItemCurrentStockSql = 'SELECT * FROM item WHERE itemNumber=:itemNumber';
@@ -166,7 +166,7 @@
 					// Finally UPDATE the sale table for new item
 					$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice, discount = :discount, quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
 					$updateSaleDetailsStatement = $conn->prepare($updateSaleDetailsSql);
-					$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
+					$updateSaleDetailsStatement->execute(['itemNumber' => $borrowDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $borrowDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $borrowDetailsQuantity, 'customerName' => $borrowDetailsStudentName, 'customerID' => $customerID, 'saleID' => $borrowDetailsBorrowRequestID]);
 					
 					echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Sale details updated.</div>';
 					exit();
@@ -177,26 +177,26 @@
 					// Get the quantity (stock) in item table
 					$stockSql = 'SELECT * FROM item WHERE itemNumber=:itemNumber';
 					$stockStatement = $conn->prepare($stockSql);
-					$stockStatement->execute(['itemNumber' => $saleDetailsItemNumber]);
+					$stockStatement->execute(['itemNumber' => $borrowDetailsItemNumber]);
 					
 					if($stockStatement->rowCount() > 0){
 						// Item exists in the item table, therefore, start updating data in sale table
 						
 						// Calculate the new stock value using the existing stock in item table
 						$row = $stockStatement->fetch(PDO::FETCH_ASSOC);
-						$quantityInNewOrder = $saleDetailsQuantity;
+						$quantityInNewOrder = $borrowDetailsQuantity;
 						$originalStockInItemTable = $row['stock'];
 						$newStock = $originalStockInItemTable - ($quantityInNewOrder - $quantityInOriginalOrder);
 						
 						// Update the new stock value in item table.
 						$updateStockSql = 'UPDATE item SET stock = :stock WHERE itemNumber = :itemNumber';
 						$updateStockStatement = $conn->prepare($updateStockSql);
-						$updateStockStatement->execute(['stock' => $newStock, 'itemNumber' => $saleDetailsItemNumber]);
+						$updateStockStatement->execute(['stock' => $newStock, 'itemNumber' => $borrowDetailsItemNumber]);
 						
 						// Next, update the sale table
 						$updateSaleDetailsSql = 'UPDATE sale SET itemNumber = :itemNumber, saleDate = :saleDate, itemName = :itemName, unitPrice = :unitPrice, discount = :discount, quantity = :quantity, customerName = :customerName, customerID = :customerID WHERE saleID = :saleID';
 						$updateSaleDetailsStatement = $conn->prepare($updateSaleDetailsSql);
-						$updateSaleDetailsStatement->execute(['itemNumber' => $saleDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $saleDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $saleDetailsQuantity, 'customerName' => $saleDetailsCustomerName, 'customerID' => $customerID, 'saleID' => $saleDetailsSaleID]);
+						$updateSaleDetailsStatement->execute(['itemNumber' => $borrowDetailsItemNumber, 'saleDate' => $saleDetailsSaleDate, 'itemName' => $borrowDetailsItemName, 'unitPrice' => $saleDetailsUnitPrice, 'discount' => $saleDetailsDiscount, 'quantity' => $borrowDetailsQuantity, 'customerName' => $borrowDetailsStudentName, 'customerID' => $customerID, 'saleID' => $borrowDetailsBorrowRequestID]);
 						
 						echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Sale details updated.</div>';
 						exit();

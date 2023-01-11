@@ -14,7 +14,7 @@
 		
 		// If we receive any results from the above query, then display them in a list
 		if($stmt->rowCount() > 0){
-			$output = '<ul class="list-unstyled suggestionsList" id="saleDetailsItemNumberSuggestionsList">';
+			$output = '<ul class="list-unstyled suggestionsList" id="borrowDetailsItemNumberSuggestionsList">';
 			while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 				$output .= '<li>' . $row['itemNumber'] . '</li>';
 			}

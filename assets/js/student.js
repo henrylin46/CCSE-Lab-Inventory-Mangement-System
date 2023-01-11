@@ -18,7 +18,7 @@ $(document).ready(function(){
         // Confirm before deleting
         console.log(this);
         var row = this.parentNode.parentNode;
-        $("#v-pills-sale-tab").trigger("click");
+        $("#v-pills-borrow-tab").trigger("click");
         getItemDetailsToPopulateForSaleTabForStudent(row);
     })
 })
@@ -50,24 +50,24 @@ function getCustomerDetailsToPopulateForStudent(){
 // Function to delete sale from db
 function deleteSale(row){
 
-    var saleDetailsSaleID = row.firstChild.textContent;
-    var saleDetailsQuantity =row.querySelector(':nth-child(7)').textContent;
-    var saleDetailsItemNumber = row.querySelector(':nth-child(2)').textContent;
+    var borrowDetailsBorrowRequestID = row.firstChild.textContent;
+    var borrowDetailsQuantity =row.querySelector(':nth-child(7)').textContent;
+    var borrowDetailsItemNumber = row.querySelector(':nth-child(2)').textContent;
     // Get the SaleID from retrieved table
 
     // Call the cancelSaleRequest.php script
-    if (saleDetailsSaleID != ''){
+    if (borrowDetailsBorrowRequestID != ''){
         $.ajax({
             url: 'model/sale/cancelSaleRequest.php',
             method: 'Post',
             data:{
-                saleDetailsSaleID:saleDetailsSaleID,
-                saleDetailsQuantity:saleDetailsQuantity,
-                saleDetailsItemNumber:saleDetailsItemNumber,
+                borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID,
+                borrowDetailsQuantity:borrowDetailsQuantity,
+                borrowDetailsItemNumber:borrowDetailsItemNumber,
             },
             success: function(data){
-                $('#saleDetailsMessage').fadeIn();
-                $('#saleDetailsMessage').html(data);
+                $('#borrowDetailsMessage').fadeIn();
+                $('#borrowDetailsMessage').html(data);
             },
             complete: function(){
                 searchTableCreator('saleDetailsTableDiv',saleDetailsSearchTableCreatorFile,'saleDetailsTable');
@@ -92,19 +92,19 @@ function getItemDetailsToPopulateForSaleTabForStudent(row){
         data: {itemNumber:itemNumber},
         dataType: 'json',
         success: function(data){
-            $('#saleDetailsItemNumber').val(data.itemNumber);
-            $('#saleDetailsCustomerMatricNumber').val($('#session-matric-number').html());
-            $('#saleDetailsCustomerName').val($('#session-full-name').html());
-            $('#saleDetailsItemName').val(data.itemName);
-            $('#saleDetailsTotalStock').val(data.stock);
+            $('#borrowDetailsItemNumber').val(data.itemNumber);
+            $('#borrowDetailsStudentMatricNumber').val($('#session-matric-number').html());
+            $('#borrowDetailsStudentName').val($('#session-full-name').html());
+            $('#borrowDetailsItemName').val(data.itemName);
+            $('#borrowDetailsTotalStock').val(data.stock);
 
             newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 
             // Set the item image
             if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
-                $('#saleDetailsImageContainer').html(defaultImageData);
+                $('#borrowDetailsImageContainer').html(defaultImageData);
             } else {
-                $('#saleDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
+                $('#borrowDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
             }
         },
         complete: function() {

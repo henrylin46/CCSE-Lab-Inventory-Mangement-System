@@ -16,7 +16,7 @@
 		if($stmt->rowCount() > 0){
 			
 			// Given sale ID is available in DB. Hence create the dropdown list
-			$output = '<ul class="list-unstyled suggestionsList" id="saleDetailsSaleIDSuggestionsList">';
+			$output = '<ul class="list-unstyled suggestionsList" id="borrowDetailsBorrowRequestIDSuggestionsList">';
 			while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 				$output .= '<li>' . $row['saleID'] . '</li>';
 			}

@@ -2,12 +2,12 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 	
-	if(isset($_POST['saleDetailsSaleID'])){
+	if(isset($_POST['borrowDetailsBorrowRequestID'])){
 		
 		// Get value by post from js script
-		$saleID = htmlentities($_POST['saleDetailsSaleID']);
-		$quantity = filter_var(htmlentities($_POST['saleDetailsQuantity']), FILTER_VALIDATE_INT);
-		$itemNumber = htmlentities($_POST['saleDetailsItemNumber']);
+		$saleID = htmlentities($_POST['borrowDetailsBorrowRequestID']);
+		$quantity = filter_var(htmlentities($_POST['borrowDetailsQuantity']), FILTER_VALIDATE_INT);
+		$itemNumber = htmlentities($_POST['borrowDetailsItemNumber']);
 
 		if(!empty($saleID)){
 

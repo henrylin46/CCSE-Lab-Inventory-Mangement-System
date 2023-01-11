@@ -2,16 +2,16 @@
 require_once('../../inc/config/constants.php');
 require_once('../../inc/config/db.php');
 
-if(isset($_POST['saleDetailsItemNumber'])){
+if(isset($_POST['borrowDetailsItemNumber'])){
 
-    $itemNumber = htmlentities($_POST['saleDetailsItemNumber']);
-    $itemName = htmlentities($_POST['saleDetailsItemName']);
-    $quantity = htmlentities($_POST['saleDetailsQuantity']);
+    $itemNumber = htmlentities($_POST['borrowDetailsItemNumber']);
+    $itemName = htmlentities($_POST['borrowDetailsItemName']);
+    $quantity = htmlentities($_POST['borrowDetailsQuantity']);
     $customerID = htmlentities($_POST['saleDetailsCustomerID']);
-    $customerName = htmlentities($_POST['saleDetailsCustomerName']);
+    $customerName = htmlentities($_POST['borrowDetailsStudentName']);
     $saleDate = htmlentities($_POST['saleDetailsSaleDate']);
-    $purpose = htmlentities($_POST['saleDetailsPurpose']);
-    $requestStatus = htmlentities($_POST['saleDetailsRequestStatus']);
+    $purpose = htmlentities($_POST['borrowDetailsPurpose']);
+    $requestStatus = htmlentities($_POST['borrowDetailsRequestStatus']);
 
     // Check if mandatory fields are not empty
     if(!empty($itemNumber) && isset($customerID) && isset($saleDate) && isset($quantity)){

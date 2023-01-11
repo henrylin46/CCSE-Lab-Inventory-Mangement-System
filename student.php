@@ -17,7 +17,7 @@
                 <!--			  <a class="nav-link" id="v-pills-vendor-tab" data-toggle="pill" href="#v-pills-vendor" role="tab" aria-controls="v-pills-vendor" aria-selected="false">Vendor</a>-->
 
                 <a class="nav-link active" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="true">Search</a>
-                <a hidden class="nav-link" id="v-pills-sale-tab" data-toggle="pill" href="#v-pills-sale" role="tab" aria-controls="v-pills-sale" aria-selected="false">Sale</a>
+                <a hidden class="nav-link" id="v-pills-borrow-tab" data-toggle="pill" href="#v-pills-borrow" role="tab" aria-controls="v-pills-borrow" aria-selected="false">Sale</a>
                 <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Customer</a>
                 <!--			  <a class="nav-link" id="v-pills-reports-tab" data-toggle="pill" href="#v-pills-reports" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reports</a>-->
             </div>
@@ -67,76 +67,71 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="v-pills-sale" role="tabpanel" aria-labelledby="v-pills-sale-tab">
+                <div class="tab-pane fade" id="v-pills-borrow" role="tabpanel" aria-labelledby="v-pills-borrow-tab">
                     <!--left panel "Sale"-->
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">Sale Details</div>
+                        <div class="card-header">Apply New Borrow Request</div>
                         <div class="card-body">
-                            <div id="saleDetailsMessage"></div>
+                            <div id="borrowDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsItemNumber" name="saleDetailsItemNumber" autocomplete="off" readonly>
-                                        <div id="saleDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
+                                        <label for="borrowDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off" readonly>
+                                        <div id="borrowDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input readonly type="text" class="form-control" id="saleDetailsCustomerMatricNumber" name="saleDetailsCustomerMatricNumber" autocomplete="off">
-                                        <!--<div id="saleDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
+                                        <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input readonly type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
+                                        <!--<div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsCustomerName">Customer Name</label>
-                                        <input type="text" class="form-control" id="saleDetailsCustomerName" name="saleDetailsCustomerName" readonly>
+                                        <label for="borrowDetailsStudentName">Student Name</label>
+                                        <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsSaleID">Sale ID</label>
-                                        <input type="text" class="form-control invTooltip" id="saleDetailsSaleID" name="saleDetailsSaleID" title="This will be auto-generated when you add a new record" autocomplete="off" readonly>
-                                        <div id="saleDetailsSaleIDSuggestionsDiv" class="customListDivWidth"></div>
+                                        <label for="borrowDetailsBorrowRequestID">Borrow ID</label>
+                                        <input type="text" class="form-control invTooltip" id="borrowDetailsBorrowRequestID" name="borrowDetailsBorrowRequestID" title="This will be auto-generated when you add a new record" autocomplete="off" readonly>
+                                        <div id="borrowDetailsBorrowRequestIDSaleIDSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
-                                        <label for="saleDetailsItemName">Item Name</label>
-                                        <!--<select id="saleDetailsItemNames" name="saleDetailsItemNames" class="form-control chosenSelect"> -->
-                                        <?php
-                                        //require('model/item/getItemDetails.php');
-                                        ?>
-                                        <!-- </select> -->
-                                        <input type="text" class="form-control invTooltip" id="saleDetailsItemName" name="saleDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
+                                        <label for="borrowDetailsItemName">Item Name</label>
+                                        <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="saleDetailsTotalStock">Total Stock</label>
-                                        <input type="text" class="form-control" name="saleDetailsTotalStock" id="saleDetailsTotalStock" readonly>
+                                        <label for="borrowDetailsTotalStock">Total Stock</label>
+                                        <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="" name="saleDetailsSaleDate" readonly>
-                                    </div>
+<!--                                    <div class="form-group col-md-3">-->
+<!--                                        <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>-->
+<!--                                        <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="" name="saleDetailsSaleDate" readonly>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="saleDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
-                                        <input type="number" class="form-control" id="saleDetailsQuantity" name="saleDetailsQuantity" value="0">
+                                        <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
+                                        <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
                                     </div>
                                     <div class="form-group col-md-7">
-                                        <label for="saleDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="saleDetailsPurpose" name="saleDetailsPurpose">
+                                        <label for="borrowDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="borrowDetailsPurpose" name="borrowDetailsPurpose">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="saleDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
-                                        <select id="saleDetailsRequestStatus" name="saleDetailsRequestStatus" class="form-control chosenSelect">
+                                        <label for="borrowDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
+                                        <select id="borrowDetailsRequestStatus" name="borrowDetailsRequestStatus" class="form-control chosenSelect">
                                             <option value="Requested">Requested</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <div id="saleDetailsImageContainer"></div>
+                                        <div id="borrowDetailsImageContainer"></div>
                                     </div>
                                 </div>
-                                <button type="button" id="addSaleButton" class="btn btn-success">Add Sale</button>
-<!--                                <button type="button" id="updateSaleDetailsButton" class="btn btn-primary">Update</button>-->
+                                <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Add Sale</button>
+<!--                                <button type="button" id="updateBorrowRequestDetailButton" class="btn btn-primary">Update</button>-->
 <!--                                <button type="reset" id="saleClear" class="btn">Clear</button>-->
                             </form>
                         </div>
