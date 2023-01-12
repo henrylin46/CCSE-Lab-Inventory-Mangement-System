@@ -135,7 +135,7 @@ $(document).ready(function(){
 	
 	// Listen to sale add button
 	$('#applyBorrowRequestButton').on('click', function(){
-		addSale();
+		applyBorrowRequest();
 	});
 	
 	// Listen to update button in item details tab
@@ -1039,42 +1039,36 @@ function addPurchase() {
 }
 
 
-// Function to call the insertSale.php script to insert sale data to db
-function addSale() {
+// Function to call the applyBorrowRequest.php script to insert sale data to db
+function applyBorrowRequest() {
+	var borrowDetailsStudentMatricNumber = $('#session-matric-number').html();
 	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
-	var borrowDetailsItemName = $('#borrowDetailsItemName').val();
 	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
-	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
-	var borrowDetailsStudentName = $('#borrowDetailsStudentName').val();
-	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
 	var borrowDetailsPurpose = $('#borrowDetailsPurpose').val();
-	var borrowDetailsRequestStatus = $('#borrowDetailsRequestStatus').val();
-	console.log(borrowDetailsRequestStatus);
+	// var borrowDetailsRequestStatus = $('#borrowDetailsRequestStatus').val();
+	// console.log(borrowDetailsRequestStatus);
 
 	$.ajax({
-		url: 'model/sale/insertSale.php',
+		url: 'model/borrow/applyBorrowRequest.php',
+		// url: 'model/sale/insertSale.php',
 		method: 'POST',
 		data: {
+			borrowDetailsStudentMatricNumber:borrowDetailsStudentMatricNumber,
 			borrowDetailsItemNumber:borrowDetailsItemNumber,
-			borrowDetailsItemName:borrowDetailsItemName,
 			borrowDetailsQuantity:borrowDetailsQuantity,
-			saleDetailsCustomerID:saleDetailsCustomerID,
-			borrowDetailsStudentName:borrowDetailsStudentName,
-			saleDetailsSaleDate:saleDetailsSaleDate,
 			borrowDetailsPurpose:borrowDetailsPurpose,
-			borrowDetailsRequestStatus:borrowDetailsRequestStatus,
 		},
 		success: function(data){
 			$('#borrowDetailsMessage').fadeIn();
 			$('#borrowDetailsMessage').html(data);
 		},
 		complete: function(){
-			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
-			populateLastInsertedID(saleLastInsertedIDFile, 'borrowDetailsBorrowRequestID');
+			// getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
+			// populateLastInsertedID(saleLastInsertedIDFile, 'borrowDetailsBorrowRequestID');
 			searchTableCreator('saleDetailsTableDiv', saleDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
-			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
-			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
+			// searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
+			// reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 		}
 	});
 }

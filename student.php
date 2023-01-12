@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input readonly type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
+                                        <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off" readonly>
                                         <!--<div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-3">
@@ -130,9 +130,7 @@
                                         <div id="borrowDetailsImageContainer"></div>
                                     </div>
                                 </div>
-                                <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Add Sale</button>
-<!--                                <button type="button" id="updateBorrowRequestDetailButton" class="btn btn-primary">Update</button>-->
-<!--                                <button type="reset" id="saleClear" class="btn">Clear</button>-->
+                                <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Apply</button>
                             </form>
                         </div>
                     </div>

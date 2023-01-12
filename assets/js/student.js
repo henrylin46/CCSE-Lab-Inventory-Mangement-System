@@ -16,7 +16,6 @@ $(document).ready(function(){
 
     $(document).on('click', '.requestBorrowButton', function(){
         // Confirm before deleting
-        console.log(this);
         var row = this.parentNode.parentNode;
         $("#v-pills-borrow-tab").trigger("click");
         getItemDetailsToPopulateForSaleTabForStudent(row);
