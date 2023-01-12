@@ -8,7 +8,7 @@
 		$saleIDString = '%' . htmlentities($_POST['textBoxValue']) . '%';
 		
 		// Construct the SQL query to get the saleID
-		$sql = 'SELECT saleID FROM sale WHERE saleID LIKE ?';
+		$sql = 'SELECT borrowRequestID FROM borrowRequest WHERE borrowRequestID LIKE ?';
 		$stmt = $conn->prepare($sql);
 		$stmt->execute([$saleIDString]);
 		
@@ -18,7 +18,7 @@
 			// Given sale ID is available in DB. Hence create the dropdown list
 			$output = '<ul class="list-unstyled suggestionsList" id="borrowDetailsBorrowRequestIDSuggestionsList">';
 			while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-				$output .= '<li>' . $row['saleID'] . '</li>';
+				$output .= '<li>' . $row['borrowRequestID'] . '</li>';
 			}
 			echo '</ul>';
 		} else {

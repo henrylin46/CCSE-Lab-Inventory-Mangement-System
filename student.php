@@ -77,52 +77,37 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="borrowDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off" readonly>
+                                        <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off">
                                         <div id="borrowDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off" readonly>
-                                        <!--<div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="borrowDetailsStudentName">Student Name</label>
-                                        <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="borrowDetailsBorrowRequestID">Borrow ID</label>
-                                        <input type="text" class="form-control invTooltip" id="borrowDetailsBorrowRequestID" name="borrowDetailsBorrowRequestID" title="This will be auto-generated when you add a new record" autocomplete="off" readonly>
-                                        <div id="borrowDetailsBorrowRequestIDSaleIDSuggestionsDiv" class="customListDivWidth"></div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-4">
                                         <label for="borrowDetailsItemName">Item Name</label>
                                         <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                         <label for="borrowDetailsTotalStock">Total Stock</label>
                                         <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
                                     </div>
-<!--                                    <div class="form-group col-md-3">-->
-<!--                                        <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>-->
-<!--                                        <input type="text" class="form-control datepicker" id="saleDetailsSaleDate" value="" name="saleDetailsSaleDate" readonly>-->
-<!--                                    </div>-->
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
                                         <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
                                     </div>
-                                    <div class="form-group col-md-7">
-                                        <label for="borrowDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsPurpose" name="borrowDetailsPurpose">
-                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="borrowDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
-                                        <select id="borrowDetailsRequestStatus" name="borrowDetailsRequestStatus" class="form-control chosenSelect">
-                                            <option value="Requested">Requested</option>
-                                        </select>
+                                        <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
+                                        <div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <label for="borrowDetailsStudentName">Student Name</label>
+                                        <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="borrowDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
+                                        <textarea rows="6" class="form-control" placeholder="Purpose" id="borrowDetailsPurpose" name="borrowDetailsPurpose"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-row">

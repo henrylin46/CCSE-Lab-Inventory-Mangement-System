@@ -24,10 +24,10 @@
 				exit();
 			}
 			
-			// Validate second phone number only if it's provided by user
+			// Validate matricNumber only if it's provided by user
 			if(!empty($matricNumber)){
-				if(filter_var($matricNumber, FILTER_VALIDATE_INT) === false) {
-					// Phone number 2 is not valid
+				if(filter_var($matricNumber, FILTER_SANITIZE_STRING) === '') {
+					// Phone matricNumber is not valid
 					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid matric number</div>';
 					exit();
 				}

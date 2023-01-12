@@ -38,7 +38,7 @@
 			}
 			
 			// Check if username is available
-			$usernameCheckingSql = 'SELECT * FROM user WHERE username = :username';
+			$usernameCheckingSql = 'SELECT * FROM admin WHERE username = :username';
 			$usernameCheckingStatement = $conn->prepare($usernameCheckingSql);
 			$usernameCheckingStatement->execute(['username' => $registerUsername]);
 			
@@ -55,7 +55,7 @@
 					// Start inserting user to DB
 					// Encrypt the password
 					$hashedPassword = md5($registerPassword1);
-					$insertUserSql = 'INSERT INTO user(fullName, username, password) VALUES(:fullName, :username, :password)';
+					$insertUserSql = 'INSERT INTO admin(fullName, username, password) VALUES(:fullName, :username, :password)';
 					$insertUserStatement = $conn->prepare($insertUserSql);
 					$insertUserStatement->execute(['fullName' => $registerFullName, 'username' => $registerUsername, 'password' => $hashedPassword]);
 					

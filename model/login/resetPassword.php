@@ -27,7 +27,7 @@
 			}
 			
 			// Check if username is available
-			$usernameCheckingSql = 'SELECT * FROM user WHERE username = :username';
+			$usernameCheckingSql = 'SELECT * FROM admin WHERE username = :username';
 			$usernameCheckingStatement = $conn->prepare($usernameCheckingSql);
 			$usernameCheckingStatement->execute(['username' => $resetPasswordUsername]);
 			
@@ -44,7 +44,7 @@
 					// Start UPDATING password to DB
 					// Encrypt the password
 					$hashedPassword = md5($resetPasswordPassword1);
-					$updatePasswordSql = 'UPDATE user SET password = :password WHERE username = :username';
+					$updatePasswordSql = 'UPDATE admin SET password = :password WHERE username = :username';
 					$updatePasswordStatement = $conn->prepare($updatePasswordSql);
 					$updatePasswordStatement->execute(['password' => $hashedPassword, 'username' => $resetPasswordUsername]);
 					

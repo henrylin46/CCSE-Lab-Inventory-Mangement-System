@@ -150,34 +150,38 @@ require 'inc/navigation.php';
                             <div id="borrowDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
+                                        <label for="borrowDetailsBorrowRequestID">Borrow ID</label>
+                                        <input type="text" class="form-control invTooltip" id="borrowDetailsBorrowRequestID" name="borrowDetailsBorrowRequestID" title="This will be auto-generated when you add a new record" autocomplete="off">
+                                        <div id="borrowDetailsBorrowRequestIDSuggestionsDiv" class="customListDivWidth"></div>
+                                    </div>
+                                    <div class="form-group col-md-2">
                                         <label for="borrowDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off">
                                         <div id="borrowDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="borrowDetailsItemName">Item Name</label>
+                                        <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="borrowDetailsTotalStock">Total Stock</label>
+                                        <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
+                                        <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
                                         <div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-9">
                                         <label for="borrowDetailsStudentName">Student Name</label>
                                         <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="borrowDetailsBorrowRequestID">Borrow ID</label>
-                                        <input type="text" class="form-control invTooltip" id="borrowDetailsBorrowRequestID" name="borrowDetailsBorrowRequestID" title="This will be auto-generated when you add a new record" autocomplete="off">
-                                        <div id="borrowDetailsBorrowRequestIDSuggestionsDiv" class="customListDivWidth"></div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-5">
-                                        <label for="borrowDetailsItemName">Item Name</label>
-                                        <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="borrowDetailsTotalStock">Total Stock</label>
-                                        <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
                                     </div>
 <!--                                    <div class="form-group col-md-3">-->
 <!--                                        <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>-->
@@ -185,27 +189,23 @@ require 'inc/navigation.php';
 <!--                                    </div>-->
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
-                                        <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
-                                    </div>
-                                    <div class="form-group col-md-7">
+                                    <div class="form-group col-md-12">
                                         <label for="borrowDetailsPurpose">Purpose<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsPurpose" name="borrowDetailsPurpose">
+                                        <textarea rows="6" class="form-control" placeholder="Purpose" id="borrowDetailsPurpose" name="borrowDetailsPurpose"></textarea>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="borrowDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>
-                                        <select id="borrowDetailsRequestStatus" name="borrowDetailsRequestStatus" class="form-control chosenSelect">
-                                            <?php include('inc/requestStatusList.html')?>
-                                        </select>
-                                    </div>
+<!--                                    <div class="form-group col-md-3">-->
+<!--                                        <label for="borrowDetailsRequestStatus">Status<span class="requiredIcon">*</span></label>-->
+<!--                                        <select id="borrowDetailsRequestStatus" name="borrowDetailsRequestStatus" class="form-control chosenSelect">-->
+<!--                                            --><?php //include('inc/requestStatusList.html')?>
+<!--                                        </select>-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <div id="borrowDetailsImageContainer"></div>
                                     </div>
                                 </div>
-                                <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Add Sale</button>
+                                <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Apply</button>
                                 <button type="button" id="updateBorrowRequestDetailButton" class="btn btn-primary">Update</button>
                                 <button type="reset" id="borrowClear" class="btn">Clear</button>
                             </form>

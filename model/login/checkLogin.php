@@ -32,7 +32,7 @@
             $hashedPassword = md5($loginPassword);
 
             // Check the given credentials for admin
-            $checkUserSql = 'SELECT * FROM user WHERE username = :username AND password = :password';
+            $checkUserSql = 'SELECT * FROM admin WHERE username = :username AND password = :password';
             $checkUserStatement = $conn->prepare($checkUserSql);
             $checkUserStatement->execute(['username' => $loginUsername, 'password' => $hashedPassword]);
 

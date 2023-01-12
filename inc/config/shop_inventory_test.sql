@@ -33,7 +33,7 @@ CREATE TABLE `customer` (
   `email` varchar(100) DEFAULT NULL,
   `mobile` int(11) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `matricNumber` int(11) NOT NULL,
+  `matricNumber` varchar(255) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Active',
   `identification` varchar(100) NOT NULL,
@@ -46,8 +46,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
-(NULL, 'Student1', 'student1@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', 200000, 'UPM', 'Active', 'AB1234567', '2022-12-21 10:48:07'),
-(NULL, 'Student2', 'student2@student.upm.edu.my', 987654321, '81dc9bdb52d04dc20036dbd8313ed055', 300000, 'UPM', 'Active', 'CD1234567', '2022-1-4 10:48:07');
+(NULL, 'Student1', 'student1@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', '200000', 'UPM', 'Active', 'AB1234567', '2022-12-21 10:48:07'),
+(NULL, 'Student2', 'student2@student.upm.edu.my', 987654321, '81dc9bdb52d04dc20036dbd8313ed055', '300000', 'UPM', 'Active', 'CD1234567', '2022-1-4 10:48:07');
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,7 @@ CREATE TABLE `sale` (
     `itemName` varchar(255) NOT NULL,
     `saleDate` date NOT NULL,
     `quantity` int(11) NOT NULL DEFAULT 0,
-    `purpose` varchar(255) NOT NULL,
+    `purpose` text NOT NULL,
     `requestStatus` varchar(255) NOT NULL DEFAULT 'Requested',
     PRIMARY KEY (`saleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,7 +112,7 @@ INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemN
 
 CREATE TABLE `borrowRequest` (
     `borrowRequestID` int(11) NOT NULL AUTO_INCREMENT,
-    `matricNumber` int(11) NOT NULL,
+    `matricNumber` varchar(255) NOT NULL,
     `itemNumber` varchar(255) NOT NULL,
     `borrowQuantity` int(11) NOT NULL DEFAULT 0,
     `borrowPurpose` varchar(255) NOT NULL,
@@ -125,30 +125,53 @@ CREATE TABLE `borrowRequest` (
 --
 
 INSERT INTO `borrowRequest` (`borrowRequestID`, `matricNumber`, `itemNumber`, `borrowQuantity`, `borrowPurpose`)VALUES
-(NULL, 200000, '2', 1, 'fyp'),
-(NULL, 300000, '2', 1, 'fyp');
+(NULL, '200000', '2', 1, 'fyp'),
+(NULL, '300000', '2', 1, 'fyp');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `user` (
-  `userID` int(11) NOT NULL AUTO_INCREMENT,
-  `fullName` varchar(255) NOT NULL,
+CREATE TABLE `admin` (
+  `adminID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `fullName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Active',
-  PRIMARY KEY (`userID`)
+  PRIMARY KEY (`adminID`, `username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminID`, `username`, `password`, `fullName`, `email`) VALUES
+(NULL, 'admin1', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin1', 'admin1@gmail.com'),
+(NULL, 'admin2', '81dc9bdb52d04dc20036dbd8313ed055', 'Admin2', 'admin2@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab`
+--
+
+CREATE TABLE `lab` (
+    `username` varchar(255) NOT NULL,
+    `labName` varchar(255) NOT NULL,
+    PRIMARY KEY (`username`, `labName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `fullName`, `username`, `password`, `status`) VALUES
-(NULL, 'Admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'Active');
+INSERT INTO `lab` (`username`, `labName`) VALUES
+ ('admin1', 'LAB1'),
+ ('admin2', 'LAB1'),
+ ('admin1', 'LAB2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

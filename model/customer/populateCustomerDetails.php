@@ -7,9 +7,9 @@
 		
 		$customerID = htmlentities($_POST['customerID']);
 		
-		$customerDetailsSql = 'SELECT * FROM customer WHERE customerID = :customerID';
+		$customerDetailsSql = 'SELECT * FROM customer WHERE matricNumber = :matricNumber';
 		$customerDetailsStatement = $conn->prepare($customerDetailsSql);
-		$customerDetailsStatement->execute(['customerID' => $customerID]);
+		$customerDetailsStatement->execute(['matricNumber' => $customerID]);
 		
 		// If data is found for the given item number, return it as a json object
 		if($customerDetailsStatement->rowCount() > 0) {

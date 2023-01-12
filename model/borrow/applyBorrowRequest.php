@@ -13,17 +13,9 @@ if(isset($_POST['borrowDetailsItemNumber'])){
     if(!empty($borrowDetailsStudentMatricNumber) && isset($borrowDetailsItemNumber) && isset($borrowDetailsQuantity) && isset($borrowDetailsPurpose)){
 
         // Check if matricNumber is empty
+        $borrowDetailsStudentMatricNumber = filter_var($borrowDetailsStudentMatricNumber, FILTER_SANITIZE_STRING);
         if($borrowDetailsStudentMatricNumber == ''){
             echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a Matric No.</div>';
-            exit();
-        }
-
-        // Validate matricNumber
-        if(filter_var($borrowDetailsStudentMatricNumber, FILTER_VALIDATE_INT) === 0 || filter_var($borrowDetailsStudentMatricNumber, FILTER_VALIDATE_INT)){
-            // Valid matricNumber
-        } else {
-            // matricNumber is not a valid number
-            echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid Matric No.</div>';
             exit();
         }
 
@@ -36,9 +28,7 @@ if(isset($_POST['borrowDetailsItemNumber'])){
         }
 
         // Validate item quantity. It has to be a number
-        if(filter_var($borrowDetailsQuantity, FILTER_VALIDATE_INT) > 0){
-            // Valid quantity
-        } else {
+        if(filter_var($borrowDetailsQuantity, FILTER_VALIDATE_INT) <= 0) {
             // Quantity is not a valid number
             echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid number for quantity</div>';
             exit();
@@ -83,9 +73,9 @@ if(isset($_POST['borrowDetailsItemNumber'])){
 
                     // INSERT data to sale table
                     // INSERT INTO `borrowRequest`(`matricNumber`, `itemNumber`, `borrowQuantity`, `borrowPurpose`) VALUES (200000, '3', 5, 'test')
-                    $insertSaleSql = 'INSERT INTO borrowRequest(matricNumber, itemNumber, borrowQuantity, borrowPurpose) VALUES(:matricNumber, :itemNumber, :borrowQuantity, :borrowPurpose)';
-                    $insertSaleStatement = $conn->prepare($insertSaleSql);
-                    $insertSaleStatement->execute(['matricNumber' => $borrowDetailsStudentMatricNumber, 'itemNumber' => $borrowDetailsItemNumber, 'borrowQuantity' => $borrowDetailsQuantity, 'borrowPurpose' => $borrowDetailsPurpose]);
+                    $newBorrowRequestSql = 'INSERT INTO borrowRequest(matricNumber, itemNumber, borrowQuantity, borrowPurpose) VALUES(:matricNumber, :itemNumber, :borrowQuantity, :borrowPurpose)';
+                    $newBorrowRequestStatement = $conn->prepare($newBorrowRequestSql);
+                    $newBorrowRequestStatement->execute(['matricNumber' => $borrowDetailsStudentMatricNumber, 'itemNumber' => $borrowDetailsItemNumber, 'borrowQuantity' => $borrowDetailsQuantity, 'borrowPurpose' => $borrowDetailsPurpose]);
 
                     // UPDATE the stock in item table
                     //$stockUpdateSql = 'UPDATE item SET stock = :stock WHERE itemNumber = :itemNumber';
@@ -100,12 +90,9 @@ if(isset($_POST['borrowDetailsItemNumber'])){
                     exit();
                 }
             }
-
-            echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Item already exists in DB. Please click the <strong>Update</strong> button to update the details. Or use a different Item Number.</div>';
-            exit();
         } else {
             // Item does not exist, therefore, you can't make a sale from it
-            echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Item does not exist in DB.</div>';
+            echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Item does not exist in DB.</div>';
             exit();
         }
 

@@ -53,7 +53,7 @@ itemLastInsertedIDFile = 'model/item/populateLastItemID.php';
 showPurchaseIDSuggestionsFile = 'model/purchase/showPurchaseIDs.php';
 
 // File that returns saleIDs
-showSaleIDSuggestionsFile = 'model/sale/showSaleIDs.php';
+showBorrowRequestIDSuggestionsFile = 'model/borrow/showBorrowRequestIDs.php';
 
 // File that returns vendorIDs
 showVendorIDSuggestionsFile = 'model/vendor/showVendorIDs.php';
@@ -300,15 +300,16 @@ $(document).ready(function(){
 	
 
 	// Listen to CustomerID text box in sale details tab
-	$('#saleDetailsCustomerID').keyup(function(){
-		showSuggestions('saleDetailsCustomerID', showCustomerIDSuggestionsForSaleTabFile, 'saleDetailsCustomerIDSuggestionsDiv');
+	$('#borrowDetailsStudentMatricNumber').keyup(function(){
+		console.log('hello');
+		showSuggestions('borrowDetailsStudentMatricNumber', showCustomerIDSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
 	});
 	
 	// Remove the CustomerID suggestions dropdown in the sale details tab
 	// when user selects an item from it
-	$(document).on('click', '#saleDetailsCustomerIDSuggestionsList li', function(){
-		$('#saleDetailsCustomerID').val($(this).text());
-		$('#saleDetailsCustomerIDSuggestionsList').fadeOut();
+	$(document).on('click', '#borrowDetailsStudentMatricNumberSuggestionsList li', function(){
+		$('#borrowDetailsStudentMatricNumber').val($(this).text());
+		$('#borrowDetailsStudentMatricNumberSuggestionsDivSuggestionsDiv').fadeOut();
 		getCustomerDetailsToPopulateSaleTab();
 	});
 	
@@ -343,7 +344,7 @@ $(document).ready(function(){
 	
 	// Listen to saleID text box in sale details tab
 	$('#borrowDetailsBorrowRequestID').keyup(function(){
-		showSuggestions('borrowDetailsBorrowRequestID', showSaleIDSuggestionsFile, 'borrowDetailsBorrowRequestIDSuggestionsDiv');
+		showSuggestions('borrowDetailsBorrowRequestID', showBorrowRequestIDSuggestionsFile, 'borrowDetailsBorrowRequestIDSuggestionsDiv');
 	});
 	
 	// Remove the SaleID suggestions dropdown in the sale details tab
@@ -351,7 +352,7 @@ $(document).ready(function(){
 	$(document).on('click', '#borrowDetailsBorrowRequestIDSuggestionsList li', function(){
 		$('#borrowDetailsBorrowRequestID').val($(this).text());
 		$('#borrowDetailsBorrowRequestIDSuggestionsList').fadeOut();
-		getSaleDetailsToPopulate();
+		getBorrowRequestDetailsToPopulate();
 	});
 
 
@@ -1041,12 +1042,15 @@ function addPurchase() {
 
 // Function to call the applyBorrowRequest.php script to insert sale data to db
 function applyBorrowRequest() {
-	var borrowDetailsStudentMatricNumber = $('#session-matric-number').html();
+	console.log('hello');
+	console.log($('#borrowDetailsStudentMatricNumber').val());
+	console.log($('#borrowDetailsItemNumber').val());
+	var borrowDetailsStudentMatricNumber = $('#borrowDetailsStudentMatricNumber').val();
 	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
 	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
 	var borrowDetailsPurpose = $('#borrowDetailsPurpose').val();
 	// var borrowDetailsRequestStatus = $('#borrowDetailsRequestStatus').val();
-	// console.log(borrowDetailsRequestStatus);
+	// console.log(borrowDetailsStudentMatricNumber);
 
 	$.ajax({
 		url: 'model/borrow/applyBorrowRequest.php',
@@ -1414,37 +1418,37 @@ function getPurchaseDetailsToPopulate(){
 
 // Function to send saleID so that sale details can be pulled from db
 // to be displayed on sale details tab
-function getSaleDetailsToPopulate(){
+function getBorrowRequestDetailsToPopulate(){
 	// Get the saleID entered in the text box
 	var borrowDetailsBorrowRequestID = $('#borrowDetailsBorrowRequestID').val();
 
-	// var defaultImgUrl = 'data/item_images/imageNotAvailable.jpg';
+	var defaultImgUrl = 'data/item_images/imageNotAvailable.jpg';
 	// var defaultImageData = '<img class="img-fluid" src="data/item_images/imageNotAvailable.jpg">';
 	
-	// Call the populateSaleDetails.php script to get item details
+	// Call the populateBorrowRequestDetails.php script to get item details
 	// relevant to the itemNumber which the user entered
 	$.ajax({
-		url: 'model/sale/populateSaleDetails.php',
+		url: 'model/borrow/populateBorrowRequestDetails.php',
 		method: 'POST',
 		data: {borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID},
 		dataType: 'json',
 		success: function(data){
 
 			$('#borrowDetailsItemNumber').val(data.itemNumber);
-			$('#borrowDetailsStudentMatricNumber').val(data.customerID);
-			$('#borrowDetailsStudentName').val(data.customerName);
+			$('#borrowDetailsStudentMatricNumber').val(data.matricNumber);
+			$('#borrowDetailsStudentName').val(data.fullName);
 			$('#borrowDetailsItemName').val(data.itemName);
-			$('#borrowDetailsQuantity').val(data.quantity);
-			$('#borrowDetailsPurpose').val(data.purpose);
+			$('#borrowDetailsQuantity').val(data.borrowQuantity);
+			$('#borrowDetailsPurpose').val(data.borrowPurpose);
 
-			// newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
-			//
-			// // Set the item image
-			// if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
-			// 	$('#imageContainer').html(defaultImageData);
-			// } else {
-			// 	$('#imageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
-			// }
+			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
+
+			// Set the item image
+			if(data.imageURL == 'imageNotAvailable.jpg' || data.defaultImgUrl == ''){
+				$('#borrowDetailsImageContainer').html(defaultImgUrl);
+			} else {
+				$('#borrowDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');
+			}
 		},
 		complete: function(){
 			calculateTotalInSaleTab();
