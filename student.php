@@ -37,7 +37,7 @@
                                     <a class="nav-link active" data-toggle="tab" href="#itemSearchTab">Item</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#saleSearchTab">Sale</a>
+                                    <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Borrow History</a>
                                 </li>
 <!--                                <li class="nav-item">-->
 <!--                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>-->
@@ -52,10 +52,10 @@
                                     <!-- <a href="#" class="itemDetailsHover" data-toggle="popover" id="10">wwwee</a> -->
                                     <div class="table-responsive" id="itemDetailsTableDiv"></div>
                                 </div>
-                                <div id="saleSearchTab" class="container-fluid tab-pane fade">
+                                <div id="borrowRequestSearchTab" class="container-fluid tab-pane fade">
                                     <br>
-                                    <p>Use the grid below to search sale details</p>
-                                    <div class="table-responsive" id="saleDetailsTableDiv"></div>
+                                    <p>Use the grid below to search borrow history details</p>
+                                    <div class="table-responsive" id="borrowRequestDetailsTableDiv"></div>
                                 </div>
 <!--                                <div id="customerSearchTab" class="container-fluid tab-pane fade">-->
 <!--                                    <br>-->

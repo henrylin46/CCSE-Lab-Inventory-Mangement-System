@@ -60,7 +60,7 @@
 
 		// show matric no and student name only in admin page
 		if ($_SESSION['loggedIn'] == "student" && $row['requestStatus'] == 'Requested'){
-			$output .= '<td>' . '<button type="button" class="cancelSaleRequestButton btn btn-danger">' . 'Cancel' . '</button>' .  '</td>';
+			$output .= '<td>' . '<button type="button" class="cancelBorrowRequestButton btn btn-danger">' . 'Cancel' . '</button>' .  '</td>';
 		}
 		elseif ($_SESSION['loggedIn'] == "student") {
 			$output .= '<td>' . '<button type="button" class="btn">' . 'None' . '</button>' .  '</td>';

@@ -4,12 +4,12 @@ $(document).ready(function(){
     getCustomerDetailsToPopulateForStudent();
 
     // function for cancel request
-    $(document).on('click', '.cancelSaleRequestButton', function(){
+    $(document).on('click', '.cancelBorrowRequestButton', function(){
         // Confirm before deleting
         var row = this.parentNode.parentNode;
         bootbox.confirm('Are you sure you want to cancel?', function(result){
             if(result){
-                deleteSale(row);
+                cancelBorrowRequest(row);
             }
         })
     })
@@ -30,7 +30,7 @@ function getCustomerDetailsToPopulateForStudent(){
     $.ajax({
         url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
         method: 'POST',
-        data: {matricNumber:$('#session-matric-number').html()},
+        // data: {matricNumber:$('#session-matric-number').html()},
         dataType: 'json',
         success: function(data){
             $('#customerDetailsCustomerID').val(data.customerID);
@@ -47,29 +47,26 @@ function getCustomerDetailsToPopulateForStudent(){
 }
 
 // Function to delete sale from db
-function deleteSale(row){
+function cancelBorrowRequest(row){
 
+    // Get the borrowRequestID from retrieved table
     var borrowDetailsBorrowRequestID = row.firstChild.textContent;
-    var borrowDetailsQuantity =row.querySelector(':nth-child(7)').textContent;
-    var borrowDetailsItemNumber = row.querySelector(':nth-child(2)').textContent;
-    // Get the SaleID from retrieved table
+    console.log(borrowDetailsBorrowRequestID);
 
-    // Call the cancelSaleRequest.php script
+    // Call the cancelBorrowRequest.php script
     if (borrowDetailsBorrowRequestID != ''){
         $.ajax({
-            url: 'model/sale/cancelSaleRequest.php',
+            url: 'model/borrow/cancelBorrowRequest.php',
             method: 'Post',
             data:{
                 borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID,
-                borrowDetailsQuantity:borrowDetailsQuantity,
-                borrowDetailsItemNumber:borrowDetailsItemNumber,
             },
             success: function(data){
                 $('#borrowDetailsMessage').fadeIn();
                 $('#borrowDetailsMessage').html(data);
             },
             complete: function(){
-                searchTableCreator('saleDetailsTableDiv',saleDetailsSearchTableCreatorFile,'saleDetailsTable');
+                searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
                 reportsTableCreator('saleReportsTableDiv',saleReportsSearchTableCreatorFile,'saleReportsTable');
             }
         });

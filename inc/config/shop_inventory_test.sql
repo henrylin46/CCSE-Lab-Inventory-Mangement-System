@@ -107,7 +107,7 @@ INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemN
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sale`
+-- Table structure for table `borrowRequest`
 --
 
 CREATE TABLE `borrowRequest` (
@@ -121,12 +121,41 @@ CREATE TABLE `borrowRequest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sale`
+-- Dumping data for table `borrowRequest`
 --
 
 INSERT INTO `borrowRequest` (`borrowRequestID`, `matricNumber`, `itemNumber`, `borrowQuantity`, `borrowPurpose`)VALUES
 (NULL, '200000', '2', 1, 'fyp'),
-(NULL, '300000', '2', 1, 'fyp');
+(NULL, '300000', '2', 1, 'fyp'),
+(NULL, '200000', '3', 3, 'fyp'),
+(NULL, '300000', '3', 9, 'fyp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lendApproval`
+--
+
+CREATE TABLE `lendApproval` (
+    `lendApprovalID` int(11) NOT NULL AUTO_INCREMENT,
+    `borrowRequestID` int(11) NOT NULL,
+    -- username of operating admin
+    `username` varchar(255) NOT NULL,
+    -- last operation
+    `status` varchar(255) NOT NULL DEFAULT 'Approved',
+    `approvalDate` timestamp NOT NULL DEFAULT current_timestamp(),
+    `lendDate` timestamp NULL DEFAULT NULL,
+    `returnDate` timestamp NULL DEFAULT NULL,
+     PRIMARY KEY (`lendApprovalID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lendApproval`
+--
+
+INSERT INTO `lendApproval` (`borrowRequestID`, `username`) VALUES
+(1, 'admin1'),
+(2, 'admin2');
 
 -- --------------------------------------------------------
 

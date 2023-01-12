@@ -291,7 +291,7 @@ require 'inc/navigation.php';
                                     <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#saleSearchTab">Sale</a>
+                                    <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Sale</a>
                                 </li>
                             </ul>
 
@@ -308,10 +308,10 @@ require 'inc/navigation.php';
                                     <p>Use the grid below to search all details of customers</p>
                                     <div class="table-responsive" id="customerDetailsTableDiv"></div>
                                 </div>
-                                <div id="saleSearchTab" class="container-fluid tab-pane fade">
+                                <div id="borrowRequestSearchTab" class="container-fluid tab-pane fade">
                                     <br>
                                     <p>Use the grid below to search sale details</p>
-                                    <div class="table-responsive" id="saleDetailsTableDiv"></div>
+                                    <div class="table-responsive" id="borrowRequestDetailsTableDiv"></div>
                                 </div>
                             </div>
                         </div>
