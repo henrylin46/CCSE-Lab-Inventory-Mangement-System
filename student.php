@@ -96,7 +96,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
+                                        <input readonly type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
                                         <div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-9">

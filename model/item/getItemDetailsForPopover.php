@@ -24,8 +24,8 @@ if(isset($_POST['id'])){
         }
 
         $output .= '<span><strong>Name:</strong> ' . $row['itemName'] . '</span><br>';
-        $output .= '<span><strong>Stock:</strong> ' . $row['stock'] . '</span><br>';
-        $output .= '<span><strong>Status:</strong> ' . $row['status'] . '</span><br>';
+        if ($row['barcode']) { $output .= '<span><strong>Barcode:</strong> ' . $row['barcode'] . '</span><br>'; }
+        $output .= '<span><strong>Description:</strong> ' . $row['description'] . '</span><br>';
     }
 
     echo $output;
