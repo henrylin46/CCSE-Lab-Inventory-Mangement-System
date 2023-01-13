@@ -303,7 +303,6 @@ $(document).ready(function(){
 
 	// Listen to CustomerID text box in sale details tab
 	$('#borrowDetailsStudentMatricNumber').keyup(function(){
-		console.log('hello');
 		showSuggestions('borrowDetailsStudentMatricNumber', showCustomerIDSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
 	});
 	

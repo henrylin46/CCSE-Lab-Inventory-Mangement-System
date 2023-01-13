@@ -73,9 +73,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`itemID`, `itemNumber`, `itemName`, `location`, `stock`, `imageURL`, `status`, `barcode`, `description`) VALUES
-(NULL, '1', 'Bread Board', 'LAB1', 5, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
-(NULL, '2', 'Buzzer', 'LAB2', 5, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
-(NULL, '3', '330mOhm Resistor', 'LAB3', 9, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
+(NULL, '1', 'Bread Board', 'LAB1', 26, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
+(NULL, '2', 'Buzzer', 'LAB2', 58, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
+(NULL, '3', '330mOhm Resistor', 'LAB2', 100, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
 
 -- --------------------------------------------------------
 
@@ -144,9 +144,10 @@ CREATE TABLE `lendApproval` (
     `username` varchar(255) NOT NULL,
     -- last operation
     `status` varchar(255) NOT NULL DEFAULT 'Approved',
-    `approvalDate` timestamp NOT NULL DEFAULT current_timestamp(),
+    `approvalDate` timestamp NULL DEFAULT current_timestamp(),
     `lendDate` timestamp NULL DEFAULT NULL,
     `returnDate` timestamp NULL DEFAULT NULL,
+    `rejectDate` timestamp NULL DEFAULT NULL,
      PRIMARY KEY (`lendApprovalID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

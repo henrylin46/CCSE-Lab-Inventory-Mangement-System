@@ -16,6 +16,7 @@
 			$cancelBorrowRequestSql = 'DELETE FROM borrowRequest WHERE borrowRequestID = :borrowRequestID';
 			$cancelBorrowRequestStatement = $conn->prepare($cancelBorrowRequestSql);
 			$cancelBorrowRequestStatement->execute(['borrowRequestID' => $borrowRequestID]);
+            echo 'successful';
 		}
 	} else{
 			// saleID is empty. Therefore, display the error message
@@ -23,50 +24,3 @@
 			exit();
 	}
 ?>
-
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	

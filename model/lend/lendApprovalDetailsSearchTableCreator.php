@@ -8,7 +8,7 @@
 
 	// confirm the request status
 	$approvalHistoryDetailSql = 'SELECT borrowrequest.borrowRequestID, matricNumber, itemID, itemName, borrowQuantity, location,
-       							lendapproval.status,lendapproval.approvalDate, lendapproval.lendDate, lendapproval.returnDate
+       							lendapproval.status,lendapproval.approvalDate, lendapproval.lendDate, lendapproval.returnDate, lendApproval.rejectDate
 								FROM borrowRequest 
 								INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
 								INNER JOIN lendapproval ON borrowRequest.borrowRequestID = lendapproval.borrowRequestID
@@ -47,15 +47,19 @@
 			'<td>' . $row['status'] . '</td>';
 		if ($row['status'] == 'Approved') {
 			$output .= '<td>' . $row['approvalDate'] . '</td>'.
-					   '<td>' . '<button type="button" class="approveBorrowRequestButton btn btn-primary">'. 'Lend' .'</button>' .
+					   '<td>' . '<button type="button" class="itemLendOutButton btn btn-primary">'. 'Lend' .'</button>' .
 					   '</td></tr>';
 		} elseif ($row['status'] == 'Lent') {
 			$output .= '<td>' . $row['lendDate'] . '</td>'.
-					   '<td>' . '<button type="button" class="approveBorrowRequestButton btn btn-primary">'. 'Return' .'</button>' .
+					   '<td>' . '<button type="button" class="itemReturnRequestButton btn btn-primary">'. 'Return' .'</button>' .
 					   '</td></tr>';
 		} elseif ($row['status'] == 'Returned') {
 			$output .= '<td>' . $row['returnDate'] . '</td>'.
-					   '<td>' . '<button type="button" class="approveBorrowRequestButton btn">'. 'None' .'</button>' .
+					   '<td>' . '<button type="button" class="btn">'. 'None' .'</button>' .
+					   '</td></tr>';
+		} else {
+			$output .= '<td>'. $row['rejectDate'] .'</button>' .
+				 	   '<td>' . '<button type="button" class="btn">'. 'None' .'</button>' .
 					   '</td></tr>';
 		}
 	}
