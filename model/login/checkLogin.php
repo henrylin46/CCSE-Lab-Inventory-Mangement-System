@@ -48,6 +48,7 @@
 
                 $_SESSION['loggedIn'] = 'admin';
                 $_SESSION['fullName'] = $row['fullName'];
+                $_SESSION['username'] = $row['username'];
 
                 echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Admin login success! Redirecting you to home page...</div>';
                 exit();

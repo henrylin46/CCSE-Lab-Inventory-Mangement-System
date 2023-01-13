@@ -73,8 +73,8 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`itemID`, `itemNumber`, `itemName`, `location`, `stock`, `imageURL`, `status`, `barcode`, `description`) VALUES
-(NULL, '1', 'Bread Board', 'LAB1', 1, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
-(NULL, '2', 'Buzzer', 'LAB2', 1, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
+(NULL, '1', 'Bread Board', 'LAB1', 5, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
+(NULL, '2', 'Buzzer', 'LAB2', 5, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
 (NULL, '3', '330mOhm Resistor', 'LAB3', 9, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
 
 -- --------------------------------------------------------
@@ -128,6 +128,7 @@ INSERT INTO `borrowRequest` (`borrowRequestID`, `matricNumber`, `itemNumber`, `b
 (NULL, '200000', '2', 1, 'fyp'),
 (NULL, '300000', '2', 1, 'fyp'),
 (NULL, '200000', '3', 3, 'fyp'),
+(NULL, '300000', '1', 1, 'fyp'),
 (NULL, '300000', '3', 9, 'fyp');
 
 -- --------------------------------------------------------
@@ -154,8 +155,12 @@ CREATE TABLE `lendApproval` (
 --
 
 INSERT INTO `lendApproval` (`borrowRequestID`, `username`) VALUES
-(1, 'admin1'),
+(1, 'admin2'),
 (2, 'admin2');
+
+INSERT INTO `lendApproval` (`borrowRequestID`, `username`, `status`) VALUES
+(3, 'admin1', 'Lent'),
+(4, 'admin1', 'Returned');
 
 -- --------------------------------------------------------
 
