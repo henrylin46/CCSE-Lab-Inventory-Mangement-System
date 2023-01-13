@@ -19,7 +19,7 @@
 						<tr>
 							<th>Borrow ID</th>
 							<th>Item Name</th>
-							<th>Quantity</th>
+							<th>Quantity (r/b)</th>
 							<th>Request Date</th>
 							<th>LAB</th>
 							<th>Status</th>
@@ -51,22 +51,28 @@
 	// Create table rows from the selected data
 	while($row = $borrowRequestDetailStatement->fetch(PDO::FETCH_ASSOC)){
 		if ($_SESSION['loggedIn'] == 'student') {
-			// Only certains row will have button to cancle
-			$output .= '<tr>' .
-				'<td>' . $row['borrowRequestID'] . '</td>' .
-				'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>' .
-				'<td>' . $row['borrowQuantity'] . '</td>' .
-				'<td>' . $row['borrowRequestDate'] . '</td>'.
-				'<td>' . $row['location'] . '</td>';
 
-			$borrowStatusDetailsSql = 'SELECT borrowRequest.borrowRequestID, admin.fullName,lendApproval.status from borrowRequest
+			$borrowStatusDetailsSql = 'SELECT borrowRequest.borrowRequestID, admin.fullName,lendApproval.status, lendApproval.returnQuantity from borrowRequest
     							   INNER JOIN lendApproval ON borrowRequest.borrowRequestID = lendApproval.borrowRequestID
                                    INNER JOIN admin ON lendApproval.username = admin.username
                                    WHERE borrowRequest.matricNumber = :matricNumber AND borrowRequest.borrowRequestID = :borrowRequestID;';
 			$borrowStatusStatement = $conn->prepare($borrowStatusDetailsSql);
 			$borrowStatusStatement->execute(['matricNumber'=>$_SESSION['matricNumber'], 'borrowRequestID'=>$row['borrowRequestID']]);
+			$rowApproval = $borrowStatusStatement->fetch(PDO::FETCH_ASSOC);
 
-			if ($rowApproval = $borrowStatusStatement->fetch(PDO::FETCH_ASSOC)) {
+			// Only certains row will have button to cancle
+			$output .= '<tr>' .
+				'<td>' . $row['borrowRequestID'] . '</td>' .
+				'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>';
+			if ($rowApproval) {
+				$output .= '<td>' . $rowApproval['returnQuantity'] . '/' . $row['borrowQuantity'] . '</td>';
+			} else {
+				$output .= '<td>' . '0/' . $row['borrowQuantity'] . '</td>';
+			}
+			$output .= '<td>' . $row['borrowRequestDate'] . '</td>'.
+					   '<td>' . $row['location'] . '</td>';
+
+			if ($rowApproval) {
 				$output .= '<td>' . $rowApproval['status'] . '</td>'.
 					'<td>' . $rowApproval['fullName'] . '</td>'.
 					'<td>' . '<button type="button" class="btn">' . 'None' . '</button>' .  '</td></tr>';
@@ -123,7 +129,7 @@
 							<th>Borrow ID</th>
 							<th>Matric No</th>
 							<th>Item Name</th>
-							<th>Quantity</th>
+							<th>Quantity (r/b)</th>
 							<th>LAB</th>
 							<th>Request Date</th>
 							<th>Operation</th>

@@ -1,6 +1,7 @@
 <?php
 require_once('../../inc/config/constants.php');
 require_once('../../inc/config/db.php');
+date_default_timezone_set("Asia/Kuala_Lumpur");
 
 if(isset($_POST['borrowRequestID'])){
     session_start();

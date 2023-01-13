@@ -7,8 +7,8 @@
 	session_start();
 
 	// confirm the request status
-	$approvalHistoryDetailSql = 'SELECT borrowrequest.borrowRequestID, matricNumber, itemID, itemName, borrowQuantity, location,
-       							lendapproval.status,lendapproval.approvalDate, lendapproval.lendDate, lendapproval.returnDate, lendApproval.rejectDate
+	$approvalHistoryDetailSql = 'SELECT borrowrequest.borrowRequestID, matricNumber, itemID, itemName, borrowQuantity, location, lendApproval.returnQuantity,
+       							lendapproval.status,lendapproval.approvalDate, lendapproval.lendDate, lendapproval.returnDate, lendApproval.rejectDate, lendApproval.checkDate
 								FROM borrowRequest 
 								INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
 								INNER JOIN lendapproval ON borrowRequest.borrowRequestID = lendapproval.borrowRequestID
@@ -22,7 +22,7 @@
 						<th>Borrow ID</th>
 						<th>Matric No</th>
 						<th>Item Name</th>
-						<th>Quantity</th>
+						<th>Quantity (r/b)</th>
 						<th>LAB</th>
 						<th>Status</th>
 						<th>Operation Date</th>
@@ -42,7 +42,7 @@
 			'<td>' . $row['borrowRequestID'] . '</td>' .
 			'<td>' . $row['matricNumber'] . '</td>' .
 			'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>' .
-			'<td>' . $row['borrowQuantity'] . '</td>' .
+			'<td>' . $row['returnQuantity'] . '/'. $row['borrowQuantity'] . '</td>' .
 			'<td>' . $row['location'] . '</td>'.
 			'<td>' . $row['status'] . '</td>';
 		if ($row['status'] == 'Approved') {
@@ -51,16 +51,20 @@
 					   '</td></tr>';
 		} elseif ($row['status'] == 'Lent') {
 			$output .= '<td>' . $row['lendDate'] . '</td>'.
-					   '<td>' . '<button type="button" class="itemReturnRequestButton btn btn-primary">'. 'Return' .'</button>' .
+					   '<td>' . '<button type="button" class="itemReturnButton btn btn-primary">'. 'Return' .'</button>' .
 					   '</td></tr>';
 		} elseif ($row['status'] == 'Returned') {
 			$output .= '<td>' . $row['returnDate'] . '</td>'.
-					   '<td>' . '<button type="button" class="btn">'. 'None' .'</button>' .
+					   '<td>' . '<button type="button" class="itemCheckButton btn btn-primary">'. 'Check' .'</button>' .
 					   '</td></tr>';
-		} else {
+		} elseif ($row['status'] == 'Rejected') {
 			$output .= '<td>'. $row['rejectDate'] .'</button>' .
 				 	   '<td>' . '<button type="button" class="btn">'. 'None' .'</button>' .
 					   '</td></tr>';
+		} elseif ($row['status'] == 'Checked') {
+			$output .= '<td>'. $row['checkDate'] .'</button>' .
+					   '<td>' . '<button type="button" class="btn">'. 'None' .'</button>' .
+				       '</td></tr>';
 		}
 	}
 
@@ -71,7 +75,7 @@
 						<th>Borrow ID</th>
 						<th>Matric No</th>
 						<th>Item Name</th>
-						<th>Quantity</th>
+						<th>Quantity (r/b)</th>
 						<th>LAB</th>
 						<th>Status</th>
 						<th>Operation Date</th>
