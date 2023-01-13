@@ -1,7 +1,5 @@
 <!-- Body for student Page -->
 <body>
-<div id="session-matric-number" hidden><?php echo $_SESSION['matricNumber']; ?></div>
-<div id="session-full-name" hidden><?php echo $_SESSION['fullName']; ?></div>
 <?php
     require 'inc/navigation.php';
 ?>

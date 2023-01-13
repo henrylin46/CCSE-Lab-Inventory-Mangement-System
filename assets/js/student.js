@@ -54,7 +54,7 @@ function cancelBorrowRequest(row){
     console.log(borrowDetailsBorrowRequestID);
 
     // Call the cancelBorrowRequest.php script
-    if (borrowDetailsBorrowRequestID != ''){
+    if (borrowDetailsBorrowRequestID !== ''){
         $.ajax({
             url: 'model/borrow/cancelBorrowRequest.php',
             method: 'Post',
@@ -89,15 +89,15 @@ function getItemDetailsToPopulateForSaleTabForStudent(row){
         dataType: 'json',
         success: function(data){
             $('#borrowDetailsItemNumber').val(data.itemNumber);
-            $('#borrowDetailsStudentMatricNumber').val(Number($('#session-matric-number').html()));
-            $('#borrowDetailsStudentName').val(String($('#session-full-name').html()));
+            $('#borrowDetailsStudentMatricNumber').val(data.matricNumber);
+            $('#borrowDetailsStudentName').val(data.fullName);
             $('#borrowDetailsItemName').val(data.itemName);
             $('#borrowDetailsTotalStock').val(data.stock);
 
-            newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
+            var newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 
             // Set the item image
-            if(data.imageURL == 'imageNotAvailable.jpg' || data.imageURL == ''){
+            if(data.imageURL === 'imageNotAvailable.jpg' || data.imageURL === ''){
                 $('#borrowDetailsImageContainer').html(defaultImageData);
             } else {
                 $('#borrowDetailsImageContainer').html('<img class="img-fluid" src="' + newImgUrl + '">');

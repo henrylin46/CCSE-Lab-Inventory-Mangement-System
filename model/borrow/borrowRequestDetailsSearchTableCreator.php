@@ -2,7 +2,6 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 
-	echo 'hello';
 	// retrieve from the session value
 	// determine the user group
 	session_start();
@@ -33,7 +32,7 @@
 					</thead><tbody>';
 	// Create table rows from the selected data
 	while($row = $borrowRequestDetailStatement->fetch(PDO::FETCH_ASSOC)){
-
+		
 		// Only certains row will have button to cancle
 		$output .= '<tr>' .
 					   '<td>' . $row['borrowRequestID'] . '</td>' .
