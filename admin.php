@@ -291,7 +291,10 @@ require 'inc/navigation.php';
                                     <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Sale</a>
+                                    <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Borrow Request</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#approvalHistorySearchTab">Lend History</a>
                                 </li>
                             </ul>
 
@@ -312,6 +315,11 @@ require 'inc/navigation.php';
                                     <br>
                                     <p>Use the grid below to search sale details</p>
                                     <div class="table-responsive" id="borrowRequestDetailsTableDiv"></div>
+                                </div>
+                                <div id="approvalHistorySearchTab" class="container-fluid tab-pane fade">
+                                    <br>
+                                    <p>Use the grid below to search lend history details</p>
+                                    <div class="table-responsive" id="approvalHistoryDetailsTableDiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -378,5 +386,5 @@ require 'inc/navigation.php';
 <?php
 require 'inc/footer.php';
 ?>
-<script src="assets/js/populateByMatricNumberForAdmin.js"></script>
+<script src="assets/js/admin.js"></script>
 </body>

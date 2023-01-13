@@ -13,6 +13,8 @@ vendorDetailsSearchTableCreatorFile = 'model/vendor/vendorDetailsSearchTableCrea
 // File that creates the sale details search table
 borrowRequestDetailsSearchTableCreatorFile = 'model/borrow/borrowRequestDetailsSearchTableCreator.php';
 
+// file that create approval history for the admin
+approvalHistoryDetailsSearchTableCreatorFile = 'model/lend/lendApprovalDetailsSearchTableCreator.php';
 
 
 // File that creates the purchase reports search table
@@ -394,6 +396,7 @@ $(document).ready(function(){
 	searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
 	searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 	searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+	searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 	searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 	
 	// Load searchable datatables for customer, purchase, item, vendor, sale reports
@@ -423,6 +426,7 @@ $(document).ready(function(){
 		searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 		searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 		searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+		searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 		
 		reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 		reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
@@ -1070,6 +1074,7 @@ function applyBorrowRequest() {
 			// getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
 			// populateLastInsertedID(saleLastInsertedIDFile, 'borrowDetailsBorrowRequestID');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 			// searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 			// reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
@@ -1492,6 +1497,7 @@ function updateItem() {
 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 			searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 			reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
@@ -1534,6 +1540,7 @@ function updateCustomer() {
 			searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 			reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 		}
 	});
@@ -1652,6 +1659,7 @@ function updateSale() {
 		complete: function(){			
 			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');

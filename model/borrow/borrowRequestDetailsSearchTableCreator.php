@@ -8,7 +8,7 @@
 
 	// confirm the request status
 	if ($_SESSION['loggedIn'] == 'student') {
-		$borrowRequestDetailsSql = 'SELECT borrowRequestID, itemID, itemName, borrowQuantity, borrowRequestDate FROM borrowRequest 
+		$borrowRequestDetailsSql = 'SELECT borrowRequestID, itemID, itemName, location, borrowQuantity, borrowRequestDate FROM borrowRequest 
                            			INNER JOIN customer ON borrowRequest.matricNumber = customer.matricNumber
                            			INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
                            			WHERE borrowRequest.matricNumber = :matricNumber';
@@ -21,6 +21,7 @@
 							<th>Item Name</th>
 							<th>Quantity</th>
 							<th>Request Date</th>
+							<th>LAB</th>
 							<th>Status</th>
 							<th>Admin</th>
 							<th>Operation</th>
@@ -40,8 +41,8 @@
 							<th>Matric No</th>
 							<th>Item Name</th>
 							<th>Quantity</th>
-							<th>Request Date</th>
 							<th>LAB</th>
+							<th>Request Date</th>
 							<th>Operation</th>
 						</tr>
 					</thead><tbody>';
@@ -55,7 +56,8 @@
 				'<td>' . $row['borrowRequestID'] . '</td>' .
 				'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>' .
 				'<td>' . $row['borrowQuantity'] . '</td>' .
-				'<td>' . $row['borrowRequestDate'] . '</td>';
+				'<td>' . $row['borrowRequestDate'] . '</td>'.
+				'<td>' . $row['location'] . '</td>';
 
 			$borrowStatusDetailsSql = 'SELECT borrowRequest.borrowRequestID, admin.fullName,lendApproval.status from borrowRequest
     							   INNER JOIN lendApproval ON borrowRequest.borrowRequestID = lendApproval.borrowRequestID
@@ -89,9 +91,9 @@
 					'<td>' . $row['matricNumber'] . '</td>' .
 					'<td><a href="#" class="itemDetailsHover" data-toggle="popover" id="' . $row['itemID'] . '">' . $row['itemName'] . '</a></td>' .
 					'<td>' . $row['borrowQuantity'] . '</td>' .
-					'<td>' . $row['borrowRequestDate'] . '</td>'.
 					'<td>' . $row['location'] . '</td>'.
-					'<td>' . '<button type="button" class="approveBorrowRequestButton btn btn btn-primary">' . 'Approve' . '</button>&nbsp' .
+					'<td>' . $row['borrowRequestDate'] . '</td>'.
+					'<td>' . '<button type="button" class="approveBorrowRequestButton btn btn-primary">' . 'Approve' . '</button>&nbsp' .
 						     '<button type="button" class="rejectBorrowRequestButton btn btn-danger">' . 'Reject' . '</button>' .
 					'</td></tr>';
 			}
@@ -106,6 +108,7 @@
 							<th>Borrow ID</th>
 							<th>Item Name</th>
 							<th>Quantity</th>
+							<th>LAB</th>
 							<th>Request Date</th>
 							<th>Status</th>
 							<th>Admin</th>
@@ -121,8 +124,8 @@
 							<th>Matric No</th>
 							<th>Item Name</th>
 							<th>Quantity</th>
-							<th>Request Date</th>
 							<th>LAB</th>
+							<th>Request Date</th>
 							<th>Operation</th>
 						</tr>
 					</tfoot>

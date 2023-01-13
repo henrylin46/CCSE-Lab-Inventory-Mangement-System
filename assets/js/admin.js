@@ -5,6 +5,7 @@ showCustomerMatricNumberSuggestionsFile = 'model/customer/showMatricNumbers.php'
 showCustomerMatricNumberSuggestionsForSaleTabFile = 'model/customer/showMatricNumbersForSaleTab.php';
 
 $(document).ready(function(){
+
     // Listen to MatricNumber text box in customer details tab
     $('#customerDetailsCustomerMatricNumber').keyup(function(){
         showSuggestions('customerDetailsCustomerMatricNumber', showCustomerMatricNumberSuggestionsFile, 'customerDetailsCustomerMatricNumberSuggestionsDiv');
