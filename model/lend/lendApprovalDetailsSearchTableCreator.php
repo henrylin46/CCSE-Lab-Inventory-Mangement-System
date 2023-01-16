@@ -7,12 +7,12 @@
 	session_start();
 
 	// confirm the request status
-	$approvalHistoryDetailSql = 'SELECT borrowrequest.borrowRequestID, matricNumber, itemID, itemName, borrowQuantity, location, lendApproval.returnQuantity,
-       							lendapproval.status,lendapproval.approvalDate, lendapproval.lendDate, lendapproval.returnDate, lendApproval.rejectDate, lendApproval.checkDate
+	$approvalHistoryDetailSql = 'SELECT borrowRequest.borrowRequestID, matricNumber, itemID, itemName, borrowQuantity, location, lendApproval.returnQuantity,
+       							lendApproval.status,lendApproval.approvalDate, lendApproval.lendDate, lendApproval.returnDate, lendApproval.rejectDate, lendApproval.checkDate
 								FROM borrowRequest 
 								INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
-								INNER JOIN lendapproval ON borrowRequest.borrowRequestID = lendapproval.borrowRequestID
-								WHERE lendapproval.username = :username';
+								INNER JOIN lendApproval ON borrowRequest.borrowRequestID = lendApproval.borrowRequestID
+								WHERE lendApproval.username = :username';
 	$approvalHistoryDetailStatement = $conn->prepare($approvalHistoryDetailSql);
 	$approvalHistoryDetailStatement->execute(['username'=>$_SESSION['username']]);
 

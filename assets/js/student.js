@@ -88,8 +88,10 @@ function getItemDetailsToPopulateForSaleTabForStudent(row){
         data: {itemNumber:itemNumber},
         dataType: 'json',
         success: function(data){
+
             $('#borrowDetailsItemNumber').val(data.itemNumber);
             $('#borrowDetailsStudentMatricNumber').val(data.matricNumber);
+            $('#borrowDetailsItemLocation').val(data.location);
             $('#borrowDetailsStudentName').val(data.fullName);
             $('#borrowDetailsItemName').val(data.itemName);
             $('#borrowDetailsTotalStock').val(data.stock);

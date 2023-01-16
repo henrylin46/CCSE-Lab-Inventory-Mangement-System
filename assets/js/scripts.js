@@ -1138,6 +1138,7 @@ function getItemDetailsToPopulateForSaleTab(){
 		dataType: 'json',
 		success: function(data){
 
+			$('#borrowDetailsItemLocation').val(data.location);
 			$('#borrowDetailsItemName').val(data.itemName);
 			$('#saleDetailsDiscount').val(data.discount);
 			$('#borrowDetailsTotalStock').val(data.stock);

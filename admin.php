@@ -210,7 +210,6 @@ require 'inc/navigation.php';
                                     </div>
                                 </div>
                                 <button type="button" id="applyBorrowRequestButton" class="btn btn-success">Apply</button>
-                                <button type="button" id="updateBorrowRequestDetailButton" class="btn btn-primary">Update</button>
                                 <button type="reset" id="borrowClear" class="btn">Clear</button>
                             </form>
                         </div>
@@ -271,7 +270,7 @@ require 'inc/navigation.php';
                                         <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
                                     </div>
                                 </div>
-                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>
+                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Student</button>
                                 <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
                                 <button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>
                                 <button type="reset" class="btn">Clear</button>

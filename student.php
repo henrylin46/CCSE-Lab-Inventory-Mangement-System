@@ -73,7 +73,7 @@
                             <div id="borrowDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label for="borrowDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off">
                                         <div id="borrowDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
@@ -82,9 +82,13 @@
                                         <label for="borrowDetailsItemName">Item Name</label>
                                         <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label for="borrowDetailsTotalStock">Total Stock</label>
                                         <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="borrowDetailsItemLocation">Location</label>
+                                        <input type="text" class="form-control" name="borrowDetailsItemLocation" id="borrowDetailsItemLocation" readonly>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
@@ -92,12 +96,12 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-2">
                                         <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
                                         <input readonly type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
                                         <div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
-                                    <div class="form-group col-md-9">
+                                    <div class="form-group col-md-10">
                                         <label for="borrowDetailsStudentName">Student Name</label>
                                         <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
                                     </div>
