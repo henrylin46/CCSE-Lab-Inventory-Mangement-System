@@ -1437,13 +1437,13 @@ function getBorrowRequestDetailsToPopulate(){
 		data: {borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID},
 		dataType: 'json',
 		success: function(data){
-
 			$('#borrowDetailsItemNumber').val(data.itemNumber);
 			$('#borrowDetailsStudentMatricNumber').val(data.matricNumber);
 			$('#borrowDetailsStudentName').val(data.fullName);
 			$('#borrowDetailsItemName').val(data.itemName);
 			$('#borrowDetailsQuantity').val(data.borrowQuantity);
 			$('#borrowDetailsPurpose').val(data.borrowPurpose);
+			$('#borrowDetailsItemLocation').val(data.location);
 
 			newImgUrl = 'data/item_images/' + data.itemNumber + '/' + data.imageURL;
 

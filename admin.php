@@ -12,8 +12,8 @@ require 'inc/navigation.php';
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">Add Item</a>
                 <a class="nav-link" id="v-pills-borrow-tab" data-toggle="pill" href="#v-pills-borrow" role="tab" aria-controls="v-pills-borrow" aria-selected="false">New Borrow</a>
-                <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Customer</a>
-                <a class="nav-link" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="false">Search</a>
+                <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Student</a>
+                <a class="nav-link" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="false">Manage Request</a>
                 <a class="nav-link" id="v-pills-reports-tab" data-toggle="pill" href="#v-pills-reports" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reports</a>
             </div>
         </div>
@@ -165,23 +165,27 @@ require 'inc/navigation.php';
                                         <input type="text" class="form-control invTooltip" id="borrowDetailsItemName" name="borrowDetailsItemName" readonly title="This will be auto-filled when you enter the item number above">
                                     </div>
                                     <div class="form-group col-md-2">
+                                        <label for="borrowDetailsItemLocation">Location</label>
+                                        <input type="text" class="form-control" name="borrowDetailsItemLocation" id="borrowDetailsItemLocation" readonly>
+                                    </div>
+                                    <div class="form-group col-md-2">
                                         <label for="borrowDetailsTotalStock">Total Stock</label>
                                         <input type="text" class="form-control" name="borrowDetailsTotalStock" id="borrowDetailsTotalStock" readonly>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
-                                        <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
-                                    </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="borrowDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="borrowDetailsStudentMatricNumber" name="borrowDetailsStudentMatricNumber" autocomplete="off">
                                         <div id="borrowDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
-                                    <div class="form-group col-md-9">
+                                    <div class="form-group col-md-6">
                                         <label for="borrowDetailsStudentName">Student Name</label>
                                         <input type="text" class="form-control" id="borrowDetailsStudentName" name="borrowDetailsStudentName" readonly>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="borrowDetailsQuantity">Quantity<span class="requiredIcon">*</span></label>
+                                        <input type="number" class="form-control" id="borrowDetailsQuantity" name="borrowDetailsQuantity" value="0">
                                     </div>
 <!--                                    <div class="form-group col-md-3">-->
 <!--                                        <label for="saleDetailsSaleDate">Sale Date<span class="requiredIcon">*</span></label>-->
@@ -216,18 +220,18 @@ require 'inc/navigation.php';
                 <div class="tab-pane fade" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
                     <!--left panel "Customer"-->
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">Customer Details</div>
+                        <div class="card-header">Student Details</div>
                         <div class="card-body">
                             <!-- Div to show the ajax message from validations/db submission -->
                             <div id="customerDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerID">Customer ID</label>
-                                        <input readonly type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
-                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
-                                    </div>
-                                    <div class="form-group col-md-2">
+<!--                                    <div class="form-group col-md-2">-->
+<!--                                        <label for="customerDetailsCustomerID">Customer ID</label>-->
+<!--                                        <input readonly type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">-->
+<!--                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>-->
+<!--                                    </div>-->
+                                    <div class="form-group col-md-4">
                                         <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
                                         <input type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
                                         <div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
@@ -279,19 +283,19 @@ require 'inc/navigation.php';
                 <div class="tab-pane fade" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">
                     <!--left panel "Search"-->
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">Search Inventory
+                        <div class="card-header">Request Management
                             <button id="searchTablesRefresh" name="searchTablesRefresh" class="btn btn-warning float-right btn-sm">Refresh</button>
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-tabs" role="tablist">
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" data-toggle="tab" href="#itemSearchTab">Item</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>-->
+<!--                                </li>-->
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#itemSearchTab">Item</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Borrow Request</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#borrowRequestSearchTab">Borrow Request</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#approvalHistorySearchTab">Lend History</a>
@@ -300,25 +304,24 @@ require 'inc/navigation.php';
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div id="itemSearchTab" class="container-fluid tab-pane active">
+<!--                                <div id="itemSearchTab" class="container-fluid tab-pane active">-->
+<!--                                    <br>-->
+<!--                                    <p>Use the grid below to search all details of items</p>-->
+<!--                                    <div class="table-responsive" id="itemDetailsTableDiv"></div>-->
+<!--                                </div>-->
+<!--                                <div id="customerSearchTab" class="container-fluid tab-pane fade">-->
+<!--                                    <br>-->
+<!--                                    <p>Use the grid below to search all details of students</p>-->
+<!--                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>-->
+<!--                                </div>-->
+                                <div id="borrowRequestSearchTab" class="container-fluid tab-pane active">
                                     <br>
-                                    <p>Use the grid below to search all details of items</p>
-                                    <!-- <a href="#" class="itemDetailsHover" data-toggle="popover" id="10">wwwee</a> -->
-                                    <div class="table-responsive" id="itemDetailsTableDiv"></div>
-                                </div>
-                                <div id="customerSearchTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to search all details of customers</p>
-                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>
-                                </div>
-                                <div id="borrowRequestSearchTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to search sale details</p>
+                                    <p>Use the grid below to search <b>request</b> details</p>
                                     <div class="table-responsive" id="borrowRequestDetailsTableDiv"></div>
                                 </div>
                                 <div id="approvalHistorySearchTab" class="container-fluid tab-pane fade">
                                     <br>
-                                    <p>Use the grid below to search lend history details</p>
+                                    <p>Use the grid below to search <b>lend history</b> details</p>
                                     <div class="table-responsive" id="approvalHistoryDetailsTableDiv"></div>
                                 </div>
                             </div>
@@ -333,13 +336,13 @@ require 'inc/navigation.php';
                         <div class="card-body">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#itemReportsTab">Item</a>
+                                    <a class="nav-link active" data-toggle="tab" href="#itemReportsTab">Item Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#customerReportsTab">Customer</a>
+                                    <a class="nav-link" data-toggle="tab" href="#customerReportsTab">Student Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#saleReportsTab">Sale</a>
+                                    <a class="nav-link" data-toggle="tab" href="#saleReportsTab">Lend History</a>
                                 </li>
                             </ul>
 
@@ -347,17 +350,17 @@ require 'inc/navigation.php';
                             <div class="tab-content">
                                 <div id="itemReportsTab" class="container-fluid tab-pane active">
                                     <br>
-                                    <p>Use the grid below to get reports for items</p>
+                                    <p>Use the grid below to get reports for items under <b>managed lab</b></p>
                                     <div class="table-responsive" id="itemReportsTableDiv"></div>
                                 </div>
                                 <div id="customerReportsTab" class="container-fluid tab-pane fade">
                                     <br>
-                                    <p>Use the grid below to get reports for customers</p>
+                                    <p>Use the grid below to get reports for <b>all customers</b></p>
                                     <div class="table-responsive" id="customerReportsTableDiv"></div>
                                 </div>
                                 <div id="saleReportsTab" class="container-fluid tab-pane fade">
                                     <br>
-                                    <!-- <p>Use the grid below to get reports for sales</p> -->
+                                    <p>Use the grid below to get reports for <b>lend history</b></p>
                                     <form>
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
@@ -372,7 +375,7 @@ require 'inc/navigation.php';
                                         <button type="button" id="showSaleReport" class="btn btn-dark">Show Report</button>
                                         <button type="reset" id="saleFilterClear" class="btn">Clear</button>
                                     </form>
-                                    <br><br>
+                                    <br>
                                     <div class="table-responsive" id="saleReportsTableDiv"></div>
                                 </div>
                             </div>
