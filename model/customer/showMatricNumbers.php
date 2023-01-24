@@ -5,12 +5,12 @@ require_once('../../inc/config/db.php');
 // Check if the POST request is received and if so, execute the script
 if(isset($_POST['textBoxValue'])){
     $output = '';
-    $customerIDString = '%' . htmlentities($_POST['textBoxValue']) . '%';
+    $studentMatricNumberString = '%' . htmlentities($_POST['textBoxValue']) . '%';
 
     // Construct the SQL query to get the customer ID
-    $sql = 'SELECT matricNumber FROM customer WHERE matricNumber LIKE ?';
+    $sql = 'SELECT matricNumber FROM student WHERE matricNumber LIKE ?';
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$customerIDString]);
+    $stmt->execute([$studentMatricNumberString]);
 
     // If we receive any results from the above query, then display them in a list
     if($stmt->rowCount() > 0){

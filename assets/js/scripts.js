@@ -2,7 +2,7 @@
 purchaseDetailsSearchTableCreatorFile = 'model/purchase/purchaseDetailsSearchTableCreator.php';
 
 // File that creates the customer details search table
-customerDetailsSearchTableCreatorFile = 'model/customer/customerDetailsSearchTableCreator.php';
+// customerDetailsSearchTableCreatorFile = 'model/customer/customerDetailsSearchTableCreator.php';
 
 // File that creates the item details search table
 itemDetailsSearchTableCreatorFile = 'model/item/itemDetailsSearchTableCreator.php';
@@ -61,10 +61,10 @@ showBorrowRequestIDSuggestionsFile = 'model/borrow/showBorrowRequestIDs.php';
 showVendorIDSuggestionsFile = 'model/vendor/showVendorIDs.php';
 
 // File that returns customerIDs
-showCustomerIDSuggestionsFile = 'model/customer/showCustomerIDs.php';
+// showCustomerIDSuggestionsFile = 'model/customer/showCustomerIDs.php';
 
 // File that returns customerIDs for sale tab
-showCustomerIDSuggestionsForSaleTabFile = 'model/customer/showCustomerIDsForSaleTab.php';
+// showCustomerIDSuggestionsForSaleTabFile = 'model/customer/showCustomerIDsForSaleTab.php';
 
 
 
@@ -288,9 +288,9 @@ $(document).ready(function(){
 	});
 	
 	// Listen to CustomerID text box in customer details tab
-	$('#customerDetailsCustomerID').keyup(function(){
-		showSuggestions('customerDetailsCustomerID', showCustomerIDSuggestionsFile, 'customerDetailsCustomerIDSuggestionsDiv');
-	});
+	// $('#customerDetailsCustomerID').keyup(function(){
+	// 	showSuggestions('customerDetailsCustomerID', showCustomerIDSuggestionsFile, 'customerDetailsCustomerIDSuggestionsDiv');
+	// });
 	
 	// Remove the CustomerID suggestions dropdown in the customer details tab
 	// when user selects an item from it
@@ -302,9 +302,9 @@ $(document).ready(function(){
 	
 
 	// Listen to CustomerID text box in sale details tab
-	$('#borrowDetailsStudentMatricNumber').keyup(function(){
-		showSuggestions('borrowDetailsStudentMatricNumber', showCustomerIDSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
-	});
+	// $('#borrowDetailsStudentMatricNumber').keyup(function(){
+	// 	showSuggestions('borrowDetailsStudentMatricNumber', showCustomerIDSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
+	// });
 	
 	// Remove the CustomerID suggestions dropdown in the sale details tab
 	// when user selects an item from it
@@ -393,7 +393,7 @@ $(document).ready(function(){
 	// Load searchable datatables for customer, purchase, item, vendor, sale
 	searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 	searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
-	searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+	// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 	searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 	searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 	searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
@@ -422,7 +422,7 @@ $(document).ready(function(){
 	$('#searchTablesRefresh, #reportsTablesRefresh').on('click', function(){
 		searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 		searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
-		searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+		// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 		searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 		searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 		searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
@@ -924,7 +924,7 @@ function addCustomer() {
 		},
 		complete: function(data){
 			populateLastInsertedID(customerLastInsertedIDFile, 'customerDetailsCustomerID');
-			searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+			// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 			reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
 		}
 	});
@@ -1266,21 +1266,21 @@ function deleteItem(){
 // Function to delete item from db
 function deleteCustomer(){
 	// Get the customerID entered by the user
-	var customerDetailsCustomerID = $('#customerDetailsCustomerID').val();
+	var studentDetailsStudentMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
 	
 	// Call the deleteCustomer.php script only if there is a value in the
 	// item number textbox
-	if(customerDetailsCustomerID != ''){
+	if(studentDetailsStudentMatricNumber != ''){
 		$.ajax({
 			url: 'model/customer/deleteCustomer.php',
 			method: 'POST',
-			data: {customerDetailsCustomerID:customerDetailsCustomerID},
+			data: {studentDetailsStudentMatricNumber:studentDetailsStudentMatricNumber},
 			success: function(data){
 				$('#customerDetailsMessage').fadeIn();
 				$('#customerDetailsMessage').html(data);
 			},
 			complete: function(){
-				searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+				// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 				reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
 			}
 		});
@@ -1508,7 +1508,6 @@ function updateItem() {
 
 // Function to call the upateCustomerDetails.php script to UPDATE customer data in db
 function updateCustomer() {
-	var customerDetailsCustomerID = $('#customerDetailsCustomerID').val();
 	var customerDetailsCustomerFullName = $('#customerDetailsCustomerFullName').val();
 	var customerDetailsCustomerMobile = $('#customerDetailsCustomerMobile').val();
 	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
@@ -1522,7 +1521,7 @@ function updateCustomer() {
 		url: 'model/customer/updateCustomerDetails.php',
 		method: 'POST',
 		data: {
-			customerDetailsCustomerID:customerDetailsCustomerID,
+
 			customerDetailsCustomerFullName:customerDetailsCustomerFullName,
 			customerDetailsCustomerMobile:customerDetailsCustomerMobile,
 			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
@@ -1537,7 +1536,7 @@ function updateCustomer() {
 			$('#customerDetailsMessage').html(data);
 		},
 		complete: function(){
-			searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+			// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
 			reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
@@ -1627,42 +1626,42 @@ function updatePurchase() {
 
 
 // Function to call the updateSale.php script to update sale data to db
-function updateSale() {
-	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
-	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
-	var borrowDetailsItemName = $('#borrowDetailsItemName').val();
-	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
-	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
-	var borrowDetailsBorrowRequestID = $('#borrowDetailsBorrowRequestID').val();
-	var borrowDetailsStudentName = $('#borrowDetailsStudentName').val();
-	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
-	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
-	
-	$.ajax({
-		url: 'model/sale/updateSale.php',
-		method: 'POST',
-		data: {
-			borrowDetailsItemNumber:borrowDetailsItemNumber,
-			saleDetailsSaleDate:saleDetailsSaleDate,
-			borrowDetailsItemName:borrowDetailsItemName,
-			borrowDetailsQuantity:borrowDetailsQuantity,
-			saleDetailsUnitPrice:saleDetailsUnitPrice,
-			borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID,
-			borrowDetailsStudentName:borrowDetailsStudentName,
-			saleDetailsDiscount:saleDetailsDiscount,
-			saleDetailsCustomerID:saleDetailsCustomerID,
-		},
-		success: function(data){
-			$('#borrowDetailsMessage').fadeIn();
-			$('#borrowDetailsMessage').html(data);
-		},
-		complete: function(){			
-			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
-			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
-			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
-			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
-			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
-			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
-		}
-	});
-}
+// function updateSale() {
+// 	var borrowDetailsItemNumber = $('#borrowDetailsItemNumber').val();
+// 	var saleDetailsSaleDate = $('#saleDetailsSaleDate').val();
+// 	var borrowDetailsItemName = $('#borrowDetailsItemName').val();
+// 	var borrowDetailsQuantity = $('#borrowDetailsQuantity').val();
+// 	var saleDetailsUnitPrice = $('#saleDetailsUnitPrice').val();
+// 	var borrowDetailsBorrowRequestID = $('#borrowDetailsBorrowRequestID').val();
+// 	var borrowDetailsStudentName = $('#borrowDetailsStudentName').val();
+// 	var saleDetailsDiscount = $('#saleDetailsDiscount').val();
+// 	var saleDetailsCustomerID = $('#saleDetailsCustomerID').val();
+//
+// 	$.ajax({
+// 		url: 'model/sale/updateSale.php',
+// 		method: 'POST',
+// 		data: {
+// 			borrowDetailsItemNumber:borrowDetailsItemNumber,
+// 			saleDetailsSaleDate:saleDetailsSaleDate,
+// 			borrowDetailsItemName:borrowDetailsItemName,
+// 			borrowDetailsQuantity:borrowDetailsQuantity,
+// 			saleDetailsUnitPrice:saleDetailsUnitPrice,
+// 			borrowDetailsBorrowRequestID:borrowDetailsBorrowRequestID,
+// 			borrowDetailsStudentName:borrowDetailsStudentName,
+// 			saleDetailsDiscount:saleDetailsDiscount,
+// 			saleDetailsCustomerID:saleDetailsCustomerID,
+// 		},
+// 		success: function(data){
+// 			$('#borrowDetailsMessage').fadeIn();
+// 			$('#borrowDetailsMessage').html(data);
+// 		},
+// 		complete: function(){
+// 			getItemStockToPopulate('borrowDetailsItemNumber', getItemStockFile, 'borrowDetailsTotalStock');
+// 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
+// 			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
+// 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
+// 			searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
+// 			reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
+// 		}
+// 	});
+// }

@@ -37,7 +37,7 @@
             $checkUserStatement->execute(['username' => $loginUsername, 'password' => $hashedPassword]);
 
             // Check the given credentials for student
-            $checkStudentSql = 'SELECT * FROM customer WHERE matricNumber = :matricNumber AND password = :password';
+            $checkStudentSql = 'SELECT * FROM student WHERE matricNumber = :matricNumber AND password = :password';
             $checkStudentStatement = $conn->prepare($checkStudentSql);
             $checkStudentStatement->execute(['matricNumber' => $loginUsername, 'password' => $hashedPassword]);
 

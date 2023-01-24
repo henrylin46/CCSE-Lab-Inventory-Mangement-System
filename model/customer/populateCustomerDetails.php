@@ -5,17 +5,17 @@
 	// Execute the script if the POST request is submitted
 	if(isset($_POST['customerID'])){
 		
-		$customerID = htmlentities($_POST['customerID']);
+		$studentID = htmlentities($_POST['customerID']);
 		
-		$customerDetailsSql = 'SELECT * FROM customer WHERE matricNumber = :matricNumber';
-		$customerDetailsStatement = $conn->prepare($customerDetailsSql);
-		$customerDetailsStatement->execute(['matricNumber' => $customerID]);
+		$studentDetailsSql = 'SELECT * FROM student WHERE matricNumber = :matricNumber';
+		$studentDetailsStatement = $conn->prepare($studentDetailsSql);
+		$studentDetailsStatement->execute(['matricNumber' => $studentID]);
 		
 		// If data is found for the given item number, return it as a json object
-		if($customerDetailsStatement->rowCount() > 0) {
-			$row = $customerDetailsStatement->fetch(PDO::FETCH_ASSOC);
+		if($studentDetailsStatement->rowCount() > 0) {
+			$row = $studentDetailsStatement->fetch(PDO::FETCH_ASSOC);
 			echo json_encode($row);
 		}
-		$customerDetailsStatement->closeCursor();
+		$studentDetailsStatement->closeCursor();
 	}
 ?>

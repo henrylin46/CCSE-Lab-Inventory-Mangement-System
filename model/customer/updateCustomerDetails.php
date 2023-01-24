@@ -3,25 +3,22 @@
 	require_once('../../inc/config/db.php');
 	
 	// Check if the POST query is received
-	if(isset($_POST['customerDetailsCustomerID'])) {
-		
-		$customerDetailsCustomerID = htmlentities($_POST['customerDetailsCustomerID']);
-		$customerDetailsCustomerFullName = htmlentities($_POST['customerDetailsCustomerFullName']);
-		$customerDetailsCustomerMobile = htmlentities($_POST['customerDetailsCustomerMobile']);
-		$customerDetailsCustomerPassword = htmlentities($_POST['customerDetailsCustomerPassword']);
-		$customerDetailsCustomerEmail = htmlentities($_POST['customerDetailsCustomerEmail']);
-		$customerDetailsCustomerMatric = htmlentities($_POST['customerDetailsCustomerMatricNumber']);
-		$customerDetailsCustomerAddress = htmlentities($_POST['customerDetailsCustomerAddress']);
-		$customerDetailsCustomerCity = htmlentities($_POST['customerDetailsCustomerCity']);
-		$customerDetailsCustomerDistrict = htmlentities($_POST['customerDetailsCustomerDistrict']);
-		$customerDetailsStatus = htmlentities($_POST['customerDetailsStatus']);
-		$customerDetailsCustomerIdentification = htmlentities($_POST['customerDetailsCustomerIdentification']);
+	if(isset($_POST['customerDetailsCustomerMatricNumber'])) {
+
+		$studentDetailsStudentFullName = htmlentities($_POST['customerDetailsCustomerFullName']);
+		$studentDetailsStudentMobile = htmlentities($_POST['customerDetailsCustomerMobile']);
+		$studentDetailsStudentPassword = htmlentities($_POST['customerDetailsCustomerPassword']);
+		$studentDetailsStudentEmail = htmlentities($_POST['customerDetailsCustomerEmail']);
+		$studentDetailsStudentMatric = htmlentities($_POST['customerDetailsCustomerMatricNumber']);
+		$studentDetailsStudentAddress = htmlentities($_POST['customerDetailsCustomerAddress']);
+		$studentDetailsStatus = htmlentities($_POST['customerDetailsStatus']);
+		$studentDetailsStudentID = htmlentities($_POST['customerDetailsCustomerIdentification']);
 		
 		// Check if mandatory fields are not empty
-		if(isset($customerDetailsCustomerFullName) && isset($customerDetailsCustomerMobile) && isset($customerDetailsCustomerAddress))
+		if(isset($studentDetailsStudentFullName) && isset($studentDetailsStudentMobile) && isset($studentDetailsStudentAddress))
 		{
 			// Validate mobile number
-			if(filter_var($customerDetailsCustomerMobile, FILTER_VALIDATE_INT) === 0 || filter_var($customerDetailsCustomerMobile, FILTER_VALIDATE_INT)) {
+			if(filter_var($studentDetailsStudentMobile, FILTER_VALIDATE_INT) === 0 || filter_var($studentDetailsStudentMobile, FILTER_VALIDATE_INT)) {
 				// Mobile number is valid
 			} else {
 				// Mobile number is not valid
@@ -31,14 +28,14 @@
 			
 			// Check if CustomerID field is empty. If so, display an error message
 			// We have to specifically tell this to user because the (*) mark is not added to that field
-			if(empty($customerDetailsCustomerID)){
-				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter the CustomerID to update that customer.</div>';
-				exit();
-			}
+//			if(empty($customerDetailsCustomerID)){
+//				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter the CustomerID to update that customer.</div>';
+//				exit();
+//			}
 			
 			// Validate matric number only if it's provided by user
-			if(!empty($customerDetailsCustomerMatric)){
-				if(filter_var($customerDetailsCustomerMatric, FILTER_VALIDATE_INT) === 0 || filter_var($customerDetailsCustomerMatric, FILTER_VALIDATE_INT)) {
+			if(!empty($studentDetailsStudentMatric)){
+				if(filter_var($studentDetailsStudentMatric, FILTER_VALIDATE_INT) === 0 || filter_var($studentDetailsStudentMatric, FILTER_VALIDATE_INT)) {
 					// Phone number 2 is valid
 				} else {
 					// Phone number 2 is not valid
@@ -48,37 +45,36 @@
 			}
 			
 			// Validate email only if it's provided by user
-			if(!empty($customerDetailsCustomerEmail)) {
-				if (filter_var($customerDetailsCustomerEmail, FILTER_VALIDATE_EMAIL) === false) {
+			if(!empty($studentDetailsStudentEmail)) {
+				if (filter_var($studentDetailsStudentEmail, FILTER_VALIDATE_EMAIL) === false) {
 					// Email is not valid
 					echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter a valid email</div>';
 					exit();
 				}
 			}
 
-			// Check if the given CustomerID is in the DB
-			$customerIDSelectSql = 'SELECT customerID FROM customer WHERE customerID = :customerDetailsCustomerID';
-			$customerIDSelectStatement = $conn->prepare($customerIDSelectSql);
-			$customerIDSelectStatement->execute(['customerDetailsCustomerID' => $customerDetailsCustomerID]);
+			$studentIDSelectSql = 'SELECT studentID FROM student WHERE matricNumber = :customerDetailsCustomerMatric';
+			$studentIDSelectStatement = $conn->prepare($studentIDSelectSql);
+			$studentIDSelectStatement->execute(['customerDetailsCustomerMatric' => $studentDetailsStudentMatric]);
 			
-			if($customerIDSelectStatement->rowCount() > 0) {
-				
+			if($studentIDSelectStatement->rowCount() > 0) {
+
 				// CustomerID is available in DB. Therefore, we can go ahead and UPDATE its details
 				// Construct the UPDATE query
-				$updateCustomerDetailsSql = 'UPDATE customer SET fullName = :fullName, email = :email, mobile = :mobile, password = :password, matricNumber = :matricNumber, address = :address, status = :status, identification = :identification WHERE customerID = :customerID';
+				$updateCustomerDetailsSql = 'UPDATE student SET fullName = :fullName, email = :email, mobile = :mobile, password = :password, address = :address, status = :status, identification = :identification WHERE matricNumber = :matricNumber';
 				$updateCustomerDetailsStatement = $conn->prepare($updateCustomerDetailsSql);
-				$updateCustomerDetailsStatement->execute(['fullName' => $customerDetailsCustomerFullName, 'email' => $customerDetailsCustomerEmail, 'mobile' => $customerDetailsCustomerMobile, 'password' => md5($customerDetailsCustomerPassword), 'matricNumber' => $customerDetailsCustomerMatric, 'address' => $customerDetailsCustomerAddress, 'status' => $customerDetailsStatus, 'identification' => $customerDetailsCustomerIdentification, 'customerID' => $customerDetailsCustomerID]);
+				$updateCustomerDetailsStatement->execute(['fullName' => $studentDetailsStudentFullName, 'email' => $studentDetailsStudentEmail, 'mobile' => $studentDetailsStudentMobile, 'password' => md5($studentDetailsStudentPassword), 'address' => $studentDetailsStudentAddress, 'status' => $studentDetailsStatus, 'identification' => $studentDetailsStudentID, 'matricNumber' => $studentDetailsStudentMatric]);
+
+//				// UPDATE customer name in sale table too
+//				$updateCustomerInSaleTableSql = 'UPDATE sale SET customerName = :customerName WHERE customerID = :customerID';
+//				$updateCustomerInSaleTableStatement = $conn->prepare($updateCustomerInSaleTableSql);
+//				$updateCustomerInSaleTableStatement->execute(['customerName' => $studentDetailsStudentFullName, 'customerID' => $customerDetailsCustomerID]);
 				
-				// UPDATE customer name in sale table too
-				$updateCustomerInSaleTableSql = 'UPDATE sale SET customerName = :customerName WHERE customerID = :customerID';
-				$updateCustomerInSaleTableStatement = $conn->prepare($updateCustomerInSaleTableSql);
-				$updateCustomerInSaleTableStatement->execute(['customerName' => $customerDetailsCustomerFullName, 'customerID' => $customerDetailsCustomerID]);
-				
-				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer details updated.</div>';
+				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Student details updated.</div>';
 				exit();
 			} else {
 				// CustomerID is not in DB. Therefore, stop the update and quit
-				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>CustomerID does not exist in DB. Therefore, update not possible.</div>';
+				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>StudentID does not exist in DB. Therefore, update not possible.</div>';
 				exit();
 			}
 			

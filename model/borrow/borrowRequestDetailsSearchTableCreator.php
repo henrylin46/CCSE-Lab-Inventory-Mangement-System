@@ -9,7 +9,7 @@
 	// confirm the request status
 	if ($_SESSION['loggedIn'] == 'student') {
 		$borrowRequestDetailsSql = 'SELECT borrowRequestID, itemID, itemName, location, borrowQuantity, borrowRequestDate FROM borrowRequest 
-                           			INNER JOIN customer ON borrowRequest.matricNumber = customer.matricNumber
+                           			INNER JOIN student ON borrowRequest.matricNumber = student.matricNumber
                            			INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
                            			WHERE borrowRequest.matricNumber = :matricNumber';
 		$borrowRequestDetailStatement = $conn->prepare($borrowRequestDetailsSql);

@@ -75,7 +75,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label for="borrowDetailsItemNumber">Item Number<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off">
+                                        <input type="text" class="form-control" id="borrowDetailsItemNumber" name="borrowDetailsItemNumber" autocomplete="off" readonly>
                                         <div id="borrowDetailsItemNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -132,12 +132,7 @@
                             <div id="customerDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerID">Customer ID</label>
-                                        <input readonly type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">
-                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>
-                                    </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-4">
                                         <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
                                         <input readonly type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
                                         <!--<div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->

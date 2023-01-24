@@ -8,7 +8,7 @@
 		$borrowDetailsBorrowRequestID = htmlentities($_POST['borrowDetailsBorrowRequestID']);
 //		SELECT * FROM borrowRequest INNER JOIN customer ON borrowRequest.matricNumber = customer.matricNumber;
 		$saleDetailsSql = 'SELECT borrowRequest.matricNumber, borrowRequest.itemNumber, fullName, borrowRequestID, itemName, borrowQuantity, borrowPurpose, imageURL, location FROM borrowRequest 
-                           INNER JOIN customer ON borrowRequest.matricNumber = customer.matricNumber
+                           INNER JOIN student ON borrowRequest.matricNumber = student.matricNumber
                            INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
                            WHERE borrowRequestID = :borrowRequestID';
 		$saleDetailsStatement = $conn->prepare($saleDetailsSql);

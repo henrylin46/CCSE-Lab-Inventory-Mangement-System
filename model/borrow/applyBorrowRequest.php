@@ -62,14 +62,13 @@ if(isset($_POST['borrowDetailsItemNumber'])){
                 // Has at least 1 or more in stock, hence proceed to next steps
                 // $newQuantity = $currentQuantityInItemsTable - $borrowDetailsQuantity;
 
-                // Check if the customer is in DB
-                $customerSql = 'SELECT * FROM customer WHERE matricNumber = :matricNumber';
-                $customerStatement = $conn->prepare($customerSql);
-                $customerStatement->execute(['matricNumber' => $borrowDetailsStudentMatricNumber]);
+                $studentSql = 'SELECT * FROM student WHERE matricNumber = :matricNumber';
+                $studentStatement = $conn->prepare($studentSql);
+                $studentStatement->execute(['matricNumber' => $borrowDetailsStudentMatricNumber]);
 
-                if($customerStatement->rowCount() > 0){
+                if($studentStatement->rowCount() > 0){
                     // Customer exits. That means both customer, item, and stocks are available. Hence start INSERT and UPDATE
-                    $customerRow = $customerStatement->fetch(PDO::FETCH_ASSOC);
+                    $studentRow = $studentStatement->fetch(PDO::FETCH_ASSOC);
 
                     // INSERT data to sale table
                     // INSERT INTO `borrowRequest`(`matricNumber`, `itemNumber`, `borrowQuantity`, `borrowPurpose`) VALUES (200000, '3', 5, 'test')

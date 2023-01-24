@@ -57,10 +57,10 @@
 			}
 			
 			// Start the insert process
-			$sql = 'INSERT INTO customer(fullName, email, mobile, password, matricNumber, address, status, identification) VALUES(:fullName, :email, :mobile, :password, :matricNumber, :address, :status, :identification)';
+			$sql = 'INSERT INTO student(fullName, email, mobile, password, matricNumber, address, status, identification) VALUES(:fullName, :email, :mobile, :password, :matricNumber, :address, :status, :identification)';
 			$stmt = $conn->prepare($sql);
 			$stmt->execute(['fullName' => $fullName, 'email' => $email, 'mobile' => $mobile, 'password' => md5($password), 'matricNumber' => $matricNumber, 'address' => $address, 'status' => $status, 'identification' => $identification]);
-			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer added to database</div>';
+			echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>New Student added to database</div>';
 		} 
 		else {
 			// One or more fields are empty

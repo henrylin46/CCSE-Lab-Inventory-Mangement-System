@@ -2,40 +2,40 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 	
-	if(isset($_POST['customerDetailsCustomerID'])){
+	if(isset($_POST['studentDetailsStudentMatricNumber'])){
 		
-		$customerDetailsCustomerID = htmlentities($_POST['customerDetailsCustomerID']);
+		$studentDetailsStudentMatricNumber = htmlentities($_POST['studentDetailsStudentMatricNumber']);
 		
 		// Check if mandatory fields are not empty
-		if(!empty($customerDetailsCustomerID)){
+		if(!empty($studentDetailsStudentMatricNumber)){
 			
 			// Sanitize customerID
-			$customerDetailsCustomerID = filter_var($customerDetailsCustomerID, FILTER_SANITIZE_STRING);
+            $studentDetailsStudentMatricNumber = filter_var($studentDetailsStudentMatricNumber, FILTER_SANITIZE_STRING);
 
 			// Check if the customer is in the database
-			$customerSql = 'SELECT customerID FROM customer WHERE customerID=:customerID';
-			$customerStatement = $conn->prepare($customerSql);
-			$customerStatement->execute(['customerID' => $customerDetailsCustomerID]);
+			$studentSql = 'SELECT studentID FROM student WHERE matricNumber=:matricNumber';
+			$studentStatement = $conn->prepare($studentSql);
+			$studentStatement->execute(['matricNumber' => $studentDetailsStudentMatricNumber]);
 			
-			if($customerStatement->rowCount() > 0){
+			if($studentStatement->rowCount() > 0){
 				
 				// Customer exists in DB. Hence start the DELETE process
-				$deleteCustomerSql = 'DELETE FROM customer WHERE customerID=:customerID';
-				$deleteCustomerStatement = $conn->prepare($deleteCustomerSql);
-				$deleteCustomerStatement->execute(['customerID' => $customerDetailsCustomerID]);
+				$deleteStudentSql = 'DELETE FROM student WHERE matricNumber=:matricNumber';
+				$deleteStudentStatement = $conn->prepare($deleteStudentSql);
+				$deleteStudentStatement->execute(['matricNumber' => $studentDetailsStudentMatricNumber]);
 
-				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer deleted.</div>';
+				echo '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Student deleted.</div>';
 				exit();
 				
 			} else {
 				// Customer does not exist, therefore, tell the user that he can't delete that customer 
-				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Customer does not exist in DB. Therefore, can\'t delete.</div>';
+				echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Student does not exist in DB. Therefore, can\'t delete.</div>';
 				exit();
 			}
 			
 		} else {
 			// CustomerID is empty. Therefore, display the error message
-			echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter the CustomerID</div>';
+			echo '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>Please enter the StudentID</div>';
 			exit();
 		}
 	}

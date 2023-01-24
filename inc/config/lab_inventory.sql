@@ -24,11 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table `student`
 --
 
-CREATE TABLE `customer` (
-  `customerID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student` (
+  `studentID` int(11) NOT NULL AUTO_INCREMENT,
   `fullName` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `mobile` int(11) NOT NULL,
@@ -38,14 +38,14 @@ CREATE TABLE `customer` (
   `status` varchar(255) NOT NULL DEFAULT 'Active',
   `identification` varchar(100) NOT NULL,
   `createdOn` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`customerID`)
+  PRIMARY KEY (`studentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `customer`
+-- Dumping data for table `student`
 --
 
-INSERT INTO `customer` (`customerID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
+INSERT INTO `student` (`studentID`, `fullName`, `email`, `mobile`, `password`, `matricNumber`, `address`, `status`, `identification`, `createdOn`) VALUES
 (NULL, 'Student1', 'student1@student.upm.edu.my', 123456789, '81dc9bdb52d04dc20036dbd8313ed055', '200000', 'UPM', 'Active', 'AB1234567', '2022-12-21 10:48:07'),
 (NULL, 'Student2', 'student2@student.upm.edu.my', 987654321, '81dc9bdb52d04dc20036dbd8313ed055', '300000', 'UPM', 'Active', 'CD1234567', '2022-1-4 10:48:07');
 
@@ -76,33 +76,6 @@ INSERT INTO `item` (`itemID`, `itemNumber`, `itemName`, `location`, `stock`, `im
 (NULL, '1', 'Bread Board', 'LAB1', 26, '1671452143_111671452058_.pic.jpg', 'Active', 'ABC-abc-1234', 'Description1'),
 (NULL, '2', 'Buzzer', 'LAB2', 58, '1671452232_121671452058_.pic.jpg', 'Active', '', 'Description2'),
 (NULL, '3', '330mOhm Resistor', 'LAB2', 100, '1671452353_131671452060_.pic.jpg', 'Active', '', 'Description3');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sale`
---
-
-CREATE TABLE `sale` (
-    `saleID` int(11) NOT NULL NOT NULL AUTO_INCREMENT,
-    `itemNumber` varchar(255) NOT NULL,
-    `customerID` int(11) NOT NULL,
-    `customerName` varchar(255) NOT NULL,
-    `itemName` varchar(255) NOT NULL,
-    `saleDate` date NOT NULL,
-    `quantity` int(11) NOT NULL DEFAULT 0,
-    `purpose` text NOT NULL,
-    `requestStatus` varchar(255) NOT NULL DEFAULT 'Requested',
-    PRIMARY KEY (`saleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sale`
---
-
-INSERT INTO `sale` (`saleID`, `itemNumber`, `customerID`, `customerName`, `itemName`, `saleDate`, `quantity`, `purpose`, `requestStatus`) VALUES
-(NULL, '2', 200000, 'Student1', 'Buzzer', '2023-1-4', 1, 'fyp', 'Requested'),
-(NULL, '2', 300000, 'Student2', 'Buzzer', '2023-1-4', 1, 'fyp', 'Requested');
 
 -- --------------------------------------------------------
 

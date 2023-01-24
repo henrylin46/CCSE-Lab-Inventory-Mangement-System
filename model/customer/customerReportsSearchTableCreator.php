@@ -2,9 +2,9 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 	
-	$customerDetailsSearchSql = 'SELECT * FROM customer';
-	$customerDetailsSearchStatement = $conn->prepare($customerDetailsSearchSql);
-	$customerDetailsSearchStatement->execute();
+	$studentDetailsSearchSql = 'SELECT * FROM student';
+	$studentDetailsSearchStatement = $conn->prepare($studentDetailsSearchSql);
+	$studentDetailsSearchStatement->execute();
 
 	$output = '<table id="customerReportsTable" class="table table-sm table-striped table-bordered table-hover" style="width:100%">
 				<thead>
@@ -22,7 +22,7 @@
 				<tbody>';
 	
 	// Create table rows from the selected data
-	while($row = $customerDetailsSearchStatement->fetch(PDO::FETCH_ASSOC)){
+	while($row = $studentDetailsSearchStatement->fetch(PDO::FETCH_ASSOC)){
 		$output .= '<tr>' .
 						'<td>' . $row['matricNumber'] . '</td>' .
 						'<td>' . $row['fullName'] . '</td>' .
@@ -35,7 +35,7 @@
 					'</tr>';
 	}
 	
-	$customerDetailsSearchStatement->closeCursor();
+	$studentDetailsSearchStatement->closeCursor();
 	
 	$output .= '</tbody>
 					<tfoot>

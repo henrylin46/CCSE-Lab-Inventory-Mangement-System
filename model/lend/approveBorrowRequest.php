@@ -38,8 +38,8 @@ if(isset($_POST['borrowRequestID'])){
                 // Has at least 1 or more in stock, hence proceed to next steps
                 $newQuantity = $currentQuantityInItemsTable - $borrowQuantity;
 
-                // Check if the customer is in DB
-                $studentSql = 'SELECT * FROM customer WHERE matricNumber = :matricNumber';
+                // Check if the student is in DB
+                $studentSql = 'SELECT * FROM student WHERE matricNumber = :matricNumber';
                 $studentStatement = $conn->prepare($studentSql);
                 $studentStatement->execute(['matricNumber' => $studentMatricNumber]);
 
