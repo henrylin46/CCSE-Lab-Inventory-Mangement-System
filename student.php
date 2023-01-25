@@ -12,7 +12,7 @@
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="true">Search</a>
                 <a hidden class="nav-link" id="v-pills-borrow-tab" data-toggle="pill" href="#v-pills-borrow" role="tab" aria-controls="v-pills-borrow" aria-selected="false">Sale</a>
-                <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Customer</a>
+                <a class="nav-link" id="v-pills-student-tab" data-toggle="pill" href="#v-pills-student" role="tab" aria-controls="v-pills-student" aria-selected="false">Student</a>
             </div>
         </div>
         <div class="col-lg-10">
@@ -110,56 +110,56 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
-                    <!--left panel "Customer"-->
+                <div class="tab-pane fade" id="v-pills-student" role="tabpanel" aria-labelledby="v-pills-student-tab">
+                    <!--left panel "Student"-->
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">Customer Details</div>
+                        <div class="card-header">Student Details</div>
                         <div class="card-body">
                             <!-- Div to show the ajax message from validations/db submission -->
-                            <div id="customerDetailsMessage"></div>
+                            <div id="studentDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input readonly type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
-                                        <!--<div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
+                                        <label for="studentDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input readonly type="text" class="form-control" id="studentDetailsStudentMatricNumber" name="studentDetailsStudentMatricNumber">
+                                        <!--<div id="studentDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>-->
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>
-                                        <input type="password" class="form-control invTooltip" id="customerDetailsCustomerPassword" name="customerDetailsCustomerPassword" title="Do not enter leading 0">
+                                        <label for="studentDetailsStudentPassword">Password<span class="requiredIcon">*</span></label>
+                                        <input type="password" class="form-control invTooltip" id="studentDetailsStudentPassword" name="studentDetailsStudentPassword" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsStatus">Status</label>
-                                        <select id="customerDetailsStatus" name="customerDetailsStatus" class="form-control chosenSelect">
+                                        <label for="studentDetailsStatus">Status</label>
+                                        <select id="studentDetailsStatus" name="studentDetailsStatus" class="form-control chosenSelect">
                                             <option value="Active">Active</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="customerDetailsCustomerFullName">Full Name<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerFullName" name="customerDetailsCustomerFullName">
+                                        <label for="studentDetailsStudentFullName">Full Name<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentFullName" name="studentDetailsStudentFullName">
                                     </div>
                                     <div class="form-group col-md-8">
-                                        <label for="customerDetailsCustomerEmail">Email<span class="requiredIcon">*</span></label>
-                                        <input type="email" class="form-control" id="customerDetailsCustomerEmail" name="customerDetailsCustomerEmail">
+                                        <label for="studentDetailsStudentEmail">Email<span class="requiredIcon">*</span></label>
+                                        <input type="email" class="form-control" id="studentDetailsStudentEmail" name="studentDetailsStudentEmail">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerMobile">Phone<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerMobile" name="customerDetailsCustomerMobile" title="Do not enter leading 0">
+                                        <label for="studentDetailsStudentMobile">Phone<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control invTooltip" id="studentDetailsStudentMobile" name="studentDetailsStudentMobile" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerIdentification">ID<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerIdentification" name="customerDetailsCustomerIdentification">
+                                        <label for="studentDetailsStudentIdentification">ID<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentIdentification" name="studentDetailsStudentIdentification">
                                     </div>
                                     <div class="form-group col-md-8">
-                                        <label for="customerDetailsCustomerAddress">Address<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
+                                        <label for="studentDetailsStudentAddress">Address<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentAddress" name="studentDetailsStudentAddress">
                                     </div>
                                 </div>
-                                <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
+                                <button type="button" id="updateStudentDetailsButton" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>

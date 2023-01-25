@@ -7,7 +7,7 @@ if(isset($_POST['textBoxValue'])){
     $output = '';
     $studentMatricNumberString = '%' . htmlentities($_POST['textBoxValue']) . '%';
 
-    // Construct the SQL query to get the customer ID
+    // Construct the SQL query to get the student ID
     $sql = 'SELECT matricNumber FROM student WHERE matricNumber LIKE ?';
     $stmt = $conn->prepare($sql);
     $stmt->execute([$studentMatricNumberString]);
@@ -15,8 +15,8 @@ if(isset($_POST['textBoxValue'])){
     // If we receive any results from the above query, then display them in a list
     if($stmt->rowCount() > 0){
 
-        // Given customer ID is available in DB. Hence create the dropdown list
-        $output = '<ul class="list-unstyled suggestionsList" id="saleDetailsMatricNumberSuggestionsList">';
+        // Given student ID is available in DB. Hence create the dropdown list
+        $output = '<ul class="list-unstyled suggestionsList" id="studentDetailsStudentMatricNumberSuggestionsList">';
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $output .= '<li>' . $row['matricNumber'] . '</li>';
         }

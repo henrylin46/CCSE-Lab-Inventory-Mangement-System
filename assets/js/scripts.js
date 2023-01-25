@@ -1,8 +1,8 @@
 // File that creates the purchase details search table
 purchaseDetailsSearchTableCreatorFile = 'model/purchase/purchaseDetailsSearchTableCreator.php';
 
-// File that creates the customer details search table
-// customerDetailsSearchTableCreatorFile = 'model/customer/customerDetailsSearchTableCreator.php';
+// File that creates the student details search table
+// studentDetailsSearchTableCreatorFile = 'model/student/studentDetailsSearchTableCreator.php';
 
 // File that creates the item details search table
 itemDetailsSearchTableCreatorFile = 'model/item/itemDetailsSearchTableCreator.php';
@@ -20,8 +20,8 @@ approvalHistoryDetailsSearchTableCreatorFile = 'model/lend/lendApprovalDetailsSe
 // File that creates the purchase reports search table
 purchaseReportsSearchTableCreatorFile = 'model/purchase/purchaseReportsSearchTableCreator.php';
 
-// File that creates the customer reports search table
-customerReportsSearchTableCreatorFile = 'model/customer/customerReportsSearchTableCreator.php';
+// File that creates the student reports search table
+studentReportsSearchTableCreatorFile = 'model/student/studentReportsSearchTableCreator.php';
 
 // File that creates the item reports search table
 itemReportsSearchTableCreatorFile = 'model/item/itemReportsSearchTableCreator.php';
@@ -37,8 +37,8 @@ saleReportsSearchTableCreatorFile = 'model/sale/saleReportsSearchTableCreator.ph
 // File that returns the last inserted vendorID
 vendorLastInsertedIDFile = 'model/vendor/populateLastVendorID.php';
 
-// File that returns the last inserted customerID
-customerLastInsertedIDFile = 'model/customer/populateLastCustomerID.php';
+// File that returns the last inserted studentID
+studentLastInsertedIDFile = 'model/student/populateLastStudentID.php';
 
 // File that returns the last inserted purchaseID
 purchaseLastInsertedIDFile = 'model/purchase/populateLastPurchaseIDForPurchaseTab.php';
@@ -60,11 +60,11 @@ showBorrowRequestIDSuggestionsFile = 'model/borrow/showBorrowRequestIDs.php';
 // File that returns vendorIDs
 showVendorIDSuggestionsFile = 'model/vendor/showVendorIDs.php';
 
-// File that returns customerIDs
-// showCustomerIDSuggestionsFile = 'model/customer/showCustomerIDs.php';
+// File that returns studentIDs
+// showStudentIDSuggestionsFile = 'model/student/showStudentIDs.php';
 
-// File that returns customerIDs for sale tab
-// showCustomerIDSuggestionsForSaleTabFile = 'model/customer/showCustomerIDsForSaleTab.php';
+// File that returns studentIDs for sale tab
+// showStudentIDSuggestionsForSaleTabFile = 'model/student/showStudentIDsForSaleTab.php';
 
 
 
@@ -115,9 +115,9 @@ $(document).ready(function(){
 	// Initiate tooltips
 	$('.invTooltip').tooltip(); 
 	
-	// Listen to customer add button
-	$('#addCustomer').on('click', function(){
-		addCustomer();
+	// Listen to student add button
+	$('#addStudent').on('click', function(){
+		addStudent();
 	});
 	
 	// Listen to vendor add button
@@ -145,9 +145,9 @@ $(document).ready(function(){
 		updateItem();
 	});
 	
-	// Listen to update button in customer details tab
-	$('#updateCustomerDetailsButton').on('click', function(){
-		updateCustomer();
+	// Listen to update button in student details tab
+	$('#updateStudentDetailsButton').on('click', function(){
+		updateStudent();
 	});
 	
 	// Listen to update button in vendor details tab
@@ -175,12 +175,12 @@ $(document).ready(function(){
 		});
 	});
 	
-	// Listen to delete button in customer details tab
-	$('#deleteCustomerButton').on('click', function(){
+	// Listen to delete button in student details tab
+	$('#deleteStudentButton').on('click', function(){
 		// Confirm before deleting
 		bootbox.confirm('Are you sure you want to delete?', function(result){
 			if(result){
-				deleteCustomer();
+				deleteStudent();
 			}
 		});
 	});
@@ -287,31 +287,17 @@ $(document).ready(function(){
 		getItemStockToPopulate('purchaseDetailsItemNumber', getItemStockFile, 'purchaseDetailsCurrentStock');
 	});
 	
-	// Listen to CustomerID text box in customer details tab
-	// $('#customerDetailsCustomerID').keyup(function(){
-	// 	showSuggestions('customerDetailsCustomerID', showCustomerIDSuggestionsFile, 'customerDetailsCustomerIDSuggestionsDiv');
+	// Listen to StudentID text box in student details tab
+	// $('#studentDetailsStudentID').keyup(function(){
+	// 	showSuggestions('studentDetailsStudentID', showStudentIDSuggestionsFile, 'studentDetailsStudentIDSuggestionsDiv');
 	// });
 	
-	// Remove the CustomerID suggestions dropdown in the customer details tab
+	// Remove the StudentID suggestions dropdown in the student details tab
 	// when user selects an item from it
-	$(document).on('click', '#customerDetailsCustomerIDSuggestionsList li', function(){
-		$('#customerDetailsCustomerID').val($(this).text());
-		$('#customerDetailsCustomerIDSuggestionsList').fadeOut();
-		getCustomerDetailsToPopulate();
-	});
-	
-
-	// Listen to CustomerID text box in sale details tab
-	// $('#borrowDetailsStudentMatricNumber').keyup(function(){
-	// 	showSuggestions('borrowDetailsStudentMatricNumber', showCustomerIDSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
-	// });
-	
-	// Remove the CustomerID suggestions dropdown in the sale details tab
-	// when user selects an item from it
-	$(document).on('click', '#borrowDetailsStudentMatricNumberSuggestionsList li', function(){
-		$('#borrowDetailsStudentMatricNumber').val($(this).text());
-		$('#borrowDetailsStudentMatricNumberSuggestionsDivSuggestionsDiv').fadeOut();
-		getCustomerDetailsToPopulateSaleTab();
+	$(document).on('click', '#studentDetailsStudentIDSuggestionsList li', function(){
+		$('#studentDetailsStudentID').val($(this).text());
+		$('#studentDetailsStudentIDSuggestionsList').fadeOut();
+		getStudentDetailsToPopulate();
 	});
 	
 	
@@ -334,7 +320,7 @@ $(document).ready(function(){
 		showSuggestions('purchaseDetailsPurchaseID', showPurchaseIDSuggestionsFile, 'purchaseDetailsPurchaseIDSuggestionsDiv');
 	});
 	
-	// Remove the PurchaseID suggestions dropdown in the customer details tab
+	// Remove the PurchaseID suggestions dropdown in the student details tab
 	// when user selects an item from it
 	$(document).on('click', '#purchaseDetailsPurchaseIDSuggestionsList li', function(){
 		$('#purchaseDetailsPurchaseID').val($(this).text());
@@ -390,18 +376,18 @@ $(document).ready(function(){
 		$('.suggestionsList').fadeOut();
 	});
 
-	// Load searchable datatables for customer, purchase, item, vendor, sale
+	// Load searchable datatables for student, purchase, item, vendor, sale
 	searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 	searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
-	// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+	// searchTableCreator('studentDetailsTableDiv', studentDetailsSearchTableCreatorFile, 'studentDetailsTable');
 	searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 	searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 	searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 	
-	// Load searchable datatables for customer, purchase, item, vendor, sale reports
+	// Load searchable datatables for student, purchase, item, vendor, sale reports
 	reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 	reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
-	reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
+	reportsTableCreator('studentReportsTableDiv', studentReportsSearchTableCreatorFile, 'studentReportsTable');
 	reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 	reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
 	
@@ -422,14 +408,14 @@ $(document).ready(function(){
 	$('#searchTablesRefresh, #reportsTablesRefresh').on('click', function(){
 		searchTableCreator('itemDetailsTableDiv', itemDetailsSearchTableCreatorFile, 'itemDetailsTable');
 		searchTableCreator('purchaseDetailsTableDiv', purchaseDetailsSearchTableCreatorFile, 'purchaseDetailsTable');
-		// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
+		// searchTableCreator('studentDetailsTableDiv', studentDetailsSearchTableCreatorFile, 'studentDetailsTable');
 		searchTableCreator('vendorDetailsTableDiv', vendorDetailsSearchTableCreatorFile, 'vendorDetailsTable');
 		searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 		searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 		
 		reportsTableCreator('itemReportsTableDiv', itemReportsSearchTableCreatorFile, 'itemReportsTable');
 		reportsPurchaseTableCreator('purchaseReportsTableDiv', purchaseReportsSearchTableCreatorFile, 'purchaseReportsTable');
-		reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
+		reportsTableCreator('studentReportsTableDiv', studentReportsSearchTableCreatorFile, 'studentReportsTable');
 		reportsTableCreator('vendorReportsTableDiv', vendorReportsSearchTableCreatorFile, 'vendorReportsTable');
 		reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');
 	});
@@ -483,7 +469,7 @@ function processImage(imageFormID, scriptPath, messageDivID){
 	});
 }
 
-// Function to create searchable datatables for customer, item, purchase, sale
+// Function to create searchable datatables for student, item, purchase, sale
 function searchTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 	var tableContainerDivID = '#' + tableContainerDiv;
 	var tableID = '#' + table;
@@ -494,7 +480,7 @@ function searchTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 }
 
 
-// Function to create reports datatables for customer, item, purchase, sale
+// Function to create reports datatables for student, item, purchase, sale
 function reportsTableCreator(tableContainerDiv, tableCreatorFileUrl, table){
 	var tableContainerDivID = '#' + tableContainerDiv;
 	var tableID = '#' + table;
@@ -894,38 +880,38 @@ function calculateTotalInSaleTab(){
 }
 
 
-// Function to call the insertCustomer.php script to insert customer data to db
-function addCustomer() {
-	var customerDetailsCustomerFullName = $('#customerDetailsCustomerFullName').val();
-	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
-	var customerDetailsCustomerMobile = $('#customerDetailsCustomerMobile').val();
-	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
-	var customerDetailsCustomerMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
-	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
-	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
-	var customerDetailsCustomerIdentification = $('#customerDetailsCustomerIdentification').val();
+// Function to call the insertStudent.php script to insert student data to db
+function addStudent() {
+	var studentDetailsStudentFullName = $('#studentDetailsStudentFullName').val();
+	var studentDetailsStudentEmail = $('#studentDetailsStudentEmail').val();
+	var studentDetailsStudentMobile = $('#studentDetailsStudentMobile').val();
+	var studentDetailsStudentPassword = $('#studentDetailsStudentPassword').val();
+	var studentDetailsStudentMatricNumber = $('#studentDetailsStudentMatricNumber').val();
+	var studentDetailsStudentAddress = $('#studentDetailsStudentAddress').val();
+	var studentDetailsStatus = $('#studentDetailsStatus option:selected').text();
+	var studentDetailsStudentIdentification = $('#studentDetailsStudentIdentification').val();
 	
 	$.ajax({
-		url: 'model/customer/insertCustomer.php',
+		url: 'model/student/insertStudent.php',
 		method: 'POST',
 		data: {
-			customerDetailsCustomerFullName:customerDetailsCustomerFullName,
-			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
-			customerDetailsCustomerMobile:customerDetailsCustomerMobile,
-			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
-			customerDetailsCustomerMatricNumber:customerDetailsCustomerMatricNumber,
-			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
-			customerDetailsStatus:customerDetailsStatus,
-			customerDetailsCustomerIdentification:customerDetailsCustomerIdentification,
+			studentDetailsStudentFullName:studentDetailsStudentFullName,
+			studentDetailsStudentEmail:studentDetailsStudentEmail,
+			studentDetailsStudentMobile:studentDetailsStudentMobile,
+			studentDetailsStudentPassword:studentDetailsStudentPassword,
+			studentDetailsStudentMatricNumber:studentDetailsStudentMatricNumber,
+			studentDetailsStudentAddress:studentDetailsStudentAddress,
+			studentDetailsStatus:studentDetailsStatus,
+			studentDetailsStudentIdentification:studentDetailsStudentIdentification,
 		},
 		success: function(data){
-			$('#customerDetailsMessage').fadeIn();
-			$('#customerDetailsMessage').html(data);
+			$('#studentDetailsMessage').fadeIn();
+			$('#studentDetailsMessage').html(data);
 		},
 		complete: function(data){
-			populateLastInsertedID(customerLastInsertedIDFile, 'customerDetailsCustomerID');
-			// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
-			reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
+			populateLastInsertedID(studentLastInsertedIDFile, 'studentDetailsStudentID');
+			// searchTableCreator('studentDetailsTableDiv', studentDetailsSearchTableCreatorFile, 'studentDetailsTable');
+			reportsTableCreator('studentReportsTableDiv', studentReportsSearchTableCreatorFile, 'studentReportsTable');
 		}
 	});
 }
@@ -1264,24 +1250,24 @@ function deleteItem(){
 
 
 // Function to delete item from db
-function deleteCustomer(){
-	// Get the customerID entered by the user
-	var studentDetailsStudentMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
+function deleteStudent(){
+	// Get the studentID entered by the user
+	var studentDetailsStudentMatricNumber = $('#studentDetailsStudentMatricNumber').val();
 	
-	// Call the deleteCustomer.php script only if there is a value in the
+	// Call the deleteStudent.php script only if there is a value in the
 	// item number textbox
 	if(studentDetailsStudentMatricNumber != ''){
 		$.ajax({
-			url: 'model/customer/deleteCustomer.php',
+			url: 'model/student/deleteStudent.php',
 			method: 'POST',
 			data: {studentDetailsStudentMatricNumber:studentDetailsStudentMatricNumber},
 			success: function(data){
-				$('#customerDetailsMessage').fadeIn();
-				$('#customerDetailsMessage').html(data);
+				$('#studentDetailsMessage').fadeIn();
+				$('#studentDetailsMessage').html(data);
 			},
 			complete: function(){
-				// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
-				reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
+				// searchTableCreator('studentDetailsTableDiv', studentDetailsSearchTableCreatorFile, 'studentDetailsTable');
+				reportsTableCreator('studentReportsTableDiv', studentReportsSearchTableCreatorFile, 'studentReportsTable');
 			}
 		});
 	}
@@ -1313,54 +1299,32 @@ function deleteVendor(){
 }
 
 
-// Function to send customerID so that customer details can be pulled from db
-// to be displayed on customer details tab
-function getCustomerDetailsToPopulate(){
-	// Get the customerID entered in the text box
-	var customerDetailsCustomerID = $('#customerDetailsCustomerID').val();
+// Function to send studentID so that student details can be pulled from db
+// to be displayed on student details tab
+function getStudentDetailsToPopulate(){
+	// Get the studentID entered in the text box
+	var studentDetailsStudentID = $('#studentDetailsStudentID').val();
 	
 	// Call the populateItemDetails.php script to get item details
 	// relevant to the itemNumber which the user entered
 	$.ajax({
-		url: 'model/customer/populateCustomerDetails.php',
+		url: 'model/student/populateStudentDetails.php',
 		method: 'POST',
-		data: {customerID:customerDetailsCustomerID},
+		data: {studentID:studentDetailsStudentID},
 		dataType: 'json',
 		success: function(data){
-			//$('#customerDetailsCustomerID').val(data.customerID);
-			$('#customerDetailsCustomerFullName').val(data.fullName);
-			$('#customerDetailsCustomerMobile').val(data.mobile);
-			$('#customerDetailsCustomerPassword').val(data.password);
-			$('#customerDetailsCustomerEmail').val(data.email);
-			$('#customerDetailsCustomerMatricNumber').val(data.matricNumber);
-			$('#customerDetailsCustomerAddress').val(data.address);
-			$('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
-			$('#customerDetailsCustomerIdentification').val(data.identification);
+			//$('#studentDetailsStudentID').val(data.studentID);
+			$('#studentDetailsStudentFullName').val(data.fullName);
+			$('#studentDetailsStudentMobile').val(data.mobile);
+			$('#studentDetailsStudentPassword').val(data.password);
+			$('#studentDetailsStudentEmail').val(data.email);
+			$('#studentDetailsStudentMatricNumber').val(data.matricNumber);
+			$('#studentDetailsStudentAddress').val(data.address);
+			$('#studentDetailsStatus').val(data.status).trigger("chosen:updated");
+			$('#studentDetailsStudentIdentification').val(data.identification);
 		}
 	});
 }
-
-
-// Function to send customerID so that customer details can be pulled from db
-// to be displayed on sale details tab
-function getCustomerDetailsToPopulateSaleTab(){
-	// Get the customerID entered in the text box
-	var customerDetailsCustomerID = $('#saleDetailsCustomerID').val();
-	
-	// Call the populateCustomerDetails.php script to get customer details
-	// relevant to the customerID which the user entered
-	$.ajax({
-		url: 'model/customer/populateCustomerDetails.php',
-		method: 'POST',
-		data: {customerID:customerDetailsCustomerID},
-		dataType: 'json',
-		success: function(data){
-			//$('#saleDetailsCustomerID').val(data.customerID);
-			$('#borrowDetailsStudentName').val(data.fullName);
-		}
-	});
-}
-
 
 // Function to send vendorID so that vendor details can be pulled from db
 // to be displayed on vendor details tab
@@ -1405,7 +1369,7 @@ function getPurchaseDetailsToPopulate(){
 		data: {purchaseDetailsPurchaseID:purchaseDetailsPurchaseID},
 		dataType: 'json',
 		success: function(data){
-			//$('#purchaseDetailsPurchaseID').val(data.customerID);
+			//$('#purchaseDetailsPurchaseID').val(data.studentID);
 			$('#purchaseDetailsItemNumber').val(data.itemNumber);
 			$('#purchaseDetailsPurchaseDate').val(data.purchaseDate);
 			$('#purchaseDetailsItemName').val(data.itemName);
@@ -1506,38 +1470,38 @@ function updateItem() {
 }
 
 
-// Function to call the upateCustomerDetails.php script to UPDATE customer data in db
-function updateCustomer() {
-	var customerDetailsCustomerFullName = $('#customerDetailsCustomerFullName').val();
-	var customerDetailsCustomerMobile = $('#customerDetailsCustomerMobile').val();
-	var customerDetailsCustomerPassword = $('#customerDetailsCustomerPassword').val();
-	var customerDetailsCustomerMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
-	var customerDetailsCustomerEmail = $('#customerDetailsCustomerEmail').val();
-	var customerDetailsCustomerAddress = $('#customerDetailsCustomerAddress').val();
-	var customerDetailsStatus = $('#customerDetailsStatus option:selected').text();
-	var customerDetailsCustomerIdentification = $('#customerDetailsCustomerIdentification').val();
+// Function to call the upateStudentDetails.php script to UPDATE student data in db
+function updateStudent() {
+	var studentDetailsStudentFullName = $('#studentDetailsStudentFullName').val();
+	var studentDetailsStudentMobile = $('#studentDetailsStudentMobile').val();
+	var studentDetailsStudentPassword = $('#studentDetailsStudentPassword').val();
+	var studentDetailsStudentMatricNumber = $('#studentDetailsStudentMatricNumber').val();
+	var studentDetailsStudentEmail = $('#studentDetailsStudentEmail').val();
+	var studentDetailsStudentAddress = $('#studentDetailsStudentAddress').val();
+	var studentDetailsStatus = $('#studentDetailsStatus option:selected').text();
+	var studentDetailsStudentIdentification = $('#studentDetailsStudentIdentification').val();
 	
 	$.ajax({
-		url: 'model/customer/updateCustomerDetails.php',
+		url: 'model/student/updateStudentDetails.php',
 		method: 'POST',
 		data: {
 
-			customerDetailsCustomerFullName:customerDetailsCustomerFullName,
-			customerDetailsCustomerMobile:customerDetailsCustomerMobile,
-			customerDetailsCustomerPassword:customerDetailsCustomerPassword,
-			customerDetailsCustomerMatricNumber:customerDetailsCustomerMatricNumber,
-			customerDetailsCustomerEmail:customerDetailsCustomerEmail,
-			customerDetailsCustomerAddress:customerDetailsCustomerAddress,
-			customerDetailsStatus:customerDetailsStatus,
-			customerDetailsCustomerIdentification:customerDetailsCustomerIdentification,
+			studentDetailsStudentFullName:studentDetailsStudentFullName,
+			studentDetailsStudentMobile:studentDetailsStudentMobile,
+			studentDetailsStudentPassword:studentDetailsStudentPassword,
+			studentDetailsStudentMatricNumber:studentDetailsStudentMatricNumber,
+			studentDetailsStudentEmail:studentDetailsStudentEmail,
+			studentDetailsStudentAddress:studentDetailsStudentAddress,
+			studentDetailsStatus:studentDetailsStatus,
+			studentDetailsStudentIdentification:studentDetailsStudentIdentification,
 		},
 		success: function(data){
-			$('#customerDetailsMessage').fadeIn();
-			$('#customerDetailsMessage').html(data);
+			$('#studentDetailsMessage').fadeIn();
+			$('#studentDetailsMessage').html(data);
 		},
 		complete: function(){
-			// searchTableCreator('customerDetailsTableDiv', customerDetailsSearchTableCreatorFile, 'customerDetailsTable');
-			reportsTableCreator('customerReportsTableDiv', customerReportsSearchTableCreatorFile, 'customerReportsTable');
+			// searchTableCreator('studentDetailsTableDiv', studentDetailsSearchTableCreatorFile, 'studentDetailsTable');
+			reportsTableCreator('studentReportsTableDiv', studentReportsSearchTableCreatorFile, 'studentReportsTable');
 			searchTableCreator('borrowRequestDetailsTableDiv', borrowRequestDetailsSearchTableCreatorFile, 'saleDetailsTable');
 			searchTableCreator('approvalHistoryDetailsTableDiv', approvalHistoryDetailsSearchTableCreatorFile, 'approvalHistoryDetailsTable');
 			reportsSaleTableCreator('saleReportsTableDiv', saleReportsSearchTableCreatorFile, 'saleReportsTable');

@@ -12,7 +12,7 @@ require 'inc/navigation.php';
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">Add Item</a>
                 <a class="nav-link" id="v-pills-borrow-tab" data-toggle="pill" href="#v-pills-borrow" role="tab" aria-controls="v-pills-borrow" aria-selected="false">New Borrow</a>
-                <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Student</a>
+                <a class="nav-link" id="v-pills-student-tab" data-toggle="pill" href="#v-pills-student" role="tab" aria-controls="v-pills-student" aria-selected="false">Student</a>
                 <a class="nav-link" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="false">Manage Request</a>
                 <a class="nav-link" id="v-pills-reports-tab" data-toggle="pill" href="#v-pills-reports" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reports</a>
             </div>
@@ -216,63 +216,63 @@ require 'inc/navigation.php';
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="v-pills-customer" role="tabpanel" aria-labelledby="v-pills-customer-tab">
-                    <!--left panel "Customer"-->
+                <div class="tab-pane fade" id="v-pills-student" role="tabpanel" aria-labelledby="v-pills-student-tab">
+                    <!--left panel "Student"-->
                     <div class="card card-outline-secondary my-4">
                         <div class="card-header">Student Details</div>
                         <div class="card-body">
                             <!-- Div to show the ajax message from validations/db submission -->
-                            <div id="customerDetailsMessage"></div>
+                            <div id="studentDetailsMessage"></div>
                             <form>
                                 <div class="form-row">
 <!--                                    <div class="form-group col-md-2">-->
-<!--                                        <label for="customerDetailsCustomerID">Customer ID</label>-->
-<!--                                        <input readonly type="text" class="form-control invTooltip" id="customerDetailsCustomerID" name="customerDetailsCustomerID" title="This will be auto-generated when you add a new customer" autocomplete="off">-->
-<!--                                        <div id="customerDetailsCustomerIDSuggestionsDiv" class="customListDivWidth"></div>-->
+<!--                                        <label for="studentDetailsStudentID">Student ID</label>-->
+<!--                                        <input readonly type="text" class="form-control invTooltip" id="studentDetailsStudentID" name="studentDetailsStudentID" title="This will be auto-generated when you add a new student" autocomplete="off">-->
+<!--                                        <div id="studentDetailsStudentIDSuggestionsDiv" class="customListDivWidth"></div>-->
 <!--                                    </div>-->
                                     <div class="form-group col-md-4">
-                                        <label for="customerDetailsCustomerMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerMatricNumber" name="customerDetailsCustomerMatricNumber">
-                                        <div id="customerDetailsCustomerMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
+                                        <label for="studentDetailsStudentMatricNumber">Matric No.<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentMatricNumber" name="studentDetailsStudentMatricNumber">
+                                        <div id="studentDetailsStudentMatricNumberSuggestionsDiv" class="customListDivWidth"></div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="customerDetailsCustomerPassword">Password<span class="requiredIcon">*</span></label>
-                                        <input type="password" class="form-control invTooltip" id="customerDetailsCustomerPassword" name="customerDetailsCustomerPassword" title="Do not enter leading 0">
+                                        <label for="studentDetailsStudentPassword">Password<span class="requiredIcon">*</span></label>
+                                        <input type="password" class="form-control invTooltip" id="studentDetailsStudentPassword" name="studentDetailsStudentPassword" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsStatus">Status</label>
-                                        <select id="customerDetailsStatus" name="customerDetailsStatus" class="form-control chosenSelect">
+                                        <label for="studentDetailsStatus">Status</label>
+                                        <select id="studentDetailsStatus" name="studentDetailsStatus" class="form-control chosenSelect">
                                             <?php include('inc/statusList.html'); ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="customerDetailsCustomerFullName">Full Name<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerFullName" name="customerDetailsCustomerFullName">
+                                        <label for="studentDetailsStudentFullName">Full Name<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentFullName" name="studentDetailsStudentFullName">
                                     </div>
                                     <div class="form-group col-md-8">
-                                        <label for="customerDetailsCustomerEmail">Email<span class="requiredIcon">*</span></label>
-                                        <input type="email" class="form-control" id="customerDetailsCustomerEmail" name="customerDetailsCustomerEmail">
+                                        <label for="studentDetailsStudentEmail">Email<span class="requiredIcon">*</span></label>
+                                        <input type="email" class="form-control" id="studentDetailsStudentEmail" name="studentDetailsStudentEmail">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerMobile">Phone<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control invTooltip" id="customerDetailsCustomerMobile" name="customerDetailsCustomerMobile" title="Do not enter leading 0">
+                                        <label for="studentDetailsStudentMobile">Phone<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control invTooltip" id="studentDetailsStudentMobile" name="studentDetailsStudentMobile" title="Do not enter leading 0">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="customerDetailsCustomerIdentification">ID<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerIdentification" name="customerDetailsCustomerIdentification">
+                                        <label for="studentDetailsStudentIdentification">ID<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentIdentification" name="studentDetailsStudentIdentification">
                                     </div>
                                     <div class="form-group col-md-8">
-                                        <label for="customerDetailsCustomerAddress">Address<span class="requiredIcon">*</span></label>
-                                        <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
+                                        <label for="studentDetailsStudentAddress">Address<span class="requiredIcon">*</span></label>
+                                        <input type="text" class="form-control" id="studentDetailsStudentAddress" name="studentDetailsStudentAddress">
                                     </div>
                                 </div>
-                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Student</button>
-                                <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
-                                <button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>
+                                <button type="button" id="addStudent" name="addStudent" class="btn btn-success">Add Student</button>
+                                <button type="button" id="updateStudentDetailsButton" class="btn btn-primary">Update</button>
+                                <button type="button" id="deleteStudentButton" class="btn btn-danger">Delete</button>
                                 <button type="reset" class="btn">Clear</button>
                             </form>
                         </div>
@@ -291,7 +291,7 @@ require 'inc/navigation.php';
 <!--                                    <a class="nav-link active" data-toggle="tab" href="#itemSearchTab">Item</a>-->
 <!--                                </li>-->
 <!--                                <li class="nav-item">-->
-<!--                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>-->
+<!--                                    <a class="nav-link" data-toggle="tab" href="#studentSearchTab">Student</a>-->
 <!--                                </li>-->
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#borrowRequestSearchTab">Borrow Request</a>
@@ -308,10 +308,10 @@ require 'inc/navigation.php';
 <!--                                    <p>Use the grid below to search all details of items</p>-->
 <!--                                    <div class="table-responsive" id="itemDetailsTableDiv"></div>-->
 <!--                                </div>-->
-<!--                                <div id="customerSearchTab" class="container-fluid tab-pane fade">-->
+<!--                                <div id="studentSearchTab" class="container-fluid tab-pane fade">-->
 <!--                                    <br>-->
 <!--                                    <p>Use the grid below to search all details of students</p>-->
-<!--                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>-->
+<!--                                    <div class="table-responsive" id="studentDetailsTableDiv"></div>-->
 <!--                                </div>-->
                                 <div id="borrowRequestSearchTab" class="container-fluid tab-pane active">
                                     <br>
@@ -338,7 +338,7 @@ require 'inc/navigation.php';
                                     <a class="nav-link active" data-toggle="tab" href="#itemReportsTab">Item Info</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#customerReportsTab">Student Info</a>
+                                    <a class="nav-link" data-toggle="tab" href="#studentReportsTab">Student Info</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#saleReportsTab">Lend History</a>
@@ -352,10 +352,10 @@ require 'inc/navigation.php';
                                     <p>Use the grid below to get reports for items under <b>managed lab</b></p>
                                     <div class="table-responsive" id="itemReportsTableDiv"></div>
                                 </div>
-                                <div id="customerReportsTab" class="container-fluid tab-pane fade">
+                                <div id="studentReportsTab" class="container-fluid tab-pane fade">
                                     <br>
-                                    <p>Use the grid below to get reports for <b>all customers</b></p>
-                                    <div class="table-responsive" id="customerReportsTableDiv"></div>
+                                    <p>Use the grid below to get reports for <b>all students</b></p>
+                                    <div class="table-responsive" id="studentReportsTableDiv"></div>
                                 </div>
                                 <div id="saleReportsTab" class="container-fluid tab-pane fade">
                                     <br>

@@ -6,7 +6,7 @@
 	$studentDetailsSearchStatement = $conn->prepare($studentDetailsSearchSql);
 	$studentDetailsSearchStatement->execute();
 
-	$output = '<table id="customerReportsTable" class="table table-sm table-striped table-bordered table-hover" style="width:100%">
+	$output = '<table id="studentReportsTable" class="table table-sm table-striped table-bordered table-hover" style="width:100%">
 				<thead>
 					<tr>
 						<th>Matric No</th>

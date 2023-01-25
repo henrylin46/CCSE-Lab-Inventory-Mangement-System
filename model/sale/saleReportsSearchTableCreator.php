@@ -15,8 +15,8 @@
 					<tr>
 						<th>Sale ID</th>
 						<th>Item Number</th>
-						<th>Customer ID</th>
-						<th>Customer Name</th>
+						<th>Student ID</th>
+						<th>Student Name</th>
 						<th>Item Name</th>
 						<th>Sale Date</th>
 						<th>Discount %</th>
@@ -37,8 +37,8 @@
 		$output .= '<tr>' .
 						'<td>' . $row['saleID'] . '</td>' .
 						'<td>' . $row['itemNumber'] . '</td>' .
-						'<td>' . $row['customerID'] . '</td>' .
-						'<td>' . $row['customerName'] . '</td>' .
+						'<td>' . $row['studentID'] . '</td>' .
+						'<td>' . $row['studentName'] . '</td>' .
 						'<td>' . $row['itemName'] . '</td>' .
 						'<td>' . $row['saleDate'] . '</td>' .
 						'<td>' . $row['discount'] . '</td>' .

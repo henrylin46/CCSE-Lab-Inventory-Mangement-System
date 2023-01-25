@@ -2,16 +2,16 @@
 	require_once('../../inc/config/constants.php');
 	require_once('../../inc/config/db.php');
 	
-	if(isset($_POST['customerDetailsCustomerFullName'])){
+	if(isset($_POST['studentDetailsStudentFullName'])){
 		
-		$fullName = htmlentities($_POST['customerDetailsCustomerFullName']);
-		$email = htmlentities($_POST['customerDetailsCustomerEmail']);
-		$mobile = htmlentities($_POST['customerDetailsCustomerMobile']);
-		$password = htmlentities($_POST['customerDetailsCustomerPassword']);
-		$matricNumber = htmlentities($_POST['customerDetailsCustomerMatricNumber']);
-		$address = htmlentities($_POST['customerDetailsCustomerAddress']);
-		$status = htmlentities($_POST['customerDetailsStatus']);
-		$identification = htmlentities($_POST['customerDetailsCustomerIdentification']);
+		$fullName = htmlentities($_POST['studentDetailsStudentFullName']);
+		$email = htmlentities($_POST['studentDetailsStudentEmail']);
+		$mobile = htmlentities($_POST['studentDetailsStudentMobile']);
+		$password = htmlentities($_POST['studentDetailsStudentPassword']);
+		$matricNumber = htmlentities($_POST['studentDetailsStudentMatricNumber']);
+		$address = htmlentities($_POST['studentDetailsStudentAddress']);
+		$status = htmlentities($_POST['studentDetailsStatus']);
+		$identification = htmlentities($_POST['studentDetailsStudentIdentification']);
 		
 		if(isset($fullName) && isset($mobile) && isset($address)) 
 		{

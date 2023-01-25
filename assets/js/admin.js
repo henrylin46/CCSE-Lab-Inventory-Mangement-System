@@ -1,33 +1,33 @@
 // File that returns matricNumbers
-showCustomerMatricNumberSuggestionsFile = 'model/customer/showMatricNumbers.php';
+showStudentMatricNumberSuggestionsFile = 'model/student/showMatricNumbers.php';
 
 // File that returns matricNumbers for sale tab
-showCustomerMatricNumberSuggestionsForSaleTabFile = 'model/customer/showMatricNumbersForSaleTab.php';
+showStudentMatricNumberSuggestionsForSaleTabFile = 'model/student/showMatricNumbersForSaleTab.php';
 
 $(document).ready(function() {
 
-    // Listen to MatricNumber text box in customer details tab
-    $('#customerDetailsCustomerMatricNumber').keyup(function () {
-        showSuggestions('customerDetailsCustomerMatricNumber', showCustomerMatricNumberSuggestionsFile, 'customerDetailsCustomerMatricNumberSuggestionsDiv');
+    // Listen to MatricNumber text box in student details tab
+    $('#studentDetailsStudentMatricNumber').keyup(function () {
+        showSuggestions('studentDetailsStudentMatricNumber', showStudentMatricNumberSuggestionsFile, 'studentDetailsStudentMatricNumberSuggestionsDiv');
     });
-    // Remove the MatricNumber suggestions dropdown in the customer details tab
+    // Remove the MatricNumber suggestions dropdown in the student details tab
     // when user selects an item from it
-    $(document).on('click', '#customerDetailsCustomerMatricNumberSuggestionsList li', function () {
-        $('#customerDetailsCustomerMatricNumber').val($(this).text());
-        $('#customerDetailsCustomerMatricNumberSuggestionsList').fadeOut();
-        getCustomerDetailsToPopulate();
+    $(document).on('click', '#studentDetailsStudentMatricNumberSuggestionsList li', function () {
+        $('#studentDetailsStudentMatricNumber').val($(this).text());
+        $('#studentDetailsStudentMatricNumberSuggestionsList').fadeOut();
+        getStudentDetailsToPopulate();
     });
 
-    // Listen to CustomerID text box in sale details tab
+    // Listen to StudentID text box in sale details tab
     $('#borrowDetailsStudentMatricNumber').keyup(function () {
-        showSuggestions('borrowDetailsStudentMatricNumber', showCustomerMatricNumberSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
+        showSuggestions('borrowDetailsStudentMatricNumber', showStudentMatricNumberSuggestionsForSaleTabFile, 'borrowDetailsStudentMatricNumberSuggestionsDiv');
     });
-    // Remove the CustomerID suggestions dropdown in the sale details tab
+    // Remove the StudentID suggestions dropdown in the sale details tab
     // when user selects an item from it
     $(document).on('click', '#saleDetailsMatricNumberSuggestionsList li', function () {
         $('#borrowDetailsStudentMatricNumber').val($(this).text());
         $('#saleDetailsMatricNumberSuggestionsList').fadeOut();
-        getCustomerDetailsToPopulateSaleTab();
+        getStudentDetailsToPopulateSaleTab();
     });
 
     // listen to approve button in borrow request history in admin tab
@@ -94,47 +94,47 @@ $(document).ready(function() {
     });
 })
 
-// Function to send customerID so that customer details can be pulled from db
-// to be displayed on customer details tab
-function getCustomerDetailsToPopulate(){
-    // Get the customerID entered in the text box
-    var customerDetailsCustomerMatricNumber = $('#customerDetailsCustomerMatricNumber').val();
+// Function to send studentID so that student details can be pulled from db
+// to be displayed on student details tab
+function getStudentDetailsToPopulate(){
+    // Get the studentID entered in the text box
+    var studentDetailsStudentMatricNumber = $('#studentDetailsStudentMatricNumber').val();
 
     // Call the populateItemDetails.php script to get item details
     // relevant to the itemNumber which the user entered
     $.ajax({
-        url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
+        url: 'model/student/populateStudentDetailsByMatricNumber.php',
         method: 'POST',
-        data: {matricNumber:customerDetailsCustomerMatricNumber},
+        data: {matricNumber:studentDetailsStudentMatricNumber},
         dataType: 'json',
         success: function(data){
-            $('#customerDetailsCustomerID').val(data.customerID);
-            $('#customerDetailsCustomerFullName').val(data.fullName);
-            $('#customerDetailsCustomerMobile').val(data.mobile);
-            $('#customerDetailsCustomerPassword').val(data.password);
-            $('#customerDetailsCustomerEmail').val(data.email);
-            $('#customerDetailsCustomerAddress').val(data.address);
-            $('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
-            $('#customerDetailsCustomerIdentification').val(data.identification);
+            $('#studentDetailsStudentID').val(data.studentID);
+            $('#studentDetailsStudentFullName').val(data.fullName);
+            $('#studentDetailsStudentMobile').val(data.mobile);
+            $('#studentDetailsStudentPassword').val(data.password);
+            $('#studentDetailsStudentEmail').val(data.email);
+            $('#studentDetailsStudentAddress').val(data.address);
+            $('#studentDetailsStatus').val(data.status).trigger("chosen:updated");
+            $('#studentDetailsStudentIdentification').val(data.identification);
         }
     });
 }
 
-// Function to send customerID so that customer details can be pulled from db
+// Function to send studentID so that student details can be pulled from db
 // to be displayed on sale details tab
-function getCustomerDetailsToPopulateSaleTab(){
-    // Get the customerID entered in the text box
+function getStudentDetailsToPopulateSaleTab(){
+    // Get the studentID entered in the text box
     var borrowDetailsStudentMatricNumber = $('#borrowDetailsStudentMatricNumber').val();
 
-    // Call the populateCustomerDetails.php script to get customer details
-    // relevant to the customerID which the user entered
+    // Call the populateStudentDetailsByMatricNumber.php script to get student details
+    // relevant to the studentID which the user entered
     $.ajax({
-        url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
+        url: 'model/student/populateStudentDetailsByMatricNumber.php',
         method: 'POST',
         data: {matricNumber:borrowDetailsStudentMatricNumber},
         dataType: 'json',
         success: function(data){
-            //$('#saleDetailsCustomerID').val(data.customerID);
+            //$('#saleDetailsStudentID').val(data.studentID);
             $('#borrowDetailsStudentName').val(data.fullName);
         }
     });

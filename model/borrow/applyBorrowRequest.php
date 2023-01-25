@@ -67,7 +67,7 @@ if(isset($_POST['borrowDetailsItemNumber'])){
                 $studentStatement->execute(['matricNumber' => $borrowDetailsStudentMatricNumber]);
 
                 if($studentStatement->rowCount() > 0){
-                    // Customer exits. That means both customer, item, and stocks are available. Hence start INSERT and UPDATE
+                    // Student exits. That means both student, item, and stocks are available. Hence start INSERT and UPDATE
                     $studentRow = $studentStatement->fetch(PDO::FETCH_ASSOC);
 
                     // INSERT data to sale table

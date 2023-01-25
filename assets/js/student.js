@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-    // populate the customer info table for student
-    getCustomerDetailsToPopulateForStudent();
+    // populate the student info table for student
+    getStudentDetailsToPopulateForStudent();
 
     // function for cancel request
     $(document).on('click', '.cancelBorrowRequestButton', function(){
@@ -22,26 +22,26 @@ $(document).ready(function(){
     })
 })
 
-// to be displayed on customer details tab
-function getCustomerDetailsToPopulateForStudent(){
+// to be displayed on student details tab
+function getStudentDetailsToPopulateForStudent(){
 
     // Call the populateItemDetails.php script to get item details
     // relevant to the itemNumber which the user entered
     $.ajax({
-        url: 'model/customer/populateCustomerDetailsByMatricNumber.php',
+        url: 'model/student/populateStudentDetailsByMatricNumber.php',
         method: 'POST',
         // data: {matricNumber:$('#session-matric-number').html()},
         dataType: 'json',
         success: function(data){
-            $('#customerDetailsCustomerID').val(data.customerID);
-            $('#customerDetailsCustomerMatricNumber').val(data.matricNumber);
-            $('#customerDetailsCustomerFullName').val(data.fullName);
-            $('#customerDetailsCustomerMobile').val(data.mobile);
-            $('#customerDetailsCustomerPassword').val(data.password);
-            $('#customerDetailsCustomerEmail').val(data.email);
-            $('#customerDetailsCustomerAddress').val(data.address);
-            $('#customerDetailsStatus').val(data.status).trigger("chosen:updated");
-            $('#customerDetailsCustomerIdentification').val(data.identification);
+            $('#studentDetailsStudentID').val(data.studentID);
+            $('#studentDetailsStudentMatricNumber').val(data.matricNumber);
+            $('#studentDetailsStudentFullName').val(data.fullName);
+            $('#studentDetailsStudentMobile').val(data.mobile);
+            $('#studentDetailsStudentPassword').val(data.password);
+            $('#studentDetailsStudentEmail').val(data.email);
+            $('#studentDetailsStudentAddress').val(data.address);
+            $('#studentDetailsStatus').val(data.status).trigger("chosen:updated");
+            $('#studentDetailsStudentIdentification').val(data.identification);
         }
     });
 }

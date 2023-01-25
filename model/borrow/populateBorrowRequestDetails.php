@@ -6,7 +6,7 @@
 	if(isset($_POST['borrowDetailsBorrowRequestID'])){
 
 		$borrowDetailsBorrowRequestID = htmlentities($_POST['borrowDetailsBorrowRequestID']);
-//		SELECT * FROM borrowRequest INNER JOIN customer ON borrowRequest.matricNumber = customer.matricNumber;
+//		SELECT * FROM borrowRequest INNER JOIN student ON borrowRequest.matricNumber = student.matricNumber;
 		$saleDetailsSql = 'SELECT borrowRequest.matricNumber, borrowRequest.itemNumber, fullName, borrowRequestID, itemName, borrowQuantity, borrowPurpose, imageURL, location FROM borrowRequest 
                            INNER JOIN student ON borrowRequest.matricNumber = student.matricNumber
                            INNER JOIN item ON borrowRequest.itemNumber = item.itemNumber
