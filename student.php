@@ -10,14 +10,9 @@
             <h1 class="my-4"></h1>
             <!--Navigation Tab-->
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <!--			  <a class="nav-link active" id="v-pills-item-tab" data-toggle="pill" href="#v-pills-item" role="tab" aria-controls="v-pills-item" aria-selected="true">Item</a>-->
-                <!--			  <a class="nav-link" id="v-pills-purchase-tab" data-toggle="pill" href="#v-pills-purchase" role="tab" aria-controls="v-pills-purchase" aria-selected="false">Purchase</a>-->
-                <!--			  <a class="nav-link" id="v-pills-vendor-tab" data-toggle="pill" href="#v-pills-vendor" role="tab" aria-controls="v-pills-vendor" aria-selected="false">Vendor</a>-->
-
                 <a class="nav-link active" id="v-pills-search-tab" data-toggle="pill" href="#v-pills-search" role="tab" aria-controls="v-pills-search" aria-selected="true">Search</a>
                 <a hidden class="nav-link" id="v-pills-borrow-tab" data-toggle="pill" href="#v-pills-borrow" role="tab" aria-controls="v-pills-borrow" aria-selected="false">Sale</a>
                 <a class="nav-link" id="v-pills-customer-tab" data-toggle="pill" href="#v-pills-customer" role="tab" aria-controls="v-pills-customer" aria-selected="false">Customer</a>
-                <!--			  <a class="nav-link" id="v-pills-reports-tab" data-toggle="pill" href="#v-pills-reports" role="tab" aria-controls="v-pills-reports" aria-selected="false">Reports</a>-->
             </div>
         </div>
         <div class="col-lg-10">
@@ -37,9 +32,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#borrowRequestSearchTab">Borrow History</a>
                                 </li>
-<!--                                <li class="nav-item">-->
-<!--                                    <a class="nav-link" data-toggle="tab" href="#customerSearchTab">Customer</a>-->
-<!--                                </li>-->
                             </ul>
 
                             <!-- Tab panes -->
@@ -55,11 +47,6 @@
                                     <p>Use the grid below to search borrow history details</p>
                                     <div class="table-responsive" id="borrowRequestDetailsTableDiv"></div>
                                 </div>
-<!--                                <div id="customerSearchTab" class="container-fluid tab-pane fade">-->
-<!--                                    <br>-->
-<!--                                    <p>Use the grid below to search all details of customers</p>-->
-<!--                                    <div class="table-responsive" id="customerDetailsTableDiv"></div>-->
-<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -172,10 +159,7 @@
                                         <input type="text" class="form-control" id="customerDetailsCustomerAddress" name="customerDetailsCustomerAddress">
                                     </div>
                                 </div>
-<!--                                <button type="button" id="addCustomer" name="addCustomer" class="btn btn-success">Add Customer</button>-->
                                 <button type="button" id="updateCustomerDetailsButton" class="btn btn-primary">Update</button>
-<!--                                <button type="button" id="deleteCustomerButton" class="btn btn-danger">Delete</button>-->
-<!--                                <button type="reset" class="btn">Clear</button>-->
                             </form>
                         </div>
                     </div>
