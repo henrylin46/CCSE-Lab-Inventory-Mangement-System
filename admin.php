@@ -340,9 +340,6 @@ require 'inc/navigation.php';
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#studentReportsTab">Student Info</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#saleReportsTab">Lend History</a>
-                                </li>
                             </ul>
 
                             <!-- Tab panes for reports sections -->
@@ -356,26 +353,6 @@ require 'inc/navigation.php';
                                     <br>
                                     <p>Use the grid below to get reports for <b>all students</b></p>
                                     <div class="table-responsive" id="studentReportsTableDiv"></div>
-                                </div>
-                                <div id="saleReportsTab" class="container-fluid tab-pane fade">
-                                    <br>
-                                    <p>Use the grid below to get reports for <b>lend history</b></p>
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-3">
-                                                <label for="saleReportStartDate">Start Date</label>
-                                                <input type="text" class="form-control datepicker" id="saleReportStartDate" value="2018-05-24" name="saleReportStartDate" readonly>
-                                            </div>
-                                            <div class="form-group col-md-3">
-                                                <label for="saleReportEndDate">End Date</label>
-                                                <input type="text" class="form-control datepicker" id="saleReportEndDate" value="2018-05-24" name="saleReportEndDate" readonly>
-                                            </div>
-                                        </div>
-                                        <button type="button" id="showSaleReport" class="btn btn-dark">Show Report</button>
-                                        <button type="reset" id="saleFilterClear" class="btn">Clear</button>
-                                    </form>
-                                    <br>
-                                    <div class="table-responsive" id="saleReportsTableDiv"></div>
                                 </div>
                             </div>
                         </div>
